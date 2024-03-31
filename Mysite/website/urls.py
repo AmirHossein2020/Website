@@ -4,5 +4,5 @@ from .views import HomeView , AbuotView
 
 urlpatterns = [
    path('', HomeView, name='home' ),
-   path('abuot/', AbuotView, name='abuot')
+   path('abuot/', AbuotView, name='about')
 ]
