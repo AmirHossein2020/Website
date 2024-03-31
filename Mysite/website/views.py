@@ -6,4 +6,4 @@ def HomeView(request):
     return render(request, 'index.html')
 
 def AbuotView(request):
-    return render(request, 'abuot.html')
+    return render(request, 'about.html')
