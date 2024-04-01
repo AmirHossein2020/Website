@@ -1,0 +1,42 @@
+{% extends "About.html" %}
+{% load static %}
+{% block content %}
+<!-- About Section-->
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-xxl-8">
+                <div class="text-center my-5">
+                    
+                    
+                        <p class="lead fw-light mb-4">My name is {{ user.username }} and I help brands grow.</p>
+                        <p class="text-muted">{{ user.about }}</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="card-body p-5">
+    <div class="row align-items-center gx-5">
+        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+            <div class="bg-light p-4 rounded-4">
+                <p>Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Call to action section-->
+<section class="py-5 bg-gradient-primary-to-secondary text-white">
+    <div class="container px-5 my-5">
+        <div class="text-center">
+            <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
+            <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url 'contact' %}">Contact me</a>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

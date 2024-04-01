@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Page Content-->
+<div class="container px-5 my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Resume</span></h1>
+    </div>
+    {% if resume_list %}
+    <div class="row gx-5 justify-content-center">
+        <div class="col-lg-11 col-xl-9 col-xxl-8">
+            <!-- Experience Section-->
+            <section>
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h2 class="text-primary fw-bolder mb-0">Experience</h2>
+                    <!-- Download resume button-->
+                    <!-- Note: Set the link href target to a PDF file within your project-->
+                    
+                </div>
+                <!-- Experience Card 1-->
+                <div class="card shadow border-0 rounded-4 mb-5">
+                    
+                    {% for item in resume_list %}
+                    <div class="card-body p-5">
+                        <div class="row align-items-center gx-5">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                <div class="bg-light p-4 rounded-4">
+                                    <div class="text-primary fw-bolder mb-2">{{ item.startyear.year  }} - {{ item.endyear.year }}</div>
+                                    <div class="small fw-bolder">{{ item.experiencename }}</div>
+                                    <div class="small text-muted">Stark Industries</div>
+                                    <div class="small text-muted">Los Angeles, CA</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8"><div>{{ item.aboutexperience }}</div></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </section>
+            <!-- Education Section-->
+            <section>
+                <h2 class="text-secondary fw-bolder mb-4">Education</h2>
+                <!-- Education Card 1-->
+                <div class="card shadow border-0 rounded-4 mb-5">
+                    {% for item in resume_list %}
+                    <div class="card-body p-5">
+                        <div class="row align-items-center gx-5">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                    <div class="bg-light p-4 rounded-4">
+                                        <div class="text-secondary fw-bolder mb-2">{{ item.startyear_education.year }} - {{ item.endyear_education.year }}</div>
+                                        <div class="mb-2">
+                                            <div class="small fw-bolder">{{ item.nameinstitute }}</div>
+                                            <div class="small text-muted">{{ item.namecity }}</div>
+                                        </div>
+                                        <div class="fst-italic">
+                                            <div class="small text-muted">Master's</div>
+                                            <div class="small text-muted">Web Development</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8"><div>{{ item.abuotinstitute }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </section>
+            <!-- Divider-->
+            <div class="pb-5"></div>
+            <!-- Skills Section-->
+            <section>
+                <!-- Skillset Card-->
+                <div class="card shadow border-0 rounded-4 mb-5">
+                    <div class="card-body p-5">
+                        <!-- Professional skills list-->
+                        <div class="mb-5">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
+                                <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Professional Skills</span></h3>
+                            </div>
+                            <div class="row row-cols-1 row-cols-md-3 mb-4">
+                            {% for item in resume_list %}
+                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.professional_skill }}</div></div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Languages list-->
+                        <div class="mb-0">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-code-slash"></i></div>
+                                <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Languages</span></h3>
+                            </div>
+                            <div class="row row-cols-1 row-cols-md-3 mb-4">
+                            {% for item in resume_list %}
+                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.language }}</div></div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    {% else %}
+    <center><div class="fs-3 fw-light text-muted">You don't have any resume right now.</div></center>
+    <center><h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">You can build your first resume right now</span></h1></center>
+        <center><a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url 'new_resume' %}">New Resume</a></center>
+    {% endif %}
+    
+</div>
+{% endblock content %}
