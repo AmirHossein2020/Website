@@ -17,17 +17,7 @@ class ProjectView(ListView):
     model = Project
     template_name = 'Project.html'
 
-class Newresume(CreateView):
-    model = Resume
-    template_name = 'new_resume.html'
-    form_class = Formresume
-    success_url = reverse_lazy('home')
 
-class Newproject(CreateView):
-    model = Project
-    template_name = 'new_project.html'
-    form_class = Formproject
-    success_url = reverse_lazy('home')
 
 class AboutMe(TemplateView):
     template_name = 'about_me.html'
@@ -35,9 +25,6 @@ class AboutMe(TemplateView):
 class Persian(TemplateView):
     template_name = 'Persian/home.html'
 
-
-class Persian_HomeView(TemplateView):
-    template_name = 'Persian/home.html'
 
 class Persian_ResumeView(ListView):
     model = Resume

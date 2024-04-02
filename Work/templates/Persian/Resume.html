@@ -10,28 +10,27 @@
     <div class="row gx-5 justify-content-center">
         <div class="col-lg-11 col-xl-9 col-xxl-8">
             <!-- Experience Section-->
-            <section>
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h2 class="text-primary fw-bolder mb-0">تحصیلات</h2>
+            <section dir="rtl">
+                <div class="d-flex align-items-center justify-content-between mb-4" >
+                    <h2 class="text-primary fw-bolder mb-0" dir="ltr">تحصیلات</h2>
                     <!-- Download resume button-->
-                    <!-- Note: Set the link href target to a PDF file within your project-->
-                    
+                    <!-- Note: Set the link href target to a PDF file within your project-->           
                 </div>
                 <!-- Experience Card 1-->
-                <div class="card shadow border-0 rounded-4 mb-5">
+                <div class="card shadow border-0 rounded-4 mb-5" >
                     
                     {% for item in resume_list %}
-                    <div class="card-body p-5">
-                        <div class="row align-items-center gx-5">
-                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                    <div class="card-body p-5" dir="rtl">
+                        <div class="row align-items-center gx-5" dir"ltr">
+                            <div class="col mb-4 mb-lg-0" >
                                 <div class="bg-light p-4 rounded-4">
-                                    <div class="text-primary fw-bolder mb-2">{{ item.startyear.year  }} - {{ item.endyear.year }}</div>
+                                    <div class="text-primary fw-bolder mb-2" dir"rtl">1398 - 1402</div>
                                     <div class="small fw-bolder">{{ item.experiencename }}</div>
                                     <div class="small text-muted">Stark Industries</div>
                                     <div class="small text-muted">Los Angeles, CA</div>
                                 </div>
                             </div>
-                            <div class="col-lg-8"><div>{{ item.aboutexperience }}</div></div>
+                            <div class="col-lg-8"><div>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</div></div>
                         </div>
                     </div>
                     {% endfor %}
@@ -39,14 +38,14 @@
                 </div>
             </section>
             <!-- Education Section-->
-            <section>
+            <section dir="rtl">
                 <h2 class="text-secondary fw-bolder mb-4">دوره های اموزش</h2>
                 <!-- Education Card 1-->
-                <div class="card shadow border-0 rounded-4 mb-5">
+                <div class="card shadow border-0 rounded-4 mb-5" dir="rtl">
                     {% for item in resume_list %}
-                    <div class="card-body p-5">
-                        <div class="row align-items-center gx-5">
-                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                    <div class="card-body p-5" dir="rtl">
+                        <div class="row align-items-center gx-5" dir="rtl">
+                            <div class="col mb-4 mb-lg-0" dir="rtl">
                                     <div class="bg-light p-4 rounded-4">
                                         <div class="text-secondary fw-bolder mb-2">{{ item.startyear_education.year }} - {{ item.endyear_education.year }}</div>
                                         <div class="mb-2">
@@ -76,25 +75,25 @@
                     <div class="card-body p-5">
                         <!-- Professional skills list-->
                         <div class="mb-5">
-                            <div class="d-flex align-items-center mb-4">
+                            <div class="d-flex align-items-center mb-4" dir="rtl">
                                 <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
                                 <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">مهارتهای حرفه ای</span></h3>
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
                             {% for item in resume_list %}
-                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.professional_skill }}</div></div>
+                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.professional_skill }}</div></div>
                             {% endfor %}
                             </div>
                         </div>
                         <!-- Languages list-->
                         <div class="mb-0">
-                            <div class="d-flex align-items-center mb-4">
+                            <div class="d-flex align-items-center mb-4" dir="rtl">
                                 <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-code-slash"></i></div>
                                 <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">زبان ها </span></h3>
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
                             {% for item in resume_list %}
-                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.language }}</div></div>
+                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.language }}</div></div>
                             {% endfor %}
                             </div>
                         </div>
