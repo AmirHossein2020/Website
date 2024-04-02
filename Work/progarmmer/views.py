@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView , ListView
+from django.views.generic import TemplateView , ListView 
 from .models import Resume , Project
 from accounts.forms import *
 # Create your views here.

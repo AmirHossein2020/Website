@@ -5,7 +5,6 @@ from django.utils import timezone
 
 class Language(models.Model):
     languages = models.CharField(max_length=100)
-    languages_persian = models.CharField(max_length=100)
 
     def __str__(self):
         return self.languages
@@ -25,15 +24,15 @@ class Resume(models.Model):
     startyear = models.DateField(default=timezone.now)
     endyear = models.DateField(default=timezone.now)
     nameinstitute = models.CharField(max_length=20)
-    nameinstitute_persian = models.CharField(max_length=20, default='null')
+    nameinstitute_persian = models.CharField(max_length=200, default='null')
     startyear_education = models.DateField(default=timezone.now)
     endyear_education = models.DateField(default=timezone.now)
-    namecity = models.CharField(max_length=20, default='null')
+    namecity = models.CharField(max_length=200, default='null')
     abuotinstitute = models.TextField(max_length=100)
-    namecity_persian = models.CharField(max_length=20, default='null')
-    abuotinstitute_persian = models.TextField(max_length=100, default='null')
-    professional_skill = models.ManyToManyField(Professional_skill)
-    language = models.ManyToManyField(Language)
+    namecity_persian = models.CharField(max_length=200, default='null')
+    abuotinstitute_persian = models.TextField(max_length=250, default='null')
+    professional_skill = models.ManyToManyField(Professional_skill, related_name="skill")
+    language = models.ManyToManyField(Language, related_name="language")
 
     def __str__(self):
         return self.experiencename
@@ -41,8 +40,8 @@ class Resume(models.Model):
 class Project(models.Model):
     nameproject = models.CharField(max_length=50)
     abuotproject = models.TextField(max_length = 200)
-    nameproject_persian = models.CharField(max_length=50, null = True)
-    abuotproject_persian = models.TextField(max_length = 200, null = True)
+    nameproject_persian = models.CharField(max_length=250, null = True)
+    abuotproject_persian = models.TextField(max_length = 500, null = True)
     photoproject = models.ImageField(upload_to='project/%Y/%m/%d')
 
     def __str__(self):
