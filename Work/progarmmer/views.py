@@ -1,26 +1,27 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView , ListView, CreateView
+from django.views.generic import TemplateView , ListView
 from .models import Resume , Project
-from .forms import Formresume , Formproject
-from django.urls import reverse_lazy
 from accounts.forms import *
 # Create your views here.
 
 class HomeView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'English/home.html'
 
 class ResumeView(ListView):
     model = Resume
-    template_name = 'Resume.html'
+    template_name = 'English/Resume.html'
 
 class ProjectView(ListView):
     model = Project
-    template_name = 'Project.html'
-
-
+    template_name = 'English/Project.html'
 
 class AboutMe(TemplateView):
-    template_name = 'about_me.html'
+    template_name = 'English/about_me.html'
+
+#=================================================================
+#=================================================================
+#=================================================================
+# this is part of the persian language
+
 
 class Persian(TemplateView):
     template_name = 'Persian/home.html'

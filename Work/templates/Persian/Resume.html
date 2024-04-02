@@ -77,11 +77,11 @@
                         <div class="mb-5">
                             <div class="d-flex align-items-center mb-4" dir="rtl">
                                 <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
-                                <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">مهارتهای حرفه ای</span></h3>
+                                <h3 class="fw-bolder mb-0" style="position: relative; right: 20px;"><span class="text-gradient d-inline">مهارت های حرفه ای</span></h3>
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
                             {% for item in resume_list %}
-                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.professional_skill }}</div></div>
+                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100"  style="position: relative; left: 500px;">{{ item.professional_skill }}</div></div>
                             {% endfor %}
                             </div>
                         </div>
@@ -89,11 +89,11 @@
                         <div class="mb-0">
                             <div class="d-flex align-items-center mb-4" dir="rtl">
                                 <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-code-slash"></i></div>
-                                <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">زبان ها </span></h3>
+                                <h3 class="fw-bolder mb-0" style="position: relative; right: 20px;"><span class="text-gradient d-inline">زبان ها </span></h3>
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
                             {% for item in resume_list %}
-                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.language }}</div></div>
+                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100" style="position: relative; left: 500px;">{{ item.language }}</div></div>
                             {% endfor %}
                             </div>
                         </div>

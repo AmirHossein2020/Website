@@ -13,7 +13,7 @@
                 {% for item in project_list %}
                 <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
                     
-                    <div class="card-body p-0">
+                    <div class="card-body p-0" dir="rtl">
                         <div class="d-flex align-items-center">
                             <div class="p-5">
                                 <h2 class="fw-bolder">{{ item.nameproject }}</h2>
@@ -40,7 +40,7 @@
     <div class="container px-5 my-5">
         <div class="text-center">
             <h2 class="display-4 fw-bolder mb-4">پیامی برایم بزار</h2>
-            <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">ارسال پیام</a>
+            <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url 'persian_contact' %}">ارسال پیام</a>
         </div>
     </div>
 </section>
