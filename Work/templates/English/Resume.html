@@ -75,8 +75,10 @@
                                 <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Professional Skills</span></h3>
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
-                            {% for item in resume_list.professional_skill.skill.all %}
-                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item }}</div></div>
+                            {% for item in resume_list %}
+                                {% for item in item.professional_skill.all %}
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item }}</div></div>
+                                {% endfor %}
                             {% endfor %}
                             </div>
                         </div>
@@ -88,7 +90,9 @@
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
                             {% for item in resume_list %}
-                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item.language.all }}</div></div>
+                                {% for item in item.language.all %}
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item }}</div></div>
+                                {% endfor %}
                             {% endfor %}
                             </div>
                         </div>

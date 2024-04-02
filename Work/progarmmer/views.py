@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView , ListView 
-from .models import Resume , Project
+from .models import Resume , Project , Abuot
 from accounts.forms import *
 # Create your views here.
 
@@ -36,7 +36,8 @@ class Persian_ProjectView(ListView):
     template_name = 'Persian/Project.html'
 
 
-class Persian_AboutMe(TemplateView):
+class Persian_AboutMe(ListView):
+    model = Abuot
     template_name = 'Persian/about_me.html'
 
 

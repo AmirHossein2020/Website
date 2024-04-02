@@ -11,13 +11,12 @@
                 <!-- Project Card 1-->
                 {% if project_list %}
                 {% for item in project_list %}
-                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                    
+                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5"> 
                     <div class="card-body p-0" dir="rtl">
                         <div class="d-flex align-items-center">
                             <div class="p-5">
-                                <h2 class="fw-bolder">{{ item.nameproject }}</h2>
-                                <p>{{ item.abuotproject }}</p>
+                                <h2 class="fw-bolder">{{ item.nameproject_persian }}</h2>
+                                <p>{{ item.abuotproject_persian }}</p>
                             </div>
                             <img class="img-fluid" src="{{ item.photoproject.url }}" alt="..." />
                         </div>

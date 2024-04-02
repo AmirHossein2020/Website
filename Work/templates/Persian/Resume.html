@@ -24,7 +24,7 @@
                         <div class="row align-items-center gx-5" dir"ltr">
                             <div class="col mb-4 mb-lg-0" >
                                 <div class="bg-light p-4 rounded-4">
-                                    <div class="text-primary fw-bolder mb-2" dir"rtl">{{ item.startyear }} - {{ item.endyear }}</div>
+                                    <div class="text-primary fw-bolder mb-2" dir"rtl">{{  item.startyear.year}} - {{ item.endyear.year }}</div>
                                     <div class="small fw-bolder">{{ item.experiencename_persian }}</div>
                                 </div>
                             </div>
@@ -75,7 +75,9 @@
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
                             {% for item in resume_list %}
-                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100"  style="position: relative; left: 500px;">{{ item.professional_skill }}</div></div>
+                                {% for item in item.professional_skill_persian.all %}
+                                    <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item }}</div></div>
+                                {% endfor %}
                             {% endfor %}
                             </div>
                         </div>
@@ -87,7 +89,9 @@
                             </div>
                             <div class="row row-cols-1 row-cols-md-3 mb-4">
                             {% for item in resume_list %}
-                                <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100" style="position: relative; left: 500px;">{{ item.language }}</div></div>
+                                {% for item in item.language_persian.all %}
+                                    <div class="col mb-4 mb-md-0" dir="rtl"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ item }}</div></div>
+                                {% endfor %}
                             {% endfor %}
                             </div>
                         </div>
