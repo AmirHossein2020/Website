@@ -14,7 +14,8 @@ class ProjectView(ListView):
     model = Project
     template_name = 'English/Project.html'
 
-class AboutMe(TemplateView):
+class AboutMe(ListView):
+    model = Abuot
     template_name = 'English/about_me.html'
 
 #=================================================================

@@ -23,4 +23,4 @@ class ContactView(CreateView):
 class Persian_ContactView(CreateView):
     template_name = 'registration/persian_contact.html'
     form_class = ContactForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('persian')

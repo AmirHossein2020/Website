@@ -29,6 +29,23 @@
         </div>
     </div>
 {% endfor %}
+<div class="card-body p-5">
+    <div class="row align-items-center gx-5">
+        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+            <div class="bg-light p-4 rounded-4">
+            {% for item in abuot_list %}
+                <center><p class="text-muted" >برای تماس با من می توانید از روش های زیر استفاده کنید</p></center>
+            {% endfor %}
+            <div class="d-flex justify-content-center fs-2 gap-4">
+                <a class="text-gradient" href="tel:{{ user.phone }}"><i class="bi bi-telephone-inbound-fill"></i></a>
+                <a class="text-gradient" href="mailto:{{ user.email }}"><i class="bi bi-envelope"></i></a>
+                <a class="text-gradient" href="{{ user.linkedin_link }}"><i class="bi bi-linkedin"></i></a>
+                <a class="text-gradient" href="{{ user.github_link }}"><i class="bi bi-github"></i></a>
+            </div>
+            </div>
+        </div>    
+    </div>
+</div>
 <!-- Call to action section-->
 <section class="py-5 bg-gradient-primary-to-secondary text-white">
     <div class="container px-5 my-5">

@@ -8,10 +8,10 @@
             <div class="col-xxl-8">
                 <div class="text-center my-5">
                     
-                    
-                        <p class="lead fw-light mb-4">My name is {{ user.username }} and I help brands grow.</p>
-                        <p class="text-muted">{{ user.about }}</p>
-                    
+                    {% for item in abuot_list %}
+                        <p class="lead fw-light mb-4">{{ item.title }}</p>
+                      
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -22,10 +22,29 @@
     <div class="row align-items-center gx-5">
         <div class="col text-center text-lg-start mb-4 mb-lg-0">
             <div class="bg-light p-4 rounded-4">
-                <p>Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.Meaning “warrior” or “military,” describing something related to war or battle.</p>
+            {% for item in abuot_list %}
+                <center><p class="text-muted" >{{ item.body }}</p></center>
+            {% endfor %}
             </div>
-        </div>
-        
+        </div>    
+    </div>
+</div>
+
+<div class="card-body p-5">
+    <div class="row align-items-center gx-5">
+        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+            <div class="bg-light p-4 rounded-4">
+            {% for item in abuot_list %}
+                <center><p class="text-muted" >You can use the following methods to contact me</p></center>
+            {% endfor %}
+            <div class="d-flex justify-content-center fs-2 gap-4">
+                <a class="text-gradient" href="tel:{{ user.phone }}"><i class="bi bi-telephone-inbound-fill"></i></a>
+                <a class="text-gradient" href="mailto:{{ user.email }}"><i class="bi bi-envelope"></i></a>
+                <a class="text-gradient" href="{{ user.linkedin_link }}"><i class="bi bi-linkedin"></i></a>
+                <a class="text-gradient" href="{{ user.github_link }}"><i class="bi bi-github"></i></a>
+            </div>
+            </div>
+        </div>    
     </div>
 </div>
 
