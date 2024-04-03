@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jalali_date',
     'accounts',
     'crispy_forms',
     'crispy_bootstrap4',
     'progarmmer',
-
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
