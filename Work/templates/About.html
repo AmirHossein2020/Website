@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Personal - Start Bootstrap Theme</title>
+    <title>Resume - Amir Hossein</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="{% static "assets/favicon.ico" %}" />
+    <link rel="icon" type="image/x-icon" href="{% static "assets/Screenshot.png" %}" />
     <!-- Custom Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
 
     <div class="container px-5">
-        <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Resume Builder</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div style="position: relative; right: 100px;">
+            <button class="btn-17">
+                <span class="text-container">
+                <span class="text"><a href="{% url 'persian' %}">فارسی</a></span>
+                </span>
+            </button>
+        </div>
+        <div style="position: relative; right: 80px;">
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="fw-bolder text-primary">My Resume</span></a>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
