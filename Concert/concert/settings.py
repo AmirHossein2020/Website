@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'adminlte3',
+    'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -159,7 +161,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = "/static/"
-#MEDIA_ROOT = os.path.join(BASE_DIR,"static")
+STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
@@ -167,4 +169,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/ticketSales/concert/list'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]
