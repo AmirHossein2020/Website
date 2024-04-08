@@ -34,16 +34,16 @@
     <div class="row align-items-center gx-5">
         <div class="col text-center text-lg-start mb-4 mb-lg-0">
             <div class="bg-light p-4 rounded-4">
-            {% for item in abuot_list %}
-                <center><p class="text-muted" >You can use the following methods to contact me</p></center>
-            {% endfor %}
-            <div class="d-flex justify-content-center fs-2 gap-4">
-                <a class="text-gradient" href="tel:{{ user.phone }}"><i class="bi bi-telephone-inbound-fill"></i></a>
-                <a class="text-gradient" href="mailto:{{ user.email }}"><i class="bi bi-envelope"></i></a>
-                <a class="text-gradient" href="{{ user.linkedin_link }}"><i class="bi bi-linkedin"></i></a>
-                <a class="text-gradient" href="{{ user.github_link }}"><i class="bi bi-github"></i></a>
-            </div>
-            </div>
+                {% for item in link_list %}
+                    <center><p class="text-muted" >You can use the following methods to contact me</p></center>
+                    <div class="d-flex justify-content-center fs-2 gap-4">
+                        <a class="text-gradient" href="tel:{{ item.phone }}"><i class="bi bi-telephone-inbound-fill"></i></a>
+                        <a class="text-gradient" href="mailto:{{ item.email }}"><i class="bi bi-envelope"></i></a>
+                        <a class="text-gradient" href="{{ item.linkedin_link }}"><i class="bi bi-linkedin"></i></a>
+                        <a class="text-gradient" href="{{ item.github_link }}"><i class="bi bi-github"></i></a> 
+                    </div>
+                {% endfor %}
+            </div> 
         </div>    
     </div>
 </div>

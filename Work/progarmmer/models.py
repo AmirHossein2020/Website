@@ -68,3 +68,12 @@ class Abuot(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Link(models.Model):
+    linkedin_link = models.CharField(max_length=255, null= True )
+    github_link = models.CharField(max_length=255, null= True )
+    phone = models.CharField(max_length=20, null= True )
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email

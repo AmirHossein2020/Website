@@ -18,9 +18,9 @@
     <link href="{% static "css/styles.css" %}" rel="stylesheet" />
 </head>
 <!-- Navigation-->
-<nav dir="ltr" class="navbar navbar-expand-lg navbar-light bg-white py-3">
-
-    <div dir="ltr" style="position: relative; left: 50px;">
+<nav  class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container px-5">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul dir="rtl" class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                 <li class="nav-item"><a class="nav-link" href="{% url 'persian' %}">خانه</a></li>
@@ -30,17 +30,16 @@
                 
             </ul>
         </div>
-    </div>
-    <div style="position: relative; left: 850px;">
-        <a class="navbar-brand" href="{% url 'persian' %}"><span class="fw-bolder text-primary">رزومه من</span></a>
-    </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div style="position: relative; left: 850px;">
-        <button class="btn-17">
-            <span class="text-container">
-            <span class="text"><a href="{% url 'home' %}">انگلیسی</a></span>
-            </span>
-        </button>
+        <div style="position: relative; left:;">
+            <a class="navbar-brand" href="{% url 'persian' %}"><span class="fw-bolder text-primary">رزومه من</span></a>
+        </div>
+        <div style="position: relative; left:;">
+            <button class="btn-17">
+                <span class="text-container">
+                <span class="text"><a href="{% url 'home' %}">انگلیسی</a></span>
+                </span>
+            </button>
+        </div>
     </div>
 </nav>
 
