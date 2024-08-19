@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView , ListView 
-from .models import Resume , Project , Abuot , Link
+from .models import Resume , Project , Abuot 
 from accounts.forms import *
 # Create your views here.
 
@@ -18,9 +18,6 @@ class AboutMe(ListView):
     model = Abuot
     template_name = 'English/about_me.html'
 
-class LinkView(ListView):
-    model = Link
-    template_name = 'English/about_me.html'
 #=================================================================
 #=================================================================
 #=================================================================
