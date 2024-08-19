@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">سبد خرید</h1>
+            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        </div>
+    </div>
+</header>
+<br>
+{% if cart_products %}
+{% for product in cart_products %}
+<div class="container">
+    <div class="card mb-3" style="">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{product.picture.url}}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              {% if product.is_sale %}
+              <p class="card-text">{{product.sale_price | intcomma}} تومان</p>
+              <strike>{{  product.price | intcomma}} تومان </strike><br> 
+              {% else %}
+              <p class="card-text">{{product.price | intcomma}}</p>
+              {% endif %}
+              <p class="card-text">تعداد:
+                <select class="form-select" id='select{{product.id}}'>
+                  {% for key,value in quantities.items %}
+                      {% if key == product.id|slugify %}
+                        <option selected>{{value}}</option>
+                      {% endif %}
+                  {% endfor %}
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </p>
+
+              <br><br>
+              <button  type ='button' data-index={{product.id}} class='btn btn-secondary update-carts'>ویرایش</button>
+              <button  type ='button' data-index={{product.id}} class='btn btn-secondary delete-carts'>حذف</button>
+              <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endfor %}  
+<br><h3 style="text-align: right;">تومان{{total | intcomma}} : مجموع کل سفارشات</h3>
+{% else %} 
+<center><h1> Not Product </h1></center> 
+{% endif %} 
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<script>
+  $(document).on('click', '.update-carts', function(e){
+    e.preventDefault();
+    
+    var productid = $(this).data('index');
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'cart_update' %}',
+        data: {
+            product_id: $(this).data('index'),
+            product_qty: $('#select' + productid + ' option:selected').text(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post'
+        },
+        success: function(json) {
+            location.reload();
+        },
+        error: function(xhr, errmsg, err) {
+            // در صورت خطا، می‌توانید اقدامات لازم را انجام دهید
+            // ...
+        }
+    });
+});
+
+$(document).on('click', '.delete-carts', function(e){
+  e.preventDefault();
+  
+  $.ajax({
+      type: 'POST',
+      url: '{% url 'cart_delete' %}',
+      data: {
+          product_id: $(this).data('index'),
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          action: 'post'
+      },
+      success: function(json) {
+          location.reload();
+      },
+      error: function(xhr, errmsg, err) {
+          // در صورت خطا، می‌توانید اقدامات لازم را انجام دهید
+          // ...
+      }
+  });
+});
+</script>  
+{% endblock  %}
