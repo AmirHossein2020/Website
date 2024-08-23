@@ -4,5 +4,5 @@ from .views import blogView , SingleView
 
 urlpatterns = [
    path('home/', blogView, name='blog' ),
-   path('single/', SingleView, name='single' ),
+   path('<int:pid>', SingleView, name='single' ),
 ]
