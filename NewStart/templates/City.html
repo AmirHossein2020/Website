@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section id="home" class="welcome-hero">
+    <div class="container">
+        <div class="welcome-hero-txt">
+        </div>
+    </div>
+
+</section><!--/.welcome-hero-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+		<!--welcome-hero end -->
+        <center>
+            <section id="list-topics" class="list-topics">
+                <div class="container">
+                    <div class="list-topics-content">
+                        <ul>
+                            <li>					
+                                <div class="single-list-topics-content">
+                                    <div class="single-list-topics-icon">									
+                                        <i class="flaticon-restaurant"></i>
+                                    </div>
+                                    <h2><a href="{% url 'city_detail' city.id %}">رستوران</a></h2>
+    
+                                </div>
+                            </li>
+
+       					
+                            <li>
+                                <div class="single-list-topics-content">
+                                    <div class="single-list-topics-icon">
+                                        <i class="flaticon-travel"></i>
+                                    </div>
+                                    <h2><a href="{% url 'spectacular_detail' city.id %}">مکان تفریحی</a></h2>
+                                    
+                                </div>
+                            </li>
+                            <li>
+                                <div class="single-list-topics-content">
+                                    <div class="single-list-topics-icon">
+                                        <i class="flaticon-building"></i>
+                                    </div>
+                                    <h2><a href="{% url 'hotel_detail' city.id %}">هتل</a></h2>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--/.container-->
+				
+            </section><!--/.list-topics-->
+			</html>
+		</center>
+{% endblock content %}

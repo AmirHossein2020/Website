@@ -1,0 +1,42 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+<!--blog start -->
+<section id="blog" class="blog" >
+	<div class="container">
+		<div class="section-header">
+			<h2>بهترین رستوران های شهر</h2>
+			<h2>{{ citys.name }}</h2>
+			<br>
+			<img src="{{ citys.bestphoto.url }}" alt="blog image"  width="2000" height="1000">
+			<br>
+			<br>
+			<br>
+			<br>
+			<p>{{ citys.description }}</p>
+			<p><h4>{{ restaurants.count }} لیست</h4></p>
+		</div><!--/.section-header-->
+		<div class="blog-content" >
+			<div class="row">
+				{% for restaurant in restaurants %}
+				<div class="col-md-4 col-sm-6">
+					<div class="single-blog-item">
+						<div class="single-blog-item-img">
+							<img src="{{ restaurant.restaurantphoto.url }}" alt="blog image">
+						</div>
+						<div class="single-blog-item-txt">
+							<h2><a href="#">{{ restaurant.name }}</a></h2>
+							<h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
+							<p>
+								{{ restaurant.description }}
+							</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div><!--/.container-->
+</section><!--/.blog-->
+<!--blog end -->
+{% endblock content %}

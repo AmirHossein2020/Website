@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+		<!--welcome-hero start -->
+		<section id="home" class="welcome-hero">
+			<div class="container">
+				<div class="welcome-hero-txt">
+					<h2>بهترین مکان برای یافتن و کاوش
+						تمام آنچه شما نیاز دارید</h2>
+					<p>
+						بهترین مکان، رستوران، هتل، ایالت واقعی و بسیاری موارد دیگر را تنها با یک کلیک پیدا کنید
+					</p>
+				</div>
+				<form  method="GET">
+				<div class="welcome-hero-serch-box">
+					<div class="welcome-hero-form">
+						<div class="single-welcome-hero-form">
+							
+							{% csrf_token %}
+							{{ searchForm }}
+								
+						</div>
+					</div>
+					<button type="submit" class="welcome-hero-btn" onclick="window.location.href='#'">
+						جستجو <i data-feather="search"></i> 
+					</button>
+				</div>
+				</form>
+			</div>
+
+		</section><!--/.welcome-hero-->
+		<!--welcome-hero end -->
+        <br>
+		<!--works start -->
+		<section id="works" class="works">
+			<div class="container">
+				<div class="section-header">
+					<h2>چگونه کار می کند</h2>
+					<p>درباره نحوه کار وب سایت ما بیشتر بیاموزید</p>
+				</div><!--/.section-header-->
+				<div class="works-content">
+					<div class="row">
+						{% if citylist %}
+						{% for city in citylist %}
+						<div class="col-md-4 col-sm-6">
+							<div class="single-how-works">
+								<img src="{{ city.bestphoto.url }}" alt="blog image">
+								<h2><a href="#"><span>{{ city.name }}</span></a></h2>
+								<p>
+									{{ city.description }} 
+								</p>
+								<button class="welcome-hero-btn how-work-btn">
+                                    <a href="{% url 'city_name' city.pk %}">More</a>
+								</button>
+							</div>
+						</div>
+						{% endfor %}
+						{% else %}
+						<h1>Not</h1>
+						{% endif %}
+					</div>
+				</div>
+				
+			</div><!--/.container-->
+		</section><!--/.works-->
+		<!--works end -->
+{% endblock content %}

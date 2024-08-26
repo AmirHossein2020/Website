@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section id="blog" class="blog" >
+	<div class="container">
+		<div class="section-header">
+			<h2>بهترین مکان های تفریحی</h2>
+			<h2>{{ city.name }}</h2>
+			<br>
+			<img src="{{ city.bestphoto.url }}" alt="blog image"  width="2000" height="1000">
+			<br>
+			<br>
+			<br>
+			<p>{{ city.description }}</p>
+			<p><h4>{{ spectacular.count }} لیست</h4></p>
+			<p>بهترین و سرگرم کننده ترین مکان های تفریحی</p>
+		</div><!--/.section-header-->
+		<div class="blog-content" >
+			<div class="row">
+				{% for item in spectacular %}
+				<div class="col-md-4 col-sm-6">
+					<div class="single-blog-item">
+						<div class="single-blog-item-img">
+							<img src="{{ item.photo.url }}" alt="blog image">
+						</div>
+						<div class="single-blog-item-txt">
+							<h2><a href="#">{{ item.name }}</a></h2>
+							<h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
+							<p>
+								{{ item.description }}
+							</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div><!--/.container-->
+</section><!--/.blog-->
+<!--blog end -->
+{% endblock content %}
