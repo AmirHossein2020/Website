@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 class Estate(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=500)
-    phone = models.IntegerField(max_length=11)
-    landline_phone = models.IntegerField(max_length=8)
+    phone = models.IntegerField()
+    landline_phone = models.IntegerField()
     email = models.EmailField()
     about = models.TextField()
 
@@ -36,18 +36,20 @@ class Image(models.Model):
 class HomeFile(models.Model):
     model = models.ForeignKey(HouseModel, on_delete=models.CASCADE)
     type = models.ForeignKey(HouseCategory, on_delete=models.CASCADE)
-    meterage = models.IntegerField(max_length=1000)
-    rooms = models.IntegerField(max_length=10)
-    bathroom = models.IntegerField(max_length=10)
-    wc = models.IntegerField(max_length=10)
+    meterage = models.IntegerField(null=True)
+    rooms = models.IntegerField(null=True)
+    bathroom = models.IntegerField(null=True)
+    wc = models.IntegerField(null=True)
     mortage_price = models.IntegerField()
     rental_price = models.IntegerField()
     selling_price = models.IntegerField()
-    address = models.CharField(max_length=500)
+    address = models.CharField(max_length=500, default="")
     about = models.TextField()
-    phonehome = models.IntegerField(max_length=11)
+    phonehome = models.IntegerField(null=True)
     image = models.ImageField(upload_to='images/home/')
-    images = models.ManyToManyField(Image)
+    image2 = models.ImageField(upload_to='images/home/2')
+    image3 = models.ImageField(upload_to='images/home/3',null=True)
+    image4 = models.ImageField(upload_to='images/home/4', null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

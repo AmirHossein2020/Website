@@ -1,22 +1,53 @@
+{% extends "base.html" %}
 {% load static %}
-  <!-- About Start -->
-  <div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                    <img class="img-fluid w-100" src="{% static "img/about.jpg" %}">
-                </div>
+{% block content %}
+{% for item in home %}
+    <div class="container-fluid header bg-white p-0">
+        <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+            <div class="col-md-6 p-5 mt-lg-5">
+                <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Perfect Home</span> To Live With Your Family</h1>
+                <p class="animated fadeIn mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet
+                    sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
             </div>
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                <h1 class="mb-4">#1 Place To Find The Perfect Property</h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                <p><i class="fa fa-check text-primary me-3"></i>Tempor erat elitr rebum at clita</p>
-                <p><i class="fa fa-check text-primary me-3"></i>Aliqu diam amet diam et eos</p>
-                <p><i class="fa fa-check text-primary me-3"></i>Clita duo justo magna dolore erat amet</p>
-                <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+            <div class="col-md-6 animated fadeIn">
+                <div class="owl-carousel header-carousel">
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ item.image.url }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ item.image2.url }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ item.image3.url }}" alt="">
+                    </div>
+                    <div class="owl-carousel-item">
+                        <img class="img-fluid" src="{{ item.image4.url }}" alt="">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                        <img class="img-fluid w-100" src="{{ item.image.url }}">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="mb-4">#1 Place To Find The Perfect Property</h1>
+                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Tempor erat elitr rebum at clita</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Aliqu diam amet diam et eos</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Clita duo justo magna dolore erat amet</p>
+                    <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 <!-- About End -->
+{% endblock content %}

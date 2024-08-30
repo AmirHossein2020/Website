@@ -20,3 +20,8 @@ def home_type(request, pid):
                 'category': category,
                 }
     return render(request, 'type.html',context)
+
+def SingleHome(request,pid):
+    home = HomeFile.objects.filter(pk=pid)
+    context = {'home': home}
+    return render(request, 'Homefile.html', context)
