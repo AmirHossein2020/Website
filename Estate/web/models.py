@@ -15,10 +15,10 @@ class Estate(models.Model):
         return self.name
     
 class HouseCategory(models.Model):
-    type = models.CharField(max_length=500)
+    name = models.CharField(max_length=500)
 
     def __str__(self):
-        return self.type
+        return self.name
 
 class HouseModel(models.Model):
     name = models.CharField(max_length=300)
