@@ -92,7 +92,7 @@ There is a moment in the life of any aspiring astronomer that it is time to buy 
         <ul class="tags">
            
             {% for cat in post.category.all %}
-                {{ cat }}{% if not forloop.last %},{% endif %}
+                <li><a href="{% url 'category' cat_name=cat.name %}">{{ cat }}</a>{% if not forloop.last %},{% endif %}</li>
             {% endfor %}
         </ul>
         <div class="user-details row">
