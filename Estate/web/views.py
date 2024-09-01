@@ -60,3 +60,21 @@ class form_comment(CreateView):
     form_class = FormComment
     template_name = 'about.html'
     success_url = reverse_lazy('home')
+
+def fileListViews(request):
+
+    searchForm = SearchForm(request.GET)
+    if searchForm.is_valid():
+        SearchText = searchForm.cleaned_data['SearchText']
+        file = HomeFile.objects.filter(mortage_price__contains=SearchText)
+    else:
+        file = HomeFile.objects.all()
+    
+    context = {
+
+        "file":file,
+        "searchForm": searchForm,
+
+    }
+
+    return render(request, "listall.html",context)

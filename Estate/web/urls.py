@@ -1,8 +1,9 @@
 from django.urls import path
-from web.views import HomePage , category , home_type , SingleHome , FileNewView , my_view, form_comment
+from web.views import HomePage , category , home_type , SingleHome , fileListViews ,FileNewView , my_view, form_comment
 
 urlpatterns = [
    path('', HomePage,name='home'),
+   path('list',fileListViews,name='list'),
    path('category/<str:cat>/', category, name="category"),
    path('category/home-type/<str:pid>/', home_type, name="type-home"),
    path('<int:pid>', SingleHome, name='single' ),
