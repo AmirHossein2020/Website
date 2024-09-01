@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Estate(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=500)
+    location = models.CharField(max_length=2000, null=True)
     phone = models.IntegerField()
     landline_phone = models.IntegerField()
     email = models.EmailField()
@@ -54,3 +55,12 @@ class HomeFile(models.Model):
 
     def __str__(self):
         return self.address
+    
+class Massega(models.Model):
+    name = models.CharField(max_length=100)
+    subject = models.CharField(max_length=500)
+    email = models.EmailField()
+    text = models.TextField()
+
+    def __str__(self):
+        return self.name

@@ -44,7 +44,7 @@
                 <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
             {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="nav-item nav-link active">Logut</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
                         <div class="dropdown-menu rounded-0 m-0">

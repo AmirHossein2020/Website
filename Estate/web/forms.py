@@ -1,5 +1,5 @@
 from django import forms
-from web.models import HomeFile
+from web.models import HomeFile , Massega
 from django.contrib.auth.models import User
 
 class PostFile(forms.ModelForm):
@@ -24,3 +24,11 @@ class PostFile(forms.ModelForm):
             self.initial['author'] = user
         self.fields['author'].widget = forms.HiddenInput()
 
+
+class SearchForm(forms.Form):
+    SearchText=forms.CharField(max_length=100, label="", required=False)
+
+class FormComment(forms.ModelForm):
+    class Meta:
+        model = Massega
+        fields = ['name','subject','email','text']
