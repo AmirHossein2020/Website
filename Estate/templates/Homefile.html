@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% load humanize %}
 {% for item in home %}
     <div class="container-fluid header bg-white p-0">
         <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
             <div class="col-md-6 p-5 mt-lg-5">
-                <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Perfect Home</span> To Live With Your Family</h1>
-                <p class="animated fadeIn mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet
-                    sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
+                <h1 class="display-5 animated fadeIn mb-4">یک خانه عالی برای زندگی با خانواده خود پیدا کنید</h1>
+                <p class="animated fadeIn mb-4 pb-2">بهترین خانه بهترین قیمت  بهتر از هرجا در املاک ایران</p>
+                <a href="{% url 'list' %}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">فایل های دیگر</a>
             </div>
             <div class="col-md-6 animated fadeIn">
                 <div class="owl-carousel header-carousel">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <h1 class="mb-4"></h1>
+                    <h1 class="mb-4">{{ item.author }} مشاور فایل</h1>
                     <p class="mb-4">{{ item.about }}</p>
                     <p class="mb-4">ادرس :{{ item.address }}</p>
                     <p><i class="fa fa-check text-primary me-3"></i>مدل خانه : {{ item.model }}</p>
@@ -46,8 +46,7 @@
                     <p><i class="fa fa-check text-primary me-3"></i>تعداد اتاق :{{ item.rooms }}</p>
                     <p><i class="fa fa-check text-primary me-3"></i>حمام :{{ item.bathroom }}</p>
                     <p><i class="fa fa-check text-primary me-3"></i>سرویس بهداشتی :{{ item.wc }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>قیمت رهن :{{ item.mortage_price }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>{{ item.mortage_price }}</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>قیمت رهن :{{ item.mortage_price | intcomma }}</p>
                     {% if user == item.author %}
                     <p><i class="fa fa-phone-alt me-3"></i>شماره صاحب خانه :{{ item.phonehome }}</p>
                     <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'update' item.pk %}">ویرایش</a>
