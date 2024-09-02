@@ -40,15 +40,20 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <h1 class="mb-4"></h1>
                     <p class="mb-4">{{ item.about }}</p>
-                    <p class="mb-4">{{ item.address }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>{{ item.model }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>{{ item.type }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>{{ item.rooms }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>{{ item.bathroom }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>{{ item.wc }}</p>
+                    <p class="mb-4">ادرس :{{ item.address }}</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>مدل خانه : {{ item.model }}</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>قرارداد خانه :{{ item.type }}</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>تعداد اتاق :{{ item.rooms }}</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>حمام :{{ item.bathroom }}</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>سرویس بهداشتی :{{ item.wc }}</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>قیمت رهن :{{ item.mortage_price }}</p>
                     <p><i class="fa fa-check text-primary me-3"></i>{{ item.mortage_price }}</p>
-                    <p><i class="fa fa-check text-primary me-3"></i>{{ item.mortage_price }}</p>
-                    <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+                    {% if user == item.author %}
+                    <p><i class="fa fa-phone-alt me-3"></i>شماره صاحب خانه :{{ item.phonehome }}</p>
+                    <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'update' item.pk %}">ویرایش</a>
+                    {% else %} 
+                        
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -7,12 +7,13 @@
 <br>
 <center><div class="container">
         <div class="col-6">
-            <h1>Login Form</h1>
+            <h1>وارد شدن</h1>
+            <p>توجه تنها مشاورین املاک می توانن وارد شوند</p>
             <form method="post">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <br>
-                <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-success">ورود</button>
             </form>
         </div>
 </div></center>

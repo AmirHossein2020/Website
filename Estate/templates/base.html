@@ -34,28 +34,30 @@
             <div class="icon p-2 me-2">
                 <img class="img-fluid" src="{% static "img/icon-deal.png" %}" alt="Icon" style="width: 30px; height: 30px;">
             </div>
-            <h1 class="m-0 text-primary">Makaan</h1>
+            
+                <h1 class="m-0 text-primary">املاک ایران</h1>
+            
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
-                <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'home' %}" class="nav-item nav-link active">صفحه اصلی</a>
             {% if user.is_authenticated %}
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">گزینه ها</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="{% url 'list' %}" class="dropdown-item">Property List</a>
-                            <a href="{% url 'about' %}" class="dropdown-item">About</a>
-                            <a href="{% url 'logout' %}" class="dropdown-item">Logut</a>
+                            <a href="{% url 'list' %}" class="dropdown-item">لیست فایل ها</a>
+                            <a href="{% url 'about' %}" class="dropdown-item">درباره</a>
+                            <a href="{% url 'logout' %}" class="dropdown-item">خارج شدن</a>
                         </div>
                     </div>
                     
                 </div>
-                <a href="{% url 'home_new' %}" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
+                <a href="{% url 'home_new' %}" class="btn btn-primary px-3 d-none d-lg-flex">فایل جدید</a>
             {% else %}
-                <a href="{% url 'login' %}" class="nav-item nav-link active">Login</a>
+                <a href="{% url 'login' %}" class="nav-item nav-link active">وارد شدن</a>
             {% endif %}
         </div>
     </nav>
@@ -67,10 +69,11 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Get In Touch</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <h5 class="text-white mb-4">ارتباظ با ادمین</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0933234363</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>
+                    amirhosseinamjadian2020@gmail.com</p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -79,12 +82,11 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link text-white-50" href="">About Us</a>
-                <a class="btn btn-link text-white-50" href="">Contact Us</a>
+                <h5 class="text-white mb-4">لینک</h5>
+                <a class="btn btn-link text-white-50" href="{% url 'about' %}">About Us</a>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Photo Gallery</h5>
+                <h5 class="text-white mb-4">گالری</h5>
                 <div class="row g-2 pt-2">
                     <div class="col-4">
                         <img class="img-fluid rounded bg-light p-1" src="{% static "img/property-1.jpg" %}" alt="">
@@ -119,10 +121,8 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="footer-menu">
-                        <a href="">Home</a>
-                        <a href="">Cookies</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
+                        <a href="{% url 'home' %}">صفحه اصلی</a>
+                        <a href="{% url 'about' %}">درباره</a>
                     </div>
                 </div>
             </div>

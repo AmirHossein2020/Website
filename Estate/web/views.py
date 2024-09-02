@@ -1,8 +1,8 @@
 from django.shortcuts import render , redirect
-from web.models import HouseCategory , HouseModel , HomeFile, Massega
+from web.models import HouseCategory , HouseModel , HomeFile, Massega , Estate
 from web.forms import PostFile , SearchForm , FormComment
 from django.urls import reverse_lazy 
-from django.views.generic import  View ,FormView, CreateView ,ListView , DetailView
+from django.views.generic import  View ,FormView, CreateView ,UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import requires_csrf_token
@@ -13,6 +13,15 @@ def HomePage(request):
     category = HouseModel.objects.all()
     context = {'category':category}
     return render(request, 'index.html',context)
+
+def estate_admin(request):
+    """
+    Return a list of all the estate in the estate table
+    """
+    estates = Estate.objects.all()
+    context = {'estates': estates}
+    return render(request, 'about.html', context)
+
 
 def category(request, cat):
     category = HouseModel.objects.get(name= cat)
@@ -61,6 +70,11 @@ class form_comment(CreateView):
     template_name = 'about.html'
     success_url = reverse_lazy('home')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['estates'] = Estate.objects.all()
+        return context
+
 def fileListViews(request):
 
     searchForm = SearchForm(request.GET)
@@ -78,3 +92,12 @@ def fileListViews(request):
     }
 
     return render(request, "listall.html",context)
+
+class UpdateView(UpdateView):
+    model = HomeFile
+    template_name = 'home_update.html'
+    fields = ['model', 'type', 'meterage', 'rooms',
+                'bathroom', 'wc', 'mortage_price', 'rental_price',
+                'selling_price', 'address', 'about', 'phonehome', 'image',
+                'image2', 'image3', 'image4']
+    success_url = reverse_lazy('home')
