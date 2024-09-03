@@ -7,5 +7,5 @@ urlpatterns = [
    path('<int:pid>', SingleView, name='single' ),
    path('author/<str:author_username>', blogView, name='author' ),
    path('search/', blog_search, name='search' ),
-   path('category/<str:cat_name>', blog_category, name='category' ),
+   path('category/<str:cat_name>', blogView, name='category' ),
 ]
