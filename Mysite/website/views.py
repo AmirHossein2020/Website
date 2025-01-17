@@ -7,3 +7,6 @@ def HomeView(request):
 
 def AbuotView(request):
     return render(request, 'website/about.html')
+
+def ContactView(request):
+    return render(request, 'website/contact.html')

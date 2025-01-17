@@ -1,4 +1,7 @@
-	<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <head>
 
@@ -17,73 +20,17 @@
 <title>Travel</title>
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 
-<link rel="stylesheet" href="css/linearicons.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/nice-select.css">
-<link rel="stylesheet" href="css/animate.min.css">
-<link rel="stylesheet" href="css/owl.carousel.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="{%static 'css/linearicons.css'%}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "css/magnific-popup.css" %}">
+<link rel="stylesheet" href="{% static "css/jquery-ui.css" %}">
+<link rel="stylesheet" href="{% static "css/nice-select.css" %}">
+<link rel="stylesheet" href="{% static "css/animate.min.css" %}">
+<link rel="stylesheet" href="{% static "css/owl.carousel.css" %}">
+<link rel="stylesheet" href="{% static "css/main.css" %}">
 </head>
 <body>
-<header id="header">
-<div class="header-top">
-<div class="container">
-<div class="row align-items-center">
-<div class="col-lg-6 col-sm-6 col-6 header-top-left">
-<ul>
-<li><a href="#">Visit Us</a></li>
-<li><a href="#">Buy Tickets</a></li>
-</ul>
-</div>
-<div class="col-lg-6 col-sm-6 col-6 header-top-right">
-<div class="header-social">
-<a href="#"><i class="fa fa-facebook"></i></a>
-<a href="#"><i class="fa fa-twitter"></i></a>
-<a href="#"><i class="fa fa-dribbble"></i></a>
-<a href="#"><i class="fa fa-behance"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="container main-menu">
-<div class="row align-items-center justify-content-between d-flex">
-<div id="logo">
-<a href="index.html"><img src="img/logo.png" alt title /></a>
-</div>
-<nav id="nav-menu-container">
-<ul class="nav-menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="packages.html">Packages</a></li>
-<li><a href="hotels.html">Hotels</a></li>
-<li><a href="insurance.html">Insurence</a></li>
-<li class="menu-has-children"><a href>Blog</a>
-<ul>
-<li><a href="blog-home.html">Blog Home</a></li>
-<li><a href="blog-single.html">Blog Single</a></li>
-</ul>
-</li>
-<li class="menu-has-children"><a href>Pages</a>
-<ul>
-<li><a href="elements.html">Elements</a></li>
-<li class="menu-has-children"><a href>Level 2 </a>
-<ul>
-<li><a href="#">Item One</a></li>
-<li><a href="#">Item Two</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
-</div>
-</div>
-</header>
 
 <section class="relative about-banner">
 <div class="overlay overlay-bg"></div>
@@ -239,20 +186,20 @@ Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/clou
 </div>
 </footer>
 
-<script src="js/vendor/jquery-2.2.4.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
+<script src="{% static "js/vendor/jquery-2.2.4.min.js" %}"></script>
+<script src="{% static "js/popper.min.js" %}"></script>
+<script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/easing.min.js"></script>
-<script src="js/hoverIntent.js"></script>
-<script src="js/superfish.min.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/mail-script.js"></script>
-<script src="js/main.js"></script>
+<script src="{% static "js/jquery-ui.js" %}"></script>
+<script src="{% static "js/easing.min.js" %}"></script>
+<script src="{% static "js/hoverIntent.js" %}"></script>
+<script src="{% static "js/superfish.min.js" %}"></script>
+<script src="{% static "js/jquery.ajaxchimp.min.js" %}"></script>
+<script src="{% static "js/jquery.magnific-popup.min.js" %}"></script>
+<script src="{% static "js/jquery.nice-select.min.js" %}"></script>
+<script src="{% static "js/owl.carousel.min.js" %}"></script>
+<script src="{% static "js/mail-script.j" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
@@ -264,3 +211,4 @@ Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/clou
 </script>
 </body>
 </html>
+{% endblock content %}
