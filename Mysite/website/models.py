@@ -15,5 +15,9 @@ class Contact(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+class Newsletter(models.Model):
+    email = models.EmailField(null=True)
     
-    
+    def __str__(self) -> str:
+        return self.email
