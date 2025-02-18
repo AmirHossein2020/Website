@@ -25,3 +25,6 @@ def newsletter_view(request):
             return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
+    
+def Test(request):
+    return render(request, 'website/index55.html')
