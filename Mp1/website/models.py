@@ -34,6 +34,7 @@ class Special_itmes(models.Model):
     name = models.CharField(max_length=500)
     description = models.TextField()
     price = models.IntegerField(max_length=10)
+    imge = models.ImageField(upload_to='images/special/',null=True)
 
     def __str__(self):
         return self.name
