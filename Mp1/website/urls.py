@@ -4,6 +4,9 @@ from website.views import *
 
 urlpatterns = [
     path('', home, name='home'),
+    path('contact/', contact, name='contact'),
+    path('about/', about, name='about'),
+    path('special/', special, name='special'),
 ]
 
 """ path('drink/', views.Drink, name='drink'), """

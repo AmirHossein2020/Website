@@ -22,3 +22,22 @@ def home(request):
               , 'form':form}
    return render(request, 'home.html', context)
 
+def about(request):
+    about = Cafe.objects.all()
+    context = {'abouttext':about}
+    return render(request, 'about.html', context)
+def special(request):
+    special = Special_itmes.objects.all()
+    context = {'special':special}
+    return render(request, 'special.html', context)
+
+def contact(request):
+   special = Special_itmes.objects.all()
+   if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+   form = ContactForm()
+   context = {'form':form
+              , 'special':special}
+   return render(request, 'contact.html', context)
