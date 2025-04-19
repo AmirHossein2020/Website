@@ -6,6 +6,7 @@ class Cafe(models.Model):
     name = models.CharField(max_length=255)
     address = models.TextField()
     about = models.TextField()
+    location = models.TextField(null=True)
 
     def __str__(self):
         return self.name
