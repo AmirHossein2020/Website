@@ -16,21 +16,25 @@ It allows users to read blog posts and manage content easily.
 - ✅ Blog post creation and management
 - ✅ Image upload for blog posts
 - ✅ Responsive design
-- ✅ Django Admin panel for full control
 
 ---
 
 ## 🏗️ Project Structure
+Mysite/
+
+--> Main Django settings blog/ --> Blog application media/blog/ --> Uploaded
+
+templates/
+
+blog images static/ --> Static files (CSS, JS) --> HTML templates website/
+
+--> Frontend pages db.sqlite3 --> Database
+
+manage.py
+
+--> Django manager script
 ---
 
-## ▶️ Quick Start
-1. Clone the repository
-2. Create a virtual environment and install dependencies
-3. Run the migrations
-4. Start the development server:
-   ```bash
-   python manage.py runserver
-   About Me
 ## About Me
 Created by AmirHossein - a passionate Django developer.
 
