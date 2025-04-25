@@ -60,14 +60,8 @@ Feedback, suggestions, and collaborations are highly appreciated!
 
 ---
 
-## 📜 License
-
-Released under the [MIT License](LICENSE).
-
----
-
 <div align="center">
 
-Made with ❤️ by **AmirHossein2020**
+Made with ❤️ by **AmirHossein**
 
 </div>
