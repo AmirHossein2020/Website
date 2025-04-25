@@ -47,7 +47,7 @@ I know there are still **many areas to improve** and expand, but as a **first pr
 
 ## ✍️ About Me
 Developed by **AmirHossein** — a beginner backend developer stepping into the world of full-stack development.  
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/AmirHossein2020?tab=repositories)
 
 ---
 
