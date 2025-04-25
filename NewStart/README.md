@@ -44,7 +44,7 @@ The design idea, content structure, and major modifications were developed indep
 
 ## ✍️ About Me
 Developed with passion by **AmirHossein** — Aiming to enhance backend skills and build creative web solutions.  
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/AmirHossein2020?tab=repositories)
 
 ---
 
