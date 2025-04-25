@@ -46,8 +46,7 @@ The purpose of this project was to:
 ## ✍️ About Me
 
 Developed by **AmirHossein**, a backend-focused developer building web applications to learn, grow, and connect.  
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com)  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/AmirHossein2020)  
 
 ---
 
