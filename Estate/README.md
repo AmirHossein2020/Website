@@ -17,10 +17,6 @@ Its goal is to provide a simple and user-friendly platform for buying, selling, 
 
 ## ⚡ Key Features
 - ✅ Add, edit, and manage property listings
-- ✅ Advanced search based on price, location, and property type
-- ✅ Dedicated image gallery for each property
-- ✅ Powerful Django admin panel
-- ✅ Fully responsive design (Desktop, Mobile, Tablet)
 - ✅ Optimized static files management
 
 ---
@@ -55,8 +51,8 @@ manage.py
 
 ---
 
-## ▶️ How to Run the Project
+## License
 
-1. Clone the repository:
-   ```bash
-   git clone [Repository URL]
+This project is open-source and created for portfolio and educational purposes. You are free to use, modify, and share it with
+proper attribution.
+
