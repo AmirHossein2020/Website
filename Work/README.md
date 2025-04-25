@@ -53,7 +53,3 @@ Developed by **AmirHossein**, a backend-focused developer building web applicati
 ## 📜 License
 
 This project is open-source and built for educational and personal use. Feel free to use or modify with credit.
-
----
-
-## ⭐ If you liked this project, consider giving it a star!
