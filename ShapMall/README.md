@@ -43,7 +43,6 @@ The main goal of this project was to:
 I know there are still **many areas to improve** and expand, but as a **first project**, it was an amazing experience and I learned a lot!
 
 ---
----
 
 ## ✍️ About Me
 Developed by **AmirHossein** — a beginner backend developer stepping into the world of full-stack development.  
