@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<!DOCTYPE html>
+      <div class="tm-right">
+        <main class="tm-main">
+          <div id="drink" class="tm-page-content">
+            <!-- Drink Menu Page -->
+            <nav class="tm-black-bg tm-drinks-nav">
+              <ul>
+                <li>
+                  <a href="{% url 'home' %}" class="tm-tab-link" data-id="cold">Iced Coffee</a>
+                </li>
+                <li>
+                  <a href="{% url 'hot' %}" class="tm-tab-link active" data-id="hot">Hot Coffee</a>
+                </li>
+                <li>
+                  <a href="{% url 'juice' %}" class="tm-tab-link" data-id="juice">Fruit Juice</a>
+                </li>
+              </ul>
+            </nav>
+            <div id="hot" class="tm-tab-content">
+              <div class="tm-list">
+              {% for drink in hot_drink %}
+                <div class="tm-list-item">          
+                  <img src="{{ drink.imge.url }}" alt="Image" class="tm-list-item-img">
+                  <div class="tm-black-bg tm-list-item-text">
+                    <h3 class="tm-list-item-name">{{ drink.name }}<span class="tm-list-item-price">${{ drink.price  | intcomma}}</span></h3>
+                    <p class="tm-list-item-description">{{ drink.Description }}</p>              
+                  </div>
+                </div>
+              {% endfor %} 
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>    
+    </div>
+  </div>
+</body>
+</html>
+{% endblock content %}

@@ -2,7 +2,6 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-<!DOCTYPE html>
       <div class="tm-right">
         <main class="tm-main">
           <div id="drink" class="tm-page-content">
@@ -10,13 +9,13 @@
             <nav class="tm-black-bg tm-drinks-nav">
               <ul>
                 <li>
-                  <a href="#" class="tm-tab-link active" data-id="cold">Iced Coffee</a>
+                  <a href="{% url 'home' %}" class="tm-tab-link active" data-id="cold">Iced Coffee</a>
                 </li>
                 <li>
-                  <a href="#" class="tm-tab-link" data-id="hot">Hot Coffee</a>
+                  <a href="{% url 'hot' %}" class="tm-tab-link" data-id="hot">Hot Coffee</a>
                 </li>
                 <li>
-                  <a href="#" class="tm-tab-link" data-id="juice">Fruit Juice</a>
+                  <a href="{% url 'juice' %}" class="tm-tab-link" data-id="juice">Fruit Juice</a>
                 </li>
               </ul>
             </nav>
@@ -34,110 +33,7 @@
                 {% endfor %}            
               </div>
             </div> 
-
-            <div id="hot" class="tm-tab-content">
-              <div class="tm-list">
-              {% for drink in hot_drink %}
-                <div class="tm-list-item">          
-                  <img src="{{ drink.imge.url }}" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">{{ drink.name }}<span class="tm-list-item-price">${{ drink.price  | intcomma}}</span></h3>
-                    <p class="tm-list-item-description">{{ drink.Description }}</p>              
-                  </div>
-                </div>
-              {% endfor %} 
-              </div>
-            </div>
-
-            <div id="juice" class="tm-tab-content">
-              <div class="tm-list">
-                {% for drink in juice_drink %}
-                <div class="tm-list-item">          
-                  <img src="{{ drink.imge.url }}" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">{{ drink.name }}<span class="tm-list-item-price">${{ drink.price  | intcomma}}</span></h3>
-                    <p class="tm-list-item-description">{{ drink.Description }}</p>              
-                  </div>
-                </div>
-                {% endfor %}           
-              </div>
-            </div>
-            <!-- end Drink Menu Page -->
           </div>
-
-          <!-- About Us Page -->
-          <div id="about" class="tm-page-content">
-            <div class="tm-black-bg tm-mb-20 tm-about-box-1">              
-              <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
-              <div class="tm-list-item tm-list-item-2">                
-                <img src="{% static "img/about-1.png" %}" alt="Image" class="tm-list-item-img tm-list-item-img-big">
-                {% for text in abouttext %}
-                <div class="tm-list-item-text-2">
-                  <p>{{ text.about }}</p> 
-                </div>  
-                {% endfor %}        
-              </div>
-            </div>
-            <div class="tm-black-bg tm-mb-20 tm-about-box-2">              
-              <div class="tm-list-item tm-list-item-2">                
-                <div class="tm-list-item-text-2">
-                  <h2 class="tm-text-primary">We Address</h2>
-                  {% for text_adress in abouttext %}
-                  <p>{{ text_adress.address }}</p>                  
-                  {% endfor %}
-                </div>  
-                {% for item in abouttext %} 
-                <iframe src="{{ item.location }}" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>             
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-          <!-- end About Us Page -->
-
-          <!-- Special Items Page -->
-          <div id="special" class="tm-page-content">
-            <div class="tm-special-items">
-              {% for item in special %}
-              <div class="tm-black-bg tm-special-item">
-                <img src="{{ item.imge.url }}" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">{{ item.name }}</h2>
-                  <p class="tm-special-item-text">{{ item.description }}</p>
-                  <span class="tm-list-item-price">${{ item.price  | intcomma }}</span></h3>  
-                </div>
-              </div>
-              {% endfor %}                    
-            </div>            
-          </div>
-          <!-- end Special Items Page -->
-
-          <!-- Contact Page -->
-          <div id="contact" class="tm-page-content">
-            <div class="tm-black-bg tm-contact-text-container">
-              <h2 class="tm-text-primary">Contact Wave</h2>
-              <p>Wave Cafe Template has a video background. You can use this layout for your websites. Please contact Tooplate's Facebook page. Tell your friends about our website.</p>
-            </div>
-            <div class="tm-black-bg tm-contact-form-container tm-align-right">
-              <form action="" method="post" id="contact-form">
-                {% csrf_token %}
-                <div class="tm-form-group">
-                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required="" />
-                </div>
-                <div class="tm-form-group">
-                  <input type="email" name="email" class="tm-form-control" placeholder="Email" required="" />
-                </div>        
-                <div class="tm-form-group tm-mb-30">
-                  <textarea rows="6" name="message" class="tm-form-control" placeholder="Message" required=""></textarea>
-                </div>        
-                <div>
-                  <button type="submit" class="tm-btn-primary tm-align-right">
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <!-- end Contact Page -->
         </main>
       </div>    
     </div>

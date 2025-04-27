@@ -25,25 +25,25 @@ https://www.tooplate.com/view/2121-wave-cafe
           <nav class="tm-site-nav">
             <ul class="tm-site-nav-ul">
               <li class="tm-page-nav-item">
-                <a href="#drink" class="tm-page-link active">
+                <a href="{% url 'home' %}" class="tm-page-link active">
                   <i class="fas fa-mug-hot tm-page-link-icon"></i>
                   <span>Drink Menu</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
-                <a href="#about" class="tm-page-link">
+                <a href="{% url 'about' %}" class="tm-page-link">
                   <i class="fas fa-users tm-page-link-icon"></i>
                   <span>About Us</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
-                <a href="#special" class="tm-page-link">
+                <a href="{% url 'special' %}" class="tm-page-link">
                   <i class="fas fa-glass-martini tm-page-link-icon"></i>
                   <span>Special Items</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
-                <a href="#contact" class="tm-page-link">
+                <a href="{% url 'contact' %}" class="tm-page-link">
                   <i class="fas fa-comments tm-page-link-icon"></i>
                   <span>Contact</span>
                 </a>
@@ -112,10 +112,7 @@ https://www.tooplate.com/view/2121-wave-cafe
     menuItem.addClass('active');
   }
 
-  function showPage(page) {
-    $('.tm-page-content').hide();
-    page.show();
-  }
+  
 
   $(document).ready(function(){
 

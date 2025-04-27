@@ -25,25 +25,25 @@ https://www.tooplate.com/view/2121-wave-cafe
           <nav class="tm-site-nav">
             <ul class="tm-site-nav-ul">
               <li class="tm-page-nav-item">
-                <a href="#drink" class="tm-page-link active">
+                <a href="{% url 'home' %}" class="tm-page-link">
                   <i class="fas fa-mug-hot tm-page-link-icon"></i>
                   <span>Drink Menu</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
-                <a href="#about" class="tm-page-link">
+                <a href="{% url 'about' %}" class="tm-page-link active">
                   <i class="fas fa-users tm-page-link-icon"></i>
                   <span>About Us</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
-                <a href="#special" class="tm-page-link">
+                <a href="{% url 'special' %}" class="tm-page-link">
                   <i class="fas fa-glass-martini tm-page-link-icon"></i>
                   <span>Special Items</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
-                <a href="#contact" class="tm-page-link">
+                <a href="{% url 'contact' %}" class="tm-page-link">
                   <i class="fas fa-comments tm-page-link-icon"></i>
                   <span>Contact</span>
                 </a>
@@ -52,12 +52,10 @@ https://www.tooplate.com/view/2121-wave-cafe
           </nav>
         </div>        
       </div>
-      <div id="contact" class="tm-page-content">
-        <div class="tm-black-bg tm-contact-text-container">
-          <h2 class="tm-text-primary">Contact Wave</h2>
-          <p>Wave Cafe Template has a video background. You can use this layout for your websites. Please contact Tooplate's Facebook page. Tell your friends about our website.</p>
-        </div>
-        <div id="about" class="tm-page-content">
+      <div class="tm-right">
+        <main class="tm-main">
+          <!-- About Us Page -->
+          <div id="about" class="tm-page-content">
             <div class="tm-black-bg tm-mb-20 tm-about-box-1">              
               <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
               <div class="tm-list-item tm-list-item-2">                
@@ -83,7 +81,12 @@ https://www.tooplate.com/view/2121-wave-cafe
               </div>
             </div>
           </div>
-
+        </main>
+      </div>    
+    </div>
+  </div>
+</body>
+</html>
 
 <!-- Background video -->
 <div class="tm-video-wrapper">

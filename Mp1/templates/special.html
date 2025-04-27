@@ -1,18 +1,87 @@
-{% extends "base.html" %}
 {% load static %}
-{% block content %}
-<div id="special" class="tm-page-content">
-    <div class="tm-special-items">
-      {% for item in special %}
-      <div class="tm-black-bg tm-special-item">
-        <img src="{{ item.imge.url }}" alt="Image">
-        <div class="tm-special-item-description">
-          <h2 class="tm-text-primary tm-special-item-title">{{ item.name }}</h2>
-          <p class="tm-special-item-text">{{ item.description }}</p>
-          <span class="tm-list-item-price">${{ item.price  | intcomma }}</span></h3>  
-        </div>
+{% load humanize %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave Cafe HTML Template by Tooplate</title>
+    <link rel="stylesheet" href="{% static "fontawesome/css/all.min.css" %}"> <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
+    <link rel="stylesheet" href="{% static "css/tooplate-wave-cafe.css" %}">
+<!--
+Tooplate 2121 Wave Cafe
+https://www.tooplate.com/view/2121-wave-cafe
+-->
+</head>
+</head>
+<body>
+  <div class="tm-container">
+    <div class="tm-row">
+      <!-- Site Header -->
+      <div class="tm-left">
+        <div class="tm-left-inner">
+          <div class="tm-site-header">
+            <i class="fas fa-coffee fa-3x tm-site-logo"></i>
+            <h1 class="tm-site-name">Wave Cafe</h1>
+          </div>
+          <nav class="tm-site-nav">
+            <ul class="tm-site-nav-ul">
+              <li class="tm-page-nav-item">
+                <a href="{% url 'home' %}" class="tm-page-link">
+                  <i class="fas fa-mug-hot tm-page-link-icon"></i>
+                  <span>Drink Menu</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="{% url 'about' %}" class="tm-page-link">
+                  <i class="fas fa-users tm-page-link-icon"></i>
+                  <span>About Us</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="{% url 'special' %}" class="tm-page-link active">
+                  <i class="fas fa-glass-martini tm-page-link-icon"></i>
+                  <span>Special Items</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="{% url 'contact' %}" class="tm-page-link">
+                  <i class="fas fa-comments tm-page-link-icon"></i>
+                  <span>Contact</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>        
       </div>
-      {% endfor %}                    
-    </div>            
+      <div class="tm-right">
+        <main class="tm-main">
+          <div id="special" class="tm-page-content">
+            <div class="tm-special-items">
+              {% for item in special %}
+              <div class="tm-black-bg tm-special-item">
+                <img src="{{ item.imge.url }}" alt="Image">
+                <div class="tm-special-item-description">
+                  <h2 class="tm-text-primary tm-special-item-title">{{ item.name }}</h2>
+                  <p class="tm-special-item-text">{{ item.description }}</p>
+                  <span class="tm-list-item-price">${{ item.price  | intcomma }}</span></h3>  
+                </div>
+              </div>
+              {% endfor %}                    
+            </div>            
+          </div>
+        </main>
+      </div>    
+    </div>
   </div>
-{% endblock content %}
+</body>
+</html>
+<!-- Background video -->
+<div class="tm-video-wrapper">
+    <i id="tm-video-control-button" class="fas fa-pause"></i>
+    <video autoplay muted loop id="tm-video">
+        <source src="{% static "video/wave-cafe-video-bg.mp4" %}" type="video/mp4">
+    </video>
+</div>
+
+<script src="{% static "js/jquery-3.4.1.min.js" %}"></script>    

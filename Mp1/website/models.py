@@ -22,7 +22,7 @@ class Category(models.Model):
 
 class Drinks(models.Model):
     name = models.CharField(max_length=500)
-    price = models.IntegerField(max_length=10)
+    price = models.IntegerField(null=True)
     Description = models.TextField()
     imge = models.ImageField(upload_to='images/')
     category = models.ManyToManyField(Category)
@@ -34,7 +34,7 @@ class Drinks(models.Model):
 class Special_itmes(models.Model): 
     name = models.CharField(max_length=500)
     description = models.TextField()
-    price = models.IntegerField(max_length=10)
+    price = models.IntegerField(null=True)
     imge = models.ImageField(upload_to='images/special/',null=True)
 
     def __str__(self):
