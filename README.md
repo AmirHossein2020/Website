@@ -23,7 +23,8 @@
 | Project | Status |
 | :--- | :--- |
 | **Estate** | ✅ Completed |
-| **Mp1** | 🚧 In Progress |
+| **Mp1** | ✅ Completed  |
+| **Mp2** | 🚧 In Progress |
 | **Mysite** | ✅ Completed |
 | **NewStart** | ✅ Completed |
 | **ShapMall** | ✅ Completed |
