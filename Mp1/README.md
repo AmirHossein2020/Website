@@ -42,3 +42,14 @@ coffee-menu/
 └── static/
     └── css/
     └── images/
+    
+----------------
+
+## ✍️ About Me
+Developed by **AmirHossein** — a beginner backend developer stepping into the world of full-stack development.  
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/AmirHossein2020?tab=repositories)
+
+---
+
+## 📜 License
+This project is open-source and intended for learning and personal portfolio purposes.
