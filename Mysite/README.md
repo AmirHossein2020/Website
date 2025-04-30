@@ -1,3 +1,4 @@
+![1000014037](https://github.com/user-attachments/assets/4f3736bb-c008-443d-9a29-2d21988e5bf2)
 # 📝 Simple Blog Website
 
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
