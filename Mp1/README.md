@@ -1,3 +1,4 @@
+![1000014036](https://github.com/user-attachments/assets/b1fe2338-8e66-4ef1-a1f3-a620f93337aa)
 # Coffee Shop Menu Website ☕️
 
 A simple and elegant **Django-based web app** for displaying a coffee shop's menu — including hot drinks, cold drinks, and more — built with **Python** and a clean user interface.
