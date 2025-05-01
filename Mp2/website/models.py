@@ -10,7 +10,7 @@ class UserSite(models.Model):
     post_code = models.IntegerField()
 
     def __str__(self):
-        self.name
+       return self.name
 
 class Mall(models.Model):
     name = models.CharField(max_length=250)
@@ -18,13 +18,13 @@ class Mall(models.Model):
     addess = models.TextField()
 
     def __str__(self):
-        self.name
+       return self.name
 
 class Category(models.Model):
     name = models.CharField(max_length=250)
 
     def __str__(self):
-        self.name
+        return self.name
 
 class Product(models.Model):
     name = models.CharField(max_length=250)
@@ -35,5 +35,5 @@ class Product(models.Model):
     category = models.ManyToManyField(Category)
 
     def __str__(self):
-        self.name
+        return self.name
 
