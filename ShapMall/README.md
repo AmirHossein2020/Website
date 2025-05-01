@@ -1,3 +1,4 @@
+![1000014060](https://github.com/user-attachments/assets/3a028ad9-da96-403d-b7c0-f1e479ee8811)
 # 🛒 Simple E-commerce Website
 
 ![Status](https://img.shields.io/badge/Status-First%20Practice-yellow)
