@@ -1,3 +1,4 @@
+![1000014059](https://github.com/user-attachments/assets/c73f8a0b-2940-472f-9b4a-cdfe59f7e783)
 # 🧑‍💼 Personal Resume Website
 
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
