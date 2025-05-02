@@ -2,29 +2,49 @@
 {% load static %}
 {% block content %}
   <br />
-  {% for item in singl %}
-    <div  class="container px-4 px-lg-5 my-5">
+  {% for item in singls %}
+    <div class="container px-4 px-lg-5 my-5">
       <div class="box_main">
         <h4 class="shirt_text">{{ item.name }}</h4>
         <p class="price_text">
           Price <span style="color: #262626;">$ {{ item.price }}</span>
         </p>
-        <p class="price_text">
-            {{ item.about }}
-          </p>
-        <div class="tshirt_img">
+
+        <div>
           <img src="{{ item.image.url }}" />
+          <p class="price_text">{{ item.about }}</p>
         </div>
         <div class="btn_main">
           <div class="buy_bt">
-            <a href="#">Buy Now</a>
-          </div>
-          <div class="seemore_bt">
             <a href="{% url 'singl' item.pk %}">See More</a>
           </div>
+          <div class="seemore_bt"><button class="btn btn-secondary" type="button" value="{{ item.id }}" id="add-cart">Buy Now</button></div>
         </div>
       </div>
     </div>
   {% endfor %}
   <br />
+  <script>
+    $(document).on('click', '#add-cart', function(e){
+      e.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: '{% url 'cart_add' %}',
+        data:{
+          product_id: $('#add-cart').val(),
+          product_qty: $('#cart-qty option:selected').text(),
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          action:'post'
+        },
+    
+        success: function(json){
+          //console.log(json)
+          document.getElementById('cart_quantity').textContent = json.qty
+        },
+    
+        error: function(xhr, errmsg, err){
+        }
+      })
+    })
+</script>
 {% endblock %}

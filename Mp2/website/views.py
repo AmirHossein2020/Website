@@ -13,7 +13,7 @@ def home(request):
 
 def single_product(request, pk):
     singl_p = Product.objects.filter(id=pk)
-    context = {'singl': singl_p}
+    context = {'singls': singl_p}
     return render(request, 'singl.html', context)
 def electronic(request):
     return render(request, 'electronic.html')
