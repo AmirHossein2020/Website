@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator , MinValueValidator
 import datetime
 # Create your models here.
 
@@ -31,8 +32,10 @@ class Product(models.Model):
     price = models.IntegerField()
     about = models.TextField()
     image = models.ImageField(upload_to='product/')
-    discount = models.IntegerField()
     category = models.ManyToManyField(Category)
+    star = models.IntegerField(default =0, validators = [MaxValueValidator(5), MinValueValidator(0)])
+    is_sale = models.BooleanField(default=False)
+    sale_price = models.DecimalField(default = 0, decimal_places = 0, max_digits=12)
 
     def __str__(self):
         return self.name

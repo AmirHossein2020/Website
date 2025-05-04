@@ -1,50 +1,59 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
-  <br />
-  {% for item in singls %}
-    <div class="container px-4 px-lg-5 my-5">
-      <div class="box_main">
-        <h4 class="shirt_text">{{ item.name }}</h4>
-        <p class="price_text">
-          Price <span style="color: #262626;">$ {{ item.price }}</span>
-        </p>
-
-        <div>
-          <img src="{{ item.image.url }}" />
-          <p class="price_text">{{ item.about }}</p>
-        </div>
-        <div class="btn_main">
-          <div class="buy_bt">
-            <a href="{% url 'singl' item.pk %}">See More</a>
+<br><br><br><br>
+<div class="container">
+    <div class="card mb-3" style="">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="...">
           </div>
-          <div class="seemore_bt"><button class="btn btn-secondary" type="button" value="{{ item.id }}" id="add-cart">Buy Now</button></div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.about}}</p>
+              {% if product.is_sale %}
+              <p class="card-text">{{product.sale_price }} تومان</p>
+              <strike>{{  product.price }} تومان </strike><br> 
+              {% else %}
+              <p class="card-text">{{product.price }}</p>
+              {% endif %}
+              <br>
+              <select class="form-select" aria-label="Default select example" id='cart-qty'>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <br><br>
+              <button class='btn btn-secondary' type='button' value='{{ product.id }}' id='add-cart'>اضافه کردن به سبد خرید</button>
+              <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  {% endfor %}
-  <br />
-  <script>
-    $(document).on('click', '#add-cart', function(e){
-      e.preventDefault();
-      $.ajax({
-        type: 'POST',
-        url: '{% url 'cart_add' %}',
-        data:{
-          product_id: $('#add-cart').val(),
-          product_qty: $('#cart-qty option:selected').text(),
-          csrfmiddlewaretoken: '{{ csrf_token }}',
-          action:'post'
-        },
-    
-        success: function(json){
-          //console.log(json)
-          document.getElementById('cart_quantity').textContent = json.qty
-        },
-    
-        error: function(xhr, errmsg, err){
-        }
-      })
-    })
-</script>
-{% endblock %}
+</div>     
+<script>
+$(document).on('click', '#add-cart', function(e){
+  e.preventDefault();
+  $.ajax({
+    type: 'POST',
+    url: '{% url 'cart_add' %}',
+    data:{
+      product_id: $('#add-cart').val(),
+      product_qty: $('#cart-qty option:selected').text(),
+      csrfmiddlewaretoken: '{{ csrf_token }}',
+      action:'post'
+    },
+
+    success: function(json){
+      //console.log(json)
+      document.getElementById('cart_quantity').textContent = json.qty
+    },
+
+    error: function(xhr, errmsg, err){
+    }
+  })
+})
+</script>  
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock  %}

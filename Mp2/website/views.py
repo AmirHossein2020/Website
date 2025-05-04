@@ -11,10 +11,10 @@ def home(request):
                'jewellerys':jewellerys}
     return render(request, 'home.html', context)
 
-def single_product(request, pk):
-    singl_p = Product.objects.filter(id=pk)
-    context = {'singls': singl_p}
-    return render(request, 'singl.html', context)
+def product(request, pk):
+    product = Product.objects.get(id=pk)
+    return render(request, 'singl.html', {'product': product})
+
 def electronic(request):
     return render(request, 'electronic.html')
 
