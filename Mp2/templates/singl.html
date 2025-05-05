@@ -25,35 +25,38 @@
                 <option value="3">3</option>
               </select>
               <br><br>
-              <button class='btn btn-secondary' type='button' value='{{ product.id }}' id='add-cart'>اضافه کردن به سبد خرید</button>
+              <button class="add-to-cart-btn" data-product-id="{{ product.id }}">افزودن به سبد خرید</button>
+              <div id="cart-message" style="color: green;"></div>
               <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
             </div>
           </div>
         </div>
       </div>
 </div>     
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
-$(document).on('click', '#add-cart', function(e){
-  e.preventDefault();
-  $.ajax({
-    type: 'POST',
-    url: '{% url 'cart_add' %}',
-    data:{
-      product_id: $('#add-cart').val(),
-      product_qty: $('#cart-qty option:selected').text(),
-      csrfmiddlewaretoken: '{{ csrf_token }}',
-      action:'post'
-    },
+$(document).ready(function(){
+    $('.add-to-cart-btn').click(function(){
+        var productId = $(this).data('product-id');
 
-    success: function(json){
-      //console.log(json)
-      document.getElementById('cart_quantity').textContent = json.qty
-    },
-
-    error: function(xhr, errmsg, err){
-    }
-  })
-})
-</script>  
+        $.ajax({
+            url: '{% url "ajax_add_to_cart" %}',
+            method: 'POST',
+            data: {
+                product_id: productId,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(response){
+                if(response.success){
+                    $('#cart-message').text(response.message).css('color', 'green');
+                } else {
+                    $('#cart-message').text(response.message).css('color', 'red');
+                }
+            }
+        });
+    });
+});
+</script>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock  %}

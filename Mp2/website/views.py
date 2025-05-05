@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from website.models import *
+from django.http import JsonResponse
 # Create your views here.
 
 def home(request):
@@ -15,6 +16,36 @@ def product(request, pk):
     product = Product.objects.get(id=pk)
     return render(request, 'singl.html', {'product': product})
 
+
+from django.http import JsonResponse
+from .models import Product, Cart, CartItem
+
+def ajax_add_to_cart(request):
+    if request.method == 'POST' and request.user.is_authenticated:
+        product_id = request.POST.get('product_id')
+        product = Product.objects.get(id=product_id)
+
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+        if not created:
+            item.quantity += 1
+            item.save()
+
+        return JsonResponse({'success': True, 'message': 'محصول اضافه شد به سبد خرید'})
+    else:
+        return JsonResponse({'success': False, 'message': 'لطفاً وارد شوید'})
+
+
+def cart_detail(request):
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user).first()
+    else:
+        cart = None
+
+    context = {'cart': cart}
+    return render(request, 'cart/cart_summary.html',context)
+
+
 def electronic(request):
     return render(request, 'electronic.html')
 
@@ -23,3 +54,5 @@ def fashion(request):
 
 def jewellery(request):
     return render(request, 'jewellery.html')
+
+
