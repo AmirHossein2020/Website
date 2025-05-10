@@ -2,17 +2,10 @@ from django.db import models
 from django.conf import settings
 from django.core.validators import MaxValueValidator , MinValueValidator
 import datetime
+
 # Create your models here.
 
-class UserSite(models.Model):
-    name = models.CharField(max_length=250)
-    address = models.TextField()
-    email = models.EmailField()
-    phon = models.IntegerField()
-    post_code = models.IntegerField()
 
-    def __str__(self):
-       return self.name
 
 class Mall(models.Model):
     name = models.CharField(max_length=250)

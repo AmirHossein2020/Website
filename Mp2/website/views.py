@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from website.models import *
 from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 # Create your views here.
 
 def home(request):
@@ -45,7 +46,18 @@ def cart_detail(request):
     context = {'cart': cart}
     return render(request, 'cart/cart_summary.html',context)
 
-
+@require_POST
+def ajax_remove_from_cart(request):
+    if request.user.is_authenticated:
+        item_id = request.POST.get('item_id')
+        try:
+            item = CartItem.objects.get(id=item_id, cart__user=request.user)
+            item.delete()
+            return JsonResponse({'success': True, 'message': 'محصول از سبد حذف شد'})
+        except CartItem.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'آیتم پیدا نشد'})
+    return JsonResponse({'success': False, 'message': 'لطفاً وارد شوید'})
+    
 def electronic(request):
     return render(request, 'electronic.html')
 

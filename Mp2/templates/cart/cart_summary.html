@@ -18,14 +18,14 @@
               <p class="card-text">{{ item.product.about }}</p>
               
               {% comment %} <p class="card-text">{{product.sale_price }} تومان</p> {% endcomment %}
+              {% if is_sale %}
               <strike>{{  item.product.price }} $</strike><br> 
-              
               <p class="card-text">{{ item.product.sale_price }}</p>
-              
-
+              {% else %}
+              <p class="card-text">{{ item.product.price }}</p>
+              {% endif %}
               <br><br>
-              <button  type ='button' data-index={{product.id}} class='btn btn-secondary update-carts'>ویرایش</button>
-              <button  type ='button' data-index={{product.id}} class='btn btn-secondary delete-carts'>حذف</button>
+              <button class='remove-item-btn' data-item-id="{{ item.product.id }}">حذف</button>
               <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
             </div>
           </div>
@@ -36,5 +36,30 @@
 <br><h3 style="text-align: right;">تومان{{total}} : مجموع کل سفارشات</h3>
 {% else %} 
 <center><h1> Not Product </h1></center> 
-{% endif %}   
+{% endif %} 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $('.remove-item-btn').click(function(){
+          let itemId = $(this).data('item-id');
+          $.ajax({
+              url: "{% url 'ajax_remove_from_cart' %}",
+              method: 'POST',
+              data: {
+                  item_id: itemId,
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+              success: function(response) {
+                  if (response.success) {
+                      location.reload();  // یا می‌تونی با JS فقط اون خط رو حذف کنی
+                  } else {
+                      alert(response.message);
+                  }
+              }
+          });
+      });
+  });
+  </script>  
 {% endblock  %}
+
