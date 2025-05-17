@@ -117,15 +117,26 @@
                      </div>
                      <div class="login_menu">
                         <ul>
-                           <li><a href="{% url 'cart_detail' %}">
+                           {% if user.is_authenticated %}
+                           <li>
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              
-                              <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
-                           </li>
-                           <li><a href="#">
+                              <a href="{% url 'cart_detail' %}">
+                              <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity"></span>Cart</a>
+                           </li> 
+                           <li><a href="{% url 'logout' %}">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">Cart</span></a>
+                              <span class="padding_10">Logut</span></a>
                            </li>
+                           {% else %}
+                           <li><a href="{% url 'login' %}">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">Login</span></a>
+                           </li>
+                           <li><a href="{% url 'signup' %}">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">Sing Up</span></a>
+                           </li>
+                           {% endif %}
                         </ul>
                      </div>
                   </div>

@@ -25,10 +25,19 @@
                 <option value="3">3</option>
               </select>
               <br><br>
+              {% if user.is_authenticated %}
               <button class="add-to-cart-btn" data-product-id="{{ product.id }}">افزودن به سبد خرید</button>
               <div id="cart-message" style="color: green;"></div>
               <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
-            </div>
+              </div>
+              {% else %}
+              <div id="cart-message" style="color: green;"></div>
+              <a href="{% url 'login' %}" class='btn btn-secondary'>Login</a>
+              </div>
+              <div id="cart-message" style="color: green;"></div>
+              <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
+              </div>
+              {% endif %}
           </div>
         </div>
       </div>
