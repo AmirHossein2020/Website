@@ -21,13 +21,19 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Category_Clothes(models.Model):
+    name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
+    
 class Product(models.Model):
     name = models.CharField(max_length=250)
     price = models.IntegerField()
     about = models.TextField()
     image = models.ImageField(upload_to='product/')
     category = models.ManyToManyField(Category)
-    star = models.IntegerField(default =0, validators = [MaxValueValidator(5), MinValueValidator(0)])
+    category_clothes = models.ManyToManyField(Category_Clothes)
     is_sale = models.BooleanField(default=False)
     sale_price = models.DecimalField(default = 0, decimal_places = 0, max_digits=12)
 

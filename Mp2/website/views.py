@@ -13,6 +13,15 @@ def home(request):
                'jewellerys':jewellerys}
     return render(request, 'home.html', context)
 
+def category(request,cat):
+    cat = cat.replace("-", " ")
+    try:
+        category = Category.objects.get(name= cat)
+        products = Product.objects.filter(category = category)
+        return render(request, 'category.html', {'products': products, 'category': category})
+    except:
+        return render(request, 'category.html', {})
+
 def product(request, pk):
     product = Product.objects.get(id=pk)
     return render(request, 'singl.html', {'product': product})
