@@ -3,44 +3,31 @@
 {% block content %}
 <br><br><br><br>
 <!-- From Uiverse.io by MuhammadHasann --> 
- 
-<div class="container" class="card" >
-  <link rel="stylesheet" href="{% static 'css/card.css' %}">
-  <div class="image_container">
-   
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" src="{{product.image.url}}"class="image">
-      <path>
-        <img src="{{product.image.url}}">
-      </path>
-    </svg>
-  </div>
-  <div class="title">
-    <span>New brand name</span>
-  </div>
-  
-  <div class="action">
-    <div class="price">
-      <span>$299</span>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'myapp/product.css' %}">
+</head>
+<body>
+    <div class="product-card">
+        <img src="{% static 'myapp/images/yellow-shoe.png' %}" alt="Product Image" class="product-image">
+        <div class="product-info">
+            <h1 class="product-title">Product Name</h1>
+            <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.</p>
+            <div class="product-price">$99.99</div>
+            <div class="product-sizes">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+            </div>
+            <button class="add-to-cart">ADD TO CART</button>
+        </div>
     </div>
-    <button class="cart-button">
-      <svg
-        class="cart-icon"
-        stroke="currentColor"
-        stroke-width="1.5"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-          stroke-linejoin="round"
-          stroke-linecap="round"
-        ></path>
-      </svg>
-      <span>Add to cart</span>
-    </button>
-  </div>
-</div>
+</body>
+</html>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
