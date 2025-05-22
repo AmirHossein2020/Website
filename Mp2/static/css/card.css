@@ -1,0 +1,142 @@
+/* From Uiverse.io by MuhammadHasann */ 
+.card {
+  --bg-card: #27272a;
+  --primary: #6d28d9;
+  --primary-800: #4c1d95;
+  --primary-shadow: #2e1065;
+  --light: #d9d9d9;
+  --zinc-800: #18181b;
+  --bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  padding: 5rem;
+  width: 40rem;
+  background-color: var(--bg-card);
+
+  border-radius: 5rem;
+}
+
+.image_container {
+  overflow: hidden;
+  cursor: pointer;
+
+  position:relative;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+
+  width: 100%;
+  height: 20rem;
+  background-color: var(--bg-linear);
+
+  border-radius: 0.5rem;
+}
+
+.image_container .image {
+  position:fixed;
+  top: 500%;
+  left: 50%;
+  
+
+  width: 3rem;
+  fill: var(--primary);
+}
+
+.title {
+  overflow: clip;
+
+  width: 100%;
+
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--bg-card);
+  text-transform: capitalize;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.size {
+  font-size: 1rem;
+  color: var(--light);
+}
+
+.list-size {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1rem;
+}
+
+.list-size .item-list {
+  list-style: none;
+}
+
+.list-size .item-list-button {
+  cursor: pointer;
+
+  padding: 0.5rem;
+  background-color: var(--zinc-800);
+
+  font-size: 0.75rem;
+  color: var(--zinc-800);
+
+  border: 2px solid var(--primary);
+  border-radius: 0.25rem;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.item-list-button:hover {
+  border: 2px solid var(--light);
+}
+.item-list-button:focus {
+  background-color: var(--primary);
+
+  border: 2px solid var(--primary-shadow);
+
+  box-shadow: inset 0px 1px 4px var(--primary-shadow);
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bg-card);
+}
+
+.cart-button {
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+
+  padding: 0.5rem;
+  width: 10%;
+  background-image: var(--bg-linear);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--zinc-800);
+  text-wrap: nowrap;
+
+  border: 2px solid hsla(0, 0%, 0%, 0.5);
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 0.25rem 1px var(--light);
+}
+
+.cart-button .cart-icon {
+  width: 10rem;
+}

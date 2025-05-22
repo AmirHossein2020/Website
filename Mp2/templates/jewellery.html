@@ -188,3 +188,41 @@
       </div>
       <!-- jewellery  section end -->
    {% endblock content %}
+
+   <div class="container">
+    <div class="card mb-3" style="">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.about}}</p>
+              {% if product.is_sale %}
+              <p class="card-text"> $ {{product.sale_price }}</p>
+              <strike>$ {{  product.price }}</strike><br> 
+              {% else %}
+              <p class="card-text">{{product.price }}</p>
+              {% endif %}
+              <br>
+              <br><br>
+              {% if user.is_authenticated %}
+              <button class="add-to-cart-btn" data-product-id="{{ product.id }}" >افزودن به سبد خرید</button>
+              <!-- From Uiverse.io by JaydipPrajapati1910 --> 
+
+              <div id="cart-message" style="color: green;"></div>
+              <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
+              </div>
+              {% else %}
+              <div id="cart-message" style="color: green;"></div>
+              <a href="{% url 'login' %}" class='btn btn-secondary'>Login</a>
+              </div>
+              <div id="cart-message" style="color: green;"></div>
+              <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
+              </div>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+</div>     
