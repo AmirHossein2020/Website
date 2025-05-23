@@ -10,5 +10,6 @@ urlpatterns = [
     path('electronic/', electronic, name='electronic'),
     path('fashion/', fashion, name='fashion'),
     path('jewellery/', jewellery, name='jewellery'),
-     path('category/<str:cat>/', category, name="category"),
+    path('category/<str:cat>/', category, name="category"),
+    path('category_summary/', category_summary, name="category_summary"),
 ]

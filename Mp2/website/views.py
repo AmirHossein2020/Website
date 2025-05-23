@@ -22,6 +22,10 @@ def category(request,cat):
     except:
         return render(request, 'category.html', {})
 
+def category_summary(request):
+    all_products = Category.objects.all()
+    return render(request, 'category_summary.html',{'category': all_products})
+
 def product(request, pk):
     product = Product.objects.get(id=pk)
     return render(request, 'singl.html', {'product': product})

@@ -77,10 +77,10 @@
                <div class="containt_main">
                   <div id="mySidenav" class="sidenav">
                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                     <a href="index.html">Home</a>
-                     <a href="fashion.html">Fashion</a>
-                     <a href="electronic.html">Electronic</a>
-                     <a href="jewellery.html">Jewellery</a>
+                     <a href="{% url 'home' %}">Home</a>
+                     <a href="{% url 'category' 'Tshirts' %}">Fashion</a>
+                     <a href="{% url 'category' 'labtop' %}">Electronic</a>
+                     <a href="{% url 'category' 'jewellerys' %}">Jewellery</a>
                   </div>
                   <span class="toggle_icon" onclick="openNav()"><img src="{% static "images/toggle-icon.png" %}"></span>
                   <div class="dropdown">
@@ -90,7 +90,7 @@
                         <a class="dropdown-item" href="{% url 'category' 'labtop' %}">LabTop</a>
                         <a class="dropdown-item" href="{% url 'category' 'Tshirts' %}">Clothes</a>
                         <a class="dropdown-item" href="{% url 'category' 'jewellerys' %}">jewellerys</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="{% url 'category_summary' %}">Something else here</a>
                      </div>
                   </div>
                   <div class="main">

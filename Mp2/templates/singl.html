@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <br><br><br><br>
+<br><br><br><br>
 <!-- From Uiverse.io by MuhammadHasann --> 
 <html lang="en">
 <head>
@@ -11,24 +12,22 @@
     <link rel="stylesheet" href="{% static 'css/product.css' %}">
 </head>
 <body>
-    <div class="product-card">
-        <img src="{% static 'myapp/images/yellow-shoe.png' %}" alt="Product Image" class="product-image">
+  <div class="page-wrapper">
+    <div class="product-card" >
+        <img src="{{ product.image.url }}" alt="Product Image" class="product-image">
         <div class="product-info">
-            <h1 class="product-title">Product Name</h1>
-            <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.</p>
-            <div class="product-price">$99.99</div>
-            <div class="product-sizes">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-            </div>
-            <button class="add-to-cart">ADD TO CART</button>
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="product-description">{{ product.about }}</p>
+            <div class="product-price">$ {{ product.price }}</div>
+            <button class="add-to-cart  add-to-cart-btn" data-product-id="{{ product.id }}">ADD TO CART</button>
+            <br>
+            <br>
+            <button class="add-to-cart"><a href="{% url 'home' %}">Home</a></button>
         </div>
     </div>
+  </div>
 </body>
 </html>
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
