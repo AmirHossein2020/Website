@@ -70,7 +70,14 @@ def ajax_remove_from_cart(request):
         except CartItem.DoesNotExist:
             return JsonResponse({'success': False, 'message': 'آیتم پیدا نشد'})
     return JsonResponse({'success': False, 'message': 'لطفاً وارد شوید'})
-    
+
+
+def search_products(request):
+    query = request.GET.get('q')
+    results = Product.objects.filter(name__icontains=query) if query else []
+    return render(request, 'search.html', {'results': results, 'query': query})
+
+
 def electronic(request):
     return render(request, 'electronic.html')
 
