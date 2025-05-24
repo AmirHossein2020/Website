@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  {% if results %}
+    <div class="container">
+    <h1 class="fashion_taital">{{ query }}</h1>
+    <div class="fashion_section_2">
+      <div class="row">
+        {% for item in results %}
+          <div class="col-lg-4 col-sm-4">
+            <div class="box_main">
+              <h4 class="shirt_text">{{ item.name }}</h4>
+              {% if item.is_sale %}
+              <p class="price_text">Price <strike><span style="color: #262626;">$ {{ item.price }}</span></strike></p>
+              <p class="price_text">Price Sela <span style="color: #262626;">$ {{ item.sale_price }}</span></p>
+              {% else %}
+              <p class="price_text">Price <span style="color: #262626;">$ {{ item.price }}</span></p>
+              {% endif %}
+              <div class="tshirt_img">
+                <img src="{{ item.image.url }}" />
+              </div>
+              <div class="btn_main">
+                <div class="buy_bt">
+                  <button class="buy_bt add-to-cart-btn" data-product-id="{{ item.id }}" style="background-color: #f26522; border-color:#f26522 ">Buy Now</button>
+                </div>
+                <div class="seemore_bt">
+                  <a href="{% url 'product' item.pk %}">See More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <h1>Not Product</h1>
+  {% endif %}
+{% endblock %}

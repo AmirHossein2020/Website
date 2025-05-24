@@ -15,18 +15,6 @@ def home(request):
                'jewellerys':jewellerys}
     return render(request, 'home.html', context)
 
-def serh(request):
-    searchForm = SearchForm(request.GET)
-    if searchForm.is_valid():
-         SearchText = searchForm.cleaned_data['SearchText']
-         citys = Product.objects.filter(name__contains=SearchText)
-    else:
-        citys = Product.objects.all()
-    context = {
-        'searchForm':searchForm
-    }
-
-    return render(request, 'base.html', context)
 
 
 def category(request,cat):
@@ -92,15 +80,4 @@ def search_products(request):
     query = request.GET.get('q')
     results = Product.objects.filter(name__icontains=query) if query else []
     return render(request, 'search.html', {'results': results, 'query': query})
-
-
-def electronic(request):
-    return render(request, 'electronic.html')
-
-def fashion(request):
-    return render(request, 'fashion.html')
-
-def jewellery(request):
-    return render(request, 'jewellery.html')
-
 
