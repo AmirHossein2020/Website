@@ -1,5 +1,5 @@
 from django.shortcuts import render 
-from .forms import CustomUserCreationForm
+from .forms import *
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 # Create your views here.
@@ -27,11 +27,10 @@ def ProfileEditView(request):
 
         "profileEditForm":profileEditForm,
         "userEditForm":userEditForm,
-        "ProfileImage":request.user.profile.ProfileImage,
         
     }
 
-    return render(request,"accounts/profileEdit.html",context)
+    return render(request,"template/profileEdit.html",context)
 
 
 
