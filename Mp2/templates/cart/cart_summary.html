@@ -25,8 +25,13 @@
               <p class="card-text">{{ item.product.price }}</p>
               {% endif %}
               <br><br>
-              <button class='remove-item-btn' data-item-id="{{ item.product.id }}">حذف</button>
-              <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت یه صفحه اصلی</a>
+              <div><link rel="stylesheet" href="{% static 'css/buten.css' %}">
+                <button class='remove-item-btn' data-item-id="{{ item.id }}">Delete</button>
+                <br>
+                <a href="{% url 'home' %}" class='btn btn-secondary'>Home</a>
+              </div>
+              
+              
             </div>
           </div>
         </div>
@@ -34,7 +39,45 @@
 </div>
 {% endfor %}  
 {% else %} 
-<center><h1> Not Product </h1></center> 
+<div class="banner_section layout_padding">
+            <div class="container">
+               <div id="my_slider" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Get Start <br>Your favriot Teshrt</h1>
+                              <div class="buynow_bt"><a href="{% url 'category' 'Tshirts' %}">Buy Now</a></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Get Start <br>Your favriot Compeuter</h1>
+                              <div class="buynow_bt"><a href="{% url 'category' 'labtop' %}">Buy Now</a></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Get Start <br>Your favriot Javaher</h1>
+                              <div class="buynow_bt"><a href="{% url 'category' 'jewellerys' %}">Buy Now</a></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+                  </a>
+                  <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+</div>
 {% endif %} 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

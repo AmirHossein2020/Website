@@ -9,24 +9,24 @@
                      <div class="carousel-item active">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                              <h1 class="banner_taital">Get Start <br>Your favriot Teshrt</h1>
+                              <div class="buynow_bt"><a href="{% url 'category' 'Tshirts' %}">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                              <h1 class="banner_taital">Get Start <br>Your favriot Compeuter</h1>
+                              <div class="buynow_bt"><a href="{% url 'category' 'labtop' %}">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                              <h1 class="banner_taital">Get Start <br>Your favriot Javaher</h1>
+                              <div class="buynow_bt"><a href="{% url 'category' 'jewellerys' %}">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
@@ -59,7 +59,7 @@
                                  <p class="price_text">Price  <span style="color: #262626;">$ {{ item.price }}</span></p>
                                  <div class="tshirt_img"><img src="{{ item.image.url }}"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <button class="buy_bt add-to-cart-btn" data-product-id="{{ item.id }}" style="background-color: #f26522; border-color:#f26522 ">Buy Now</button>
                                     <div class="seemore_bt"><a href="{% url 'product' item.pk %}">See More</a></div>
                                  </div>
                               </div>
@@ -71,7 +71,7 @@
                </div>
                <div class="carousel-item">
                   <div class="container">
-                     <h1 class="fashion_taital">Sale</h1>
+                     <h1 class="fashion_taital">Best Sellers</h1>
                      <div class="fashion_section_2">
                         <div class="row">
                            {% for item in Tshirts %}
@@ -79,61 +79,17 @@
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
                                  <h4 class="shirt_text">{{ item.name }}</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ {{ item.price }}</span></p>
+                                 <p class="price_text">Price <strike><span style="color: #262626;">$ {{ item.price }}</span></strike></p>
+                                 <p class="price_text">Price Sela <span style="color: #262626;">$ {{ item.sale_price }}</span></p>
                                  <div class="tshirt_img"><img src="{{ item.image.url }}"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <button class="buy_bt add-to-cart-btn" data-product-id="{{ item.id }}" style="background-color: #f26522; border-color:#f26522 ">Buy Now</button>
                                     <div class="seemore_bt"><a href="{% url 'product' item.pk %}">See More</a></div>
                                  </div>
                               </div>
                            </div>
-      
                            {% endif %}
                            {% endfor %}
-                           
-                           
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="carousel-item">
-                  <div class="container">
-                     <h1 class="fashion_taital">Man & Woman Fashion</h1>
-                     <div class="fashion_section_2">
-                        <div class="row">
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Man T -shirt</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src="{% static "images/tshirt-img.png" %}"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Man -shirt</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src="{% static "images/dress-shirt-img.png" %}"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Woman Scart</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src="{% static "images/women-clothes-img.png" %}"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
                         </div>
                      </div>
                   </div>
@@ -164,7 +120,7 @@
                                  <p class="price_text">Start Price  <span style="color: #262626;">$ {{ item.price }}</span></p>
                                  <div class="electronic_img"><img src="{{ item.image.url }}"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <button class="buy_bt add-to-cart-btn" data-product-id="{{ item.id }}" style="background-color: #f26522; border-color:#f26522 ">Buy Now</button>
                                     <div class="seemore_bt"><a href="{% url 'product' item.pk %}">See More</a></div>
                                  </div>
                               </div>
@@ -176,7 +132,7 @@
                </div>
                <div class="carousel-item">
                   <div class="container">
-                     <h1 class="fashion_taital">Electronic Sell</h1>
+                     <h1 class="fashion_taital">Best Sellers</h1>
                      <div class="fashion_section_2">
                         <div class="row">
                         {% for item in labtops %}
@@ -184,10 +140,11 @@
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
                                  <h4 class="shirt_text">{{ item.name }}</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ {{ item.price }}</span></p>
+                                 <p class="price_text">Price <strike><span style="color: #262626;">$ {{ item.price }}</span></strike></p>
+                                 <p class="price_text">Price Sela <span style="color: #262626;">$ {{ item.sale_price }}</span></p>
                                  <div class="electronic_img"><img src="{{ item.image.url }}"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <button class="buy_bt add-to-cart-btn" data-product-id="{{ item.id }}" style="background-color: #f26522; border-color:#f26522 ">Buy Now</button>
                                     <div class="seemore_bt"><a href="{% url 'product' item.pk %}">See More</a></div>
                                  </div>
                               </div>
@@ -224,7 +181,7 @@
                                  <p class="price_text">Start Price  <span style="color: #262626;">$ {{ item.price }}</span></p>
                                  <div class="jewellery_img"><img src="{{ item.image.url }}"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <button class="buy_bt add-to-cart-btn" data-product-id="{{ item.id }}" style="background-color: #f26522; border-color:#f26522 ">Buy Now</button>
                                     <div class="seemore_bt"><a href="{% url 'product' item.pk %}">See More</a></div>
                                  </div>
                               </div>
@@ -236,7 +193,7 @@
                </div>
                <div class="carousel-item">
                   <div class="container">
-                     <h1 class="fashion_taital">Jewellery Sell</h1>
+                     <h1 class="fashion_taital">Best Sellers</h1>
                      <div class="fashion_section_2">
                         <div class="row">
                            {% for item in jewellerys %}
@@ -244,10 +201,11 @@
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
                                  <h4 class="shirt_text">{{ item.name }}</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ {{ item.price }}</span></p>
+                                 <p class="price_text">Price <strike><span style="color: #262626;">$ {{ item.price }}</span></strike></p>
+                                 <p class="price_text">Price Sela <span style="color: #262626;">$ {{ item.sale_price }}</span></p>
                                  <div class="jewellery_img"><img src="{{ item.image.url }}"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <button class="buy_bt add-to-cart-btn" data-product-id="{{ item.id }}" style="background-color: #f26522; border-color:#f26522 ">Buy Now</button>
                                     <div class="seemore_bt"><a href="{% url 'product' item.pk %}">See More</a></div>
                                  </div>
                               </div>
@@ -259,6 +217,13 @@
                   </div>
                </div>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <a class="carousel-control-prev" href="#jewellery_main_slider" role="button" data-slide="prev">
             <i class="fa fa-angle-left"></i>
             </a>
@@ -272,4 +237,30 @@
       </div>
       <!-- jewellery  section end -->
       <!-- footer section start -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('.add-to-cart-btn').click(function(){
+        var productId = $(this).data('product-id');
+
+        $.ajax({
+            url: '{% url "ajax_add_to_cart" %}',
+            method: 'POST',
+            data: {
+                product_id: productId,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(response){
+                if(response.success){
+                    $('#cart-message').text(response.message).css('color', 'green');
+                } else {
+                    $('#cart-message').text(response.message).css('color', 'red');
+                }
+            }
+        });
+    });
+});
+</script>
 {% endblock content %}

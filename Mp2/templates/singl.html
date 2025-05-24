@@ -18,8 +18,17 @@
         <div class="product-info">
             <h1 class="product-title">{{ product.name }}</h1>
             <p class="product-description">{{ product.about }}</p>
+            {% if product.is_sale %}
+            <strike><div class="product-price">$ {{ product.price }}</div></strike>
+            <div class="product-price">$ {{ product.sale_price }}</div>
+            {% else %}
             <div class="product-price">$ {{ product.price }}</div>
+            {% endif %}
+            {% if user.is_authenticated %}
             <button class="add-to-cart  add-to-cart-btn" data-product-id="{{ product.id }}">ADD TO CART</button>
+            {% else %}
+                <button class="add-to-cart"><a href="{% url 'login' %}">Login</a></button>
+            {% endif %}
             <br>
             <br>
             <button class="add-to-cart"><a href="{% url 'home' %}">Home</a></button>

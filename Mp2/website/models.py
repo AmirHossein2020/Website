@@ -17,6 +17,7 @@ class Mall(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=250)
+    image = models.ImageField(upload_to='Category/',null=True, blank=True)
 
     def __str__(self):
         return self.name

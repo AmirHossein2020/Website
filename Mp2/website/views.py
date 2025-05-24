@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from website.models import *
+from website.forms import SearchForm
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 # Create your views here.
 
 def home(request):
+
     labtops = Product.objects.filter(category = 1)
     Tshirts = Product.objects.filter(category = 2)
     jewellerys = Product.objects.filter(category = 3)
@@ -12,6 +14,20 @@ def home(request):
                'Tshirts':Tshirts,
                'jewellerys':jewellerys}
     return render(request, 'home.html', context)
+
+def serh(request):
+    searchForm = SearchForm(request.GET)
+    if searchForm.is_valid():
+         SearchText = searchForm.cleaned_data['SearchText']
+         citys = Product.objects.filter(name__contains=SearchText)
+    else:
+        citys = Product.objects.all()
+    context = {
+        'searchForm':searchForm
+    }
+
+    return render(request, 'base.html', context)
+
 
 def category(request,cat):
     cat = cat.replace("-", " ")
