@@ -12,4 +12,6 @@ urlpatterns = [
     path('jewellery/', jewellery, name='jewellery'),
     path('category/<str:cat>/', category, name="category"),
     path('category_summary/', category_summary, name="category_summary"),
+    path('search/', views.search_products,name='search_products'),
+
 ]
