@@ -1,3 +1,5 @@
+[1000014421](https://github.com/user-attachments/assets/c6a3fb5a-bafa-4d2f-93e3-818341f1880e)
+
 Efiyer - Online Shopping Website
 
 Efiyer is a modern and user-friendly online shopping platform designed to provide a seamless shopping experience. Users can register, log in, browse categorized products, and manage their cart with ease.
@@ -9,8 +11,7 @@ Features
 
 1. User Registration & Login
 
-Secure sign-up and sign-in system![1000014421](https://github.com/user-attachments/assets/c6a3fb5a-bafa-4d2f-93e3-818341f1880e)
-
+Secure sign-up and sign-in system
 
 Session-based user authentication
 
