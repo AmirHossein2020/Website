@@ -24,7 +24,7 @@
 | :--- | :--- |
 | **Estate** | ✅ Completed |
 | **Mp1** | ✅ Completed  |
-| **Mp2** | 🚧 In Progress |
+| **Mp2** | ✅ Completed |
 | **Mysite** | ✅ Completed |
 | **NewStart** | ✅ Completed |
 | **ShapMall** | ✅ Completed |
