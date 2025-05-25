@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .forms import *
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.http import JsonResponse
 # Create your views here.
 
 class SignUpView(CreateView):
@@ -13,14 +16,14 @@ class SignUpView(CreateView):
 def ProfileEditView(request):
     
     if request.method=="POST":
-        profileEditForm=ProfileEditForm(request.POST,request.FILES, instance=request.user.profile)
+        profileEditForm=ProfileEditForm(request.POST,request.FILES, instance=request.user)
         userEditForm=UserEditForm(request.POST,instance=request.user)
         if profileEditForm.is_valid and userEditForm.is_valid:
             profileEditForm.save()
             userEditForm.save()
-            return HttpResponseRedirect(reverse(profileView))
+            return HttpResponseRedirect(reverse("home"))
     else:
-        profileEditForm=ProfileEditForm(instance=request.user.profile)
+        profileEditForm=ProfileEditForm(instance=request.user)
         userEditForm=UserEditForm(instance=request.user)
 
     context={
@@ -30,7 +33,7 @@ def ProfileEditView(request):
         
     }
 
-    return render(request,"template/profileEdit.html",context)
+    return render(request,"registration/profileEdit.html",context)
 
 
 

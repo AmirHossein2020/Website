@@ -15,20 +15,25 @@ def home(request):
                'jewellerys':jewellerys}
     return render(request, 'home.html', context)
 
+def MallShopping(request):
+    mall = Mall.objects.all()
 
+    context = {'mall':mall}
+
+    return render(request,'base.html', context)
 
 def category(request,cat):
     cat = cat.replace("-", " ")
     try:
         category = Category.objects.get(name= cat)
         products = Product.objects.filter(category = category)
-        return render(request, 'category.html', {'products': products, 'category': category})
+        return render(request, 'category/category.html', {'products': products, 'category': category})
     except:
-        return render(request, 'category.html', {})
+        return render(request, 'category/category.html', {})
 
 def category_summary(request):
     all_products = Category.objects.all()
-    return render(request, 'category_summary.html',{'category': all_products})
+    return render(request, 'category/category_summary.html',{'category': all_products})
 
 def product(request, pk):
     product = Product.objects.get(id=pk)
