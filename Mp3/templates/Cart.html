@@ -1,12 +1,133 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
+<<<<<<< Updated upstream
     <section class="custom-cart-wrapper">
   <div class="custom-cart-box">
     <h2>سبد خرید</h2>
     <div class="custom-cart-item">
       <img src="https://via.placeholder.com/100x80.png?text=Shoes" alt="محصول">
       <div class="custom-cart-details">
+=======
+
+  <title>سبد خرید</title>
+<body>
+    <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fefaf3;
+      color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .cart-container {
+      background-color: #fffaf0;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .cart-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .product {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #eee0c9;
+      border-radius: 12px;
+      padding: 16px;
+      background-color: #fff4e2;
+      margin-bottom: 20px;
+    }
+
+    .product-image {
+      flex: 1 1 150px;
+      max-width: 150px;
+      margin-right: 20px;
+    }
+
+    .product-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-info {
+      flex: 2 1 300px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 8px;
+    }
+
+    .product-price {
+      flex: 0 1 100px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .buttons button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #e6ccb2;
+      transition: background-color 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: #d5b59b;
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .product-price {
+        text-align: left;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+  <div class="cart-container">
+    <div class="cart-title">سبد خرید</div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="https://via.placeholder.com/150x120.png?text=Product" alt="محصول">
+      </div>
+      <div class="product-info">
+>>>>>>> Stashed changes
         <h3>کفش چرمی قهوه‌ای</h3>
         <p>یک جفت کفش چرمی قهوه‌ای بنددار با طراحی کلاسیک</p>
       </div>
