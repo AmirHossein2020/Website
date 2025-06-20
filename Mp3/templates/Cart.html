@@ -119,28 +119,61 @@
 <body>
   <div class="cart-container">
     <div class="cart-title">سبد خرید</div>
-
-    <div class="product">
-      <div class="product-image">
-        <img src="https://via.placeholder.com/150x120.png?text=Product" alt="محصول">
+    {% if cart and cart.items.all %}
+    {% for item in cart.items.all %}
+      <div class="product">
+        <div class="product-image">
+          <img src="{{ item.product.image.url }}" alt="محصول">
+        </div>
+        <div class="product-info">
+          <h3>{{ item.product.name }}</h3>
+          <p>{{ item.product.about }}</p>
+          <div class="buttons">
+        <button class='remove-item-btn' data-item-id="{{ item.id }}">حذف محصول</button>
+        </div>
+        </div>
+        <div class="product-price">
+          ${{ item.product.price }}
+        </div>
+        
+        
       </div>
-      <div class="product-info">
-        <h3>کفش چرمی قهوه‌ای</h3>
-        <p>یک جفت کفش چرمی قهوه‌ای بنددار با طراحی کلاسیک</p>
-      </div>
-      <div class="product-price">
-        ۸۹.۹۹$
-      </div>
-    </div>
-    
+   
+    {% endfor %}
+    {% else %}
+    not
+    {% endif %}
     <div class="total">مجموع: ۸۹.۹۹$</div>
     <div class="buttons">
       <button>بازگشت</button>
-      <button>حذف محصول</button>
     </div>
   </div>
+  
 </body>
 <br>
 <br>
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $('.remove-item-btn').click(function(){
+          let itemId = $(this).data('item-id');
+          $.ajax({
+              url: "{% url 'ajax_remove_from_cart' %}",
+              method: 'POST',
+              data: {
+                  item_id: itemId,
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+              success: function(response) {
+                  if (response.success) {
+                      location.reload();  // یا می‌تونی با JS فقط اون خط رو حذف کنی
+                  } else {
+                      alert(response.message);
+                  }
+              }
+          });
+      });
+  });
+</script>  
 {% endblock content %}

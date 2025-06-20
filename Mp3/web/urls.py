@@ -3,8 +3,8 @@ from web.views import *
 
 urlpatterns = [
     path('', home, name='home'),
-    path('cart', cart, name='cart'),
     path('products/', products, name='products'),
+    path('product/<int:pk>/', product, name="product"),
     path('about/', about, name='about'),
     path('client/', client, name='client'),
     path('contact/', contact, name='contact'),

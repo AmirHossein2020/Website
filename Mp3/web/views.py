@@ -1,12 +1,15 @@
 from django.shortcuts import render
+from web.models import *
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'index.html')
+    ProductAll = Products.objects.all()
+    context = {
+        'proall':ProductAll,
+    }
+    return render(request, 'index.html' , context)
 
-def cart(request):
-    return render(request, 'Cart.html')
 
 def about(request):
     return render(request, 'about.html')
@@ -18,4 +21,17 @@ def contact(request):
     return render(request, 'contact.html')
 
 def products(request):
-    return render(request, 'products.html')
+    PAll = Products.objects.all()
+    context = {
+        'proall':PAll,
+    }
+    return render(request, 'products.html',context)
+
+def product(request, pk):
+    product = Products.objects.get(id=pk)
+    return render(request, 'singl.html', {'product': product})
+
+
+
+
+
