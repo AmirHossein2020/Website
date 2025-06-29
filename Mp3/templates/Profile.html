@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Profile</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fef4e8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      direction: ltr;
+    }
+
+    .profile-card {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .profile-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      background-color: #e0d6c6;
+    }
+
+    .profile-card h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: #4b3b2a;
+    }
+
+    .profile-card p {
+      margin: 6px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .profile-card .label {
+      font-weight: bold;
+      color: #666;
+      display: inline-block;
+      min-width: 80px;
+    }
+
+    .edit-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #f3e2cd;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #333;
+      transition: background-color 0.3s;
+    }
+
+    .edit-button:hover {
+      background-color: #e6d1b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-card">
+    <img src="https://via.placeholder.com/100" alt="User Avatar">
+    <h2>Mohammad</h2>
+    <p><span class="label">Email:</span> mohammad@example.com</p>
+    <p><span class="label">Phone:</span> 123-456-7890</p>
+    <p><span class="label">Address:</span> Tehran, Vahdat St, No. 1</p>
+    <p><span class="label">Postal Code:</span> 1122333295</p>
+    <button class="edit-button">Edit Account</button>
+  </div>
+
+</body>
+</html>
+{% endblock content %}
