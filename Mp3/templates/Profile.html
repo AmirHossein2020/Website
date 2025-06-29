@@ -4,86 +4,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>User Profile</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #fef4e8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      direction: ltr;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Beautiflie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #fef4e8; /* Background color from the image */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            direction: ltr; /* Ensure left-to-right for overall layout */
+        }
 
-    .profile-card {
-      background-color: #fff;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 400px;
-      width: 100%;
-    }
+        /* Header/Navigation Bar */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #fef4e8; /* Same as body for seamless look */
+            position: relative; /* For z-index to be above other elements if needed */
+        }
 
-    .profile-card img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 16px;
-      background-color: #e0d6c6;
-    }
+        .header .left-section {
+            display: flex;
+            align-items: center;
+        }
 
-    .profile-card h2 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      color: #4b3b2a;
-    }
+        .header .left-section .menu-icon {
+            font-size: 24px;
+            margin-right: 20px;
+            cursor: pointer;
+            color: #333;
+        }
 
-    .profile-card p {
-      margin: 6px 0;
-      font-size: 16px;
-      color: #333;
-    }
+        .header .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4b3b2a;
+        }
 
-    .profile-card .label {
-      font-weight: bold;
-      color: #666;
-      display: inline-block;
-      min-width: 80px;
-    }
+        .header .right-section {
+            display: flex;
+            align-items: center;
+        }
 
-    .edit-button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #f3e2cd;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      color: #333;
-      transition: background-color 0.3s;
-    }
+        .header .right-section .icon {
+            font-size: 24px;
+            margin-left: 25px;
+            cursor: pointer;
+            color: #333;
+            position: relative;
+        }
 
-    .edit-button:hover {
-      background-color: #e6d1b8;
-    }
-  </style>
+        .header .right-section .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #d1b191; /* Example background for count */
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 3px 7px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 18px;
+            width: 18px;
+            box-sizing: border-box;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1; /* Allows main content to take available space */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to the top, not center vertically */
+            padding: 50px 20px; /* Adjust padding as needed */
+            box-sizing: border-box;
+        }
+
+        /* Profile Card Styles */
+        .profile-card {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .profile-card .avatar-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            background-color: #e0d6c6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Ensure avatar fits */
+        }
+
+        .profile-card .avatar-container img {
+            width: 80%; /* Adjust size of the user avatar inside the circle */
+            height: 80%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-card h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            color: #4b3b2a;
+        }
+
+        .profile-card p {
+            margin: 6px 0;
+            font-size: 16px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center content of each line */
+        }
+
+        .profile-card .label {
+            font-weight: bold;
+            color: #666;
+            min-width: 80px; /* Fixed width for labels */
+            text-align: right; /* Align labels to the right */
+            margin-right: 10px; /* Space between label and value */
+        }
+        
+        .profile-card .value {
+            text-align: left; /* Align values to the left */
+            flex-grow: 1; /* Allow value to take remaining space */
+        }
+
+
+        .edit-button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #f3e2cd;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .edit-button:hover {
+            background-color: #e6d1b8;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333; /* Dark background as in the image */
+            color: #ccc;
+            padding: 40px 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px; /* Minimum width for sections to wrap */
+            margin: 20px;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-section p, .footer-section ul {
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-section .contact-info div {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .footer-section .contact-info i {
+            margin-right: 15px;
+            color: #d1b191; /* Highlight icon color */
+            font-size: 18px;
+            margin-top: 2px; /* Adjust icon vertical alignment */
+        }
+
+        .footer-section .social-links {
+            margin-top: 20px;
+        }
+
+        .footer-section .social-links a {
+            color: #fff;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-section .social-links a:hover {
+            color: #d1b191;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: right;
+            padding: 20px 0;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .footer-bottom span {
+            display: inline-block;
+            background-color: #000; /* Black background for the text box */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .header .logo {
+                font-size: 24px;
+            }
+
+            .header .right-section .icon {
+                margin-left: 15px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 20px;
+            }
+
+            .footer-section {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-section .contact-info div {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-card {
+                padding: 20px;
+            }
+
+            .profile-card h2 {
+                font-size: 20px;
+            }
+
+            .profile-card p {
+                font-size: 14px;
+            }
+
+            .profile-card .label {
+                min-width: 60px;
+            }
+
+            .edit-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .footer-bottom {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="profile-card">
-    <img src="https://via.placeholder.com/100" alt="User Avatar">
-    <h2>Mohammad</h2>
-    <p><span class="label">Email:</span> mohammad@example.com</p>
-    <p><span class="label">Phone:</span> 123-456-7890</p>
-    <p><span class="label">Address:</span> Tehran, Vahdat St, No. 1</p>
-    <p><span class="label">Postal Code:</span> 1122333295</p>
-    <button class="edit-button">Edit Account</button>
-  </div>
+    <main class="main-content">
+        <div class="profile-card">
+            <div class="avatar-container">
+                <img src="https://via.placeholder.com/80" alt="User Avatar"> </div>
+                
+            <h2>{{ profile.first_name }}</h2>
+            <p><span class="label">Email:</span> <span class="value">{{ profile.email }}</span></p>
+            <p><span class="label">Phone:</span> <span class="value">{{ profile.phon }}</span></p>
+            <p><span class="label">Address:</span> <span class="value">{{ profile.address }}</span></p>
+            <p><span class="label">Postal Code:</span> <span class="value">{{ profile.post_code }}</span></p>
+            <button class="edit-button">Edit Account</button>
+        </div>
+    </main>
 
 </body>
 </html>
