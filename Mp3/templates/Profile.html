@@ -12,21 +12,21 @@
         body {
             margin: 0;
             font-family: sans-serif;
-            background-color: #fef4e8; /* Background color from the image */
+            background-color: #fef4e8; 
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            direction: ltr; /* Ensure left-to-right for overall layout */
+            direction: ltr; 
         }
 
-        /* Header/Navigation Bar */
+       
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background-color: #fef4e8; /* Same as body for seamless look */
-            position: relative; /* For z-index to be above other elements if needed */
+            background-color: #fef4e8; 
+            position: relative; 
         }
 
         .header .left-section {
@@ -64,7 +64,7 @@
             position: absolute;
             top: -8px;
             right: -8px;
-            background-color: #d1b191; /* Example background for count */
+            background-color: #d1b191; 
             color: white;
             font-size: 12px;
             border-radius: 50%;
@@ -77,17 +77,17 @@
             box-sizing: border-box;
         }
 
-        /* Main Content Area */
+        
         .main-content {
-            flex-grow: 1; /* Allows main content to take available space */
+            flex-grow: 1; 
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align to the top, not center vertically */
-            padding: 50px 20px; /* Adjust padding as needed */
+            align-items: flex-start; 
+            padding: 50px 20px; 
             box-sizing: border-box;
         }
 
-        /* Profile Card Styles */
+      
         .profile-card {
             background-color: #fff;
             border-radius: 16px;
@@ -319,15 +319,15 @@
 
     <main class="main-content">
         <div class="profile-card">
-            <div class="avatar-container">
-                <img src="https://via.placeholder.com/80" alt="User Avatar"> </div>
+            
+                
                 
             <h2>{{ profile.first_name }}</h2>
             <p><span class="label">Email:</span> <span class="value">{{ profile.email }}</span></p>
             <p><span class="label">Phone:</span> <span class="value">{{ profile.phon }}</span></p>
             <p><span class="label">Address:</span> <span class="value">{{ profile.address }}</span></p>
             <p><span class="label">Postal Code:</span> <span class="value">{{ profile.post_code }}</span></p>
-            <button class="edit-button">Edit Account</button>
+            <button class="edit-button"><a href="{% url 'profileEdit' %}">Edit Account</a></button>
         </div>
     </main>
 

@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* CSS Codes Start Here */
+        body {
+            font-family: Arial, sans-serif; /* Your preferred font */
+            margin: 0;
+            background-color: #f8f0e5; /* Overall background color similar to image */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            direction: ltr; /* Left-to-right layout */
+            text-align: left; /* Align text to left */
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: #444;
+        }
+
+        .website-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background-color: #fdfaf6; /* Card background color similar to image */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px; /* Adjusted max-width for a login form */
+            text-align: center;
+        }
+
+        .login-card h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left; /* Align labels and inputs to the left */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            background-color: #fefefe;
+            box-sizing: border-box; /* Include padding and border in total width */
+        }
+
+        .login-button {
+            background-color: #e6dace; /* Button color similar to image */
+            color: #4a4a4a; /* Button text color */
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: auto; /* Auto width based on content */
+            display: block; /* Make button appear on a new line */
+            margin: 30px auto 0 auto; /* Center the button */
+        }
+
+        .login-button:hover {
+            background-color: #d8c3b1; /* Slightly darker color on hover */
+        }
+
+        .forgot-password {
+            margin-top: 15px;
+            font-size: 0.9em;
+            text-align: center; /* Center the link */
+        }
+
+        .forgot-password a {
+            color: #777;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: 1em;
+            text-align: center;
+            color: #555;
+        }
+
+        .signup-link a {
+            color: #e6dace; /* A color that matches your theme */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #333; /* Dark footer background color */
+            color: #eee;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            .login-card {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .website-title {
+                font-size: 2em;
+            }
+
+            .login-card h2 {
+                font-size: 1.8em;
+            }
+
+            .form-group input {
+                width: calc(100% - 20px);
+            }
+        }
+        /* CSS Codes End Here */
+    </style>
+</head>
+<body>
+    
+    <main>
+        <div class="login-card">
+            <h2>Login to Your Account</h2>
+            <form action="#" method="POST"> <div class="form-group">
+                {% csrf_token %}
+                    <label for="username">User name:</label>
+                    <input type="username" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <p class="signup-link">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
+{% endblock content %}

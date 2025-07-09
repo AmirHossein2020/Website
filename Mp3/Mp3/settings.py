@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'web',
     'accounts',
     'cart',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -137,3 +139,6 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = BASE_DIR / "media"
 
 MEDIA_URL = "/media/"
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

@@ -52,8 +52,14 @@
                <form class="form-inline ">
                   <div class="login_text">
                      <ul>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}" style="color:rgb(0, 0, 0); font-weight: bold;">LogOut</a></li>
                         <li><a href="{% url 'profile' %}"><img src="{% static "images/user-icon.png" %}"></a></li>
                         <li><a href="{% url 'cart_detail' %}"><img src="{% static "images/bag-icon.png" %}"></a></li>
+                        {% else %}
+                         <li><a href="{% url 'login' %}" style="color:rgb(19, 18, 17); font-weight: bold;">Login</a></li>
+                        {% endif %}
+                        
                         <li><a href="#"><img src="{% static "images/search-icon.png" %}"></a></li>
                      </ul>
                   </div>
