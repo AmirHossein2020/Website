@@ -9,7 +9,7 @@
 <html lang="en" dir="rlt">
 <head>
   
-  <title>سبد خرید</title>
+  <title>Cart</title>
   <style>
     body {
       margin: 0;
@@ -118,7 +118,7 @@
   </style>
 <body>
   <div class="cart-container">
-    <div class="cart-title">سبد خرید</div>
+    <div class="cart-title">Cart</div>
     {% if cart and cart.items.all %}
     {% for item in cart.items.all %}
       <div class="product">
@@ -143,10 +143,10 @@
     {% else %}
     not
     {% endif %}
-    <div class="total">مجموع: ۸۹.۹۹$</div>
-    <div class="buttons">
-      <button>بازگشت</button>
-    </div>
+    
+    <a href="{% url 'home' %}"><div class="buttons">
+      <button>Home</button>
+    </div></a>
   </div>
   
 </body>

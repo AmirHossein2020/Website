@@ -1,6 +1,257 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+   <style>
+        /* General Body & Layout Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f0e5; /* Overall background color */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            direction: ltr; /* Left-to-right layout */
+            text-align: left; /* Align text to left */
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: #444;
+            background-color: #fdfaf6; /* Consistent with other templates */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .website-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column; /* Allows content within main to stack */
+            align-items: center; /* Center content horizontally */
+            padding: 20px;
+        }
+
+        /* Search Container & Form Styles */
+        .search-container {
+            background-color: #fdfaf6;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            width: 100%;
+            max-width: 700px; /* Wider for search results */
+            margin-bottom: 30px; /* Space below search bar before results */
+            text-align: center;
+        }
+
+        .search-container h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: center; /* Center items in the form */
+        }
+
+        .search-input {
+            flex-grow: 1; /* Allows input to take available space */
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            background-color: #fefefe;
+            box-sizing: border-box;
+            min-width: 200px; /* Minimum width for input */
+        }
+
+        .search-button {
+            background-color: #e6dace; /* Consistent button color */
+            color: #4a4a4a;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* Space between text and icon */
+        }
+
+        .search-button:hover {
+            background-color: #d8c3b1;
+        }
+
+        /* Filters Section Styles */
+        .filters-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5ece1; /* Slightly different background for filters */
+            border-radius: 10px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .filters-section label {
+            color: #555;
+            font-weight: bold;
+        }
+
+        .filters-section select {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 0.95em;
+            cursor: pointer;
+        }
+
+        /* Search Results Section Styles */
+        .results-section {
+            width: 100%;
+            max-width: 700px;
+            background-color: #fdfaf6;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            min-height: 200px; /* Ensure some height for results area */
+        }
+
+        .results-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .item-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+            gap: 20px;
+        }
+
+        .item-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #fefefe;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: 120px; /* Fixed height for image */
+            object-fit: contain; /* Ensure image fits without cropping */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #fff; /* White background for image area */
+        }
+
+        .item-card h4 {
+            margin: 10px 0 5px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .item-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .item-card .price {
+            font-weight: bold;
+            color: #007bff; /* Example price color */
+            font-size: 1.1em;
+        }
+
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 5px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #4a4a4a;
+            padding: 8px 15px;
+            border: 1px solid #e6dace;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pagination a.active,
+        .pagination a:hover {
+            background-color: #e6dace;
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #333;
+            color: #eee;
+            margin-top: 30px; /* Space above footer */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .search-container, .results-section, .filters-section {
+                padding: 25px;
+                margin: 15px;
+            }
+            .search-form {
+                flex-direction: column;
+            }
+            .search-input {
+                min-width: unset;
+                width: 100%;
+            }
+            .search-button {
+                width: 100%;
+            }
+            .item-list {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            header, footer {
+                padding: 20px 10px;
+            }
+            .website-title {
+                font-size: 2em;
+            }
+            .search-container h2 {
+                font-size: 1.8em;
+            }
+            .item-card img {
+                height: 100px;
+            }
+        }
+    </style>
    <head>
       <!-- basic -->
       <meta charset="utf-8">
@@ -36,6 +287,9 @@
    </head>
    <body>
       <!-- header section start -->
+      <!--Start of Tawk.to Script-->
+
+<!--End of Tawk.to Script-->
       <div class="header_section">
          <div class="container-fluid">
             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -44,12 +298,13 @@
                   <a href="{% url 'home' %}">Home</a>
                   <a href="{% url 'products' %}">Products</a>
                   <a href="{% url 'about' %}">About</a>
-                  <a href="{% url 'client' %}">Client</a>
-                  <a href="{% url 'contact' %}">Contact</a>
+                  
                </div>
                <span class="toggle_icon" onclick="openNav()"><img src="{% static "images/toggle-icon.png" %}"></span>
                <a class="logo" href="{% url 'home' %}"><img src="{% static "images/logo.png" %}"></a></a>
+               
                <form class="form-inline ">
+                  
                   <div class="login_text">
                      <ul>
                         {% if user.is_authenticated %}
@@ -60,13 +315,14 @@
                          <li><a href="{% url 'login' %}" style="color:rgb(19, 18, 17); font-weight: bold;">Login</a></li>
                         {% endif %}
                         
-                        <li><a href="#"><img src="{% static "images/search-icon.png" %}"></a></li>
                      </ul>
                   </div>
                </form>
             </nav>
          </div>
       </div>
+
+      
 {% block content %}
 
 {% endblock content %}
@@ -78,20 +334,21 @@
                   <div class="col-sm-4">
                      <h3 class="address_text">Contact Us</h3>
                      <div class="address_bt">
+                        {% for i in item %}
                         <ul>
                            <li>
                               <a href="#">
-                              <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left10">Address : Loram Ipusm</span>
+                              <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left10">Address : {{ i.address }}</span>
                               </a>
                            </li>
                            <li>
                               <a href="#">
-                              <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left10">Call : +01 1234567890</span>
+                              <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left10">Call : {{ i.call }}</span>
                               </a>
                            </li>
                            <li>
                               <a href="#">
-                              <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left10">Email : demo@gmail.com</span>
+                              <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left10">Email : {{ i.email }}</span>
                               </a>
                            </li>
                         </ul>
@@ -104,7 +361,7 @@
                   <div class="col-sm-4">
                      <div class="main">
                         <h3 class="address_text">Best Products</h3>
-                        <p class="ipsum_text">dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
+                        <p class="ipsum_text">{{ i.BestProducts }}</p>
                      </div>
                   </div>
                </div>
@@ -112,19 +369,20 @@
             <div class="social_icon">
                <ul>
                   <li>
-                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                     <a href="{{ i.Linkfacebook }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                   </li>
                   <li>
-                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                     <a href="{{ i.Linktwitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                   </li>
                   <li>
-                     <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                     <a href="{{ i.LinklinkedIn }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                   </li>
                   <li>
-                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                     <a href="{{ i.Linkinstegram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                   </li>
                </ul>
             </div>
+            {% endfor %}
          </div>
       </div>
       <!-- footer section end -->

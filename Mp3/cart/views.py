@@ -27,7 +27,7 @@ def cart_detail(request):
         cart = None
 
     context = {'cart': cart}
-    return render(request, 'Cart.html',context)
+    return render(request, 'Cart/Cart.html',context)
 
 @require_POST
 def ajax_remove_from_cart(request):

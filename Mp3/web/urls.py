@@ -7,6 +7,5 @@ urlpatterns = [
     path('products/', products, name='products'),
     path('product/<int:pk>/', product, name="product"),
     path('about/', about, name='about'),
-    path('client/', client, name='client'),
-    path('contact/', contact, name='contact'),
+    path('client/', Mallitem, name='Mall'),
 ]
