@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="{% static "css/style-cart.css" %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="cart-container">
+        <div class="cart-header">
+            <h2>Cart</h2>
+            <span class="material-icons close-icon">close</span>
+        </div>
+        {% if cart and cart.items.all %}
+        {% for item in cart.items.all %}
+        <div class="cart-item">
+            <img src="{{ item.product.image.url }}" alt="Sport Shoes For Men" class="cart-item-image">
+            <div class="cart-item-details">
+                <h3>{{ item.product.name }}</h3>
+                <div class="quantity-control">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+            </div>
+            <span class="cart-item-price">${{ item.product.price }}</span>
+            <span class="material-icons remove-item">close</span>
+        </div>
+        {% endfor %}  
+        {% else %} 
+         <div class="empty-cart-message">
+            <span class="material-icons empty-cart-icon">shopping_cart</span>
+            <p>Your cart is empty.</p>
+            <p>Start shopping to add items.</p>
+        </div>
+        {% endif %}
+        <div class="subtotal">
+            <span>Subtotal:</span>
+            <span>$198.00</span>
+        </div>
+
+        <div class="cart-actions">
+            <div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-footer my-4 justify-content-center">
+                {# ✅ این دکمه‌ها باید اینجا باشند و تنها اینجا ✅ #}
+                <button class="view-cart">View Cart</button>
+            <button class="checkout">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $('.remove-item-btn').click(function(){
+          let itemId = $(this).data('item-id');
+          $.ajax({
+              url: "{% url 'ajax_remove_from_cart' %}",
+              method: 'POST',
+              data: {
+                  item_id: itemId,
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+              success: function(response) {
+                  if (response.success) {
+                      location.reload();  // یا می‌تونی با JS فقط اون خط رو حذف کنی
+                  } else {
+                      alert(response.message);
+                  }
+              }
+          });
+      });
+  });
+</script>  

@@ -15,7 +15,9 @@ class Mall(models.Model):
         return self.nameMall
     
 class Product(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, null=True)
+    colour = models.CharField(max_length=250, null=True)
+    style = models.CharField(max_length=250, null=True)
     price = models.IntegerField()
     about = models.TextField()
     image = models.ImageField(upload_to='product/')

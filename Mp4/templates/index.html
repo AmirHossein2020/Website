@@ -4,7 +4,59 @@
 <html lang="en">
 
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {# Make sure jQuery is loaded #}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> {# Bootstrap JS #}
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modaltoggle = document.getElementById('modaltoggle');
+
+    modaltoggle.addEventListener('show.bs.modal', function (event) {
+        // Get the button that triggered the modal
+        const button = event.relatedTarget;
+
+        // Extract info from data-bs-* attributes
+        const productId = button.getAttribute('data-product-id');
+        const productName = button.getAttribute('data-product-name');
+        const productPrice = button.getAttribute('data-product-price');
+        const productImage = button.getAttribute('data-product-image');
+        const productDescription = button.getAttribute('data-product-description');
+        const productColors = button.getAttribute('data-product-colors'); // Get colors
+        const productStyle = button.getAttribute('data-product-style');   // Get style
+
+        // Update the modal's content
+        const modalProductName = modaltoggle.querySelector('#modal-product-name');
+        const modalProductPrice = modaltoggle.querySelector('#modal-product-price');
+        const modalProductImage = modaltoggle.querySelector('#modal-product-image');
+        const modalProductDescription = modaltoggle.querySelector('#modal-product-description');
+        const modalProductColors = modaltoggle.querySelector('#modal-product-colors'); // Select colors span
+        const modalProductStyle = modaltoggle.querySelector('#modal-product-style');   // Select style span
+        const modalAddToCartBtn = modaltoggle.querySelector('#modal-add-to-cart-btn');
+
+        if (modalProductName) {
+            modalProductName.textContent = productName;
+        }
+        if (modalProductPrice) {
+            modalProductPrice.textContent = `$${productPrice}`; // Add dollar sign
+        }
+        if (modalProductImage) {
+            modalProductImage.src = productImage;
+        }
+        if (modalProductDescription) {
+            modalProductDescription.innerHTML = productDescription; // Use innerHTML if description contains HTML
+        }
+        if (modalProductColors) {
+            modalProductColors.textContent = productColors;
+        }
+        if (modalProductStyle) {
+            modalProductStyle.textContent = productStyle;
+        }
+        if (modalAddToCartBtn) {
+            modalAddToCartBtn.setAttribute('data-product-id', productId); // Update add to cart button's product ID
+        }
+    });
+});
+</script>
 <body>
   <div class="search-box bg-dark position-relative">
     <div class="search-wrap">
@@ -29,38 +81,35 @@
         <div class="modal-body">
           <div class="col-lg-12 col-md-12 me-3">
             <div class="image-holder">
-              
+              <img id="modal-product-image" src="" alt="product-image" class="img-fluid"> {# Placeholder for image #}
             </div>
           </div>
           <div class="col-lg-12 col-md-12">
             <div class="summary">
               <div class="summary-content fs-6">
                 <div class="product-header d-flex justify-content-between mt-4">
-                  <h3 class="display-7">Running Shoes For Men</h3>
+                  <h3 class="display-7" id="modal-product-name"></h3> {# Placeholder for name #}
                   <div class="modal-close-btn">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                 </div>
-                <span class="product-price fs-3">$99</span>
+                <span class="product-price fs-3" id="modal-product-price"></span> {# Placeholder for price #}
                 <div class="product-details">
-                  <p class="fs-7">Buy good shoes and a good mattress, because when you're not in one you're in the
-                    other. With four pairs of shoes, I can travel the world.</p>
+                  <p class="fs-7" id="modal-product-description"></p> {# Placeholder for description #}
                 </div>
                 <ul class="select">
                   <li>
-                    <strong>Colour Shown:</strong> Red, White, Black
+                    <strong>Colour Shown:</strong> <span id="modal-product-colors"></span> {# Placeholder for colors #}
                   </li>
                   <li>
-                    <strong>Style:</strong> SM3018-100
+                    <strong>Style:</strong> <span id="modal-product-style"></span> {# Placeholder for style #}
                   </li>
                 </ul>
                 <div class="variations-form shopify-cart">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="quantity d-flex pb-4">
-                        <div
-                          class="qty-number align-top qty-number-plus d-flex justify-content-center align-items-center text-center">
+                        <div class="qty-number align-top qty-number-plus d-flex justify-content-center align-items-center text-center">
                           <span class="increase-qty plus">
                             <svg class="plus">
                               <use xlink:href="#plus"></use>
@@ -68,8 +117,7 @@
                           </span>
                         </div>
                         <input type="number" id="quantity_001" class="input-text text-center" step="1" min="1" name="quantity" value="1" title="Qty">
-                        <div
-                          class="qty-number qty-number-minus d-flex justify-content-center align-items-center text-center">
+                        <div class="qty-number qty-number-minus d-flex justify-content-center align-items-center text-center">
                           <span class="increase-qty minus">
                             <svg class="minus">
                               <use xlink:href="#minus"></use>
@@ -79,12 +127,12 @@
                       </div>
                     </div>
                     <div class="col-md-6">
+                      {# You might want to pass the product ID to the 'Add to cart' button as well #}
                       <a rel="nofollow" data-no-instant="" href="" class="out-stock button">Out of stock</a>
-                      <button type="submit" class="btn btn-medium btn-black hvr-sweep-to-right">Add to cart</button>
+                      <button type="submit" class="btn btn-medium btn-black hvr-sweep-to-right" id="modal-add-to-cart-btn" data-product-id="">Add to cart</button>
                     </div>
                   </div>
                 </div>
-                <!-- variations-form -->
                 <div class="categories d-flex flex-wrap pt-3">
                   <strong class="pe-2">Categories:</strong>
                   <a href="#" title="categories">Clothing,</a>
@@ -97,124 +145,248 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
   <!-- / quick view -->
 
-  <div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title fs-5">Cart</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="shopping-cart">
-            <div class="shopping-cart-content">
-              <div class="mini-cart cart-list p-0 mt-3">
-                <div class="mini-cart-item d-flex border-bottom pb-3">
-                  <div class="col-lg-2 col-md-3 col-sm-2 me-4">
-                    <a href="" title="product-image">
-                      <img src="{% static "images/single-product-thumb1.jpg" %}" class="img-fluid" alt="single-product-item">
-                    </a>
-                  </div>
-                  <div class="col-lg-9 col-md-8 col-sm-8">
-                    <div class="product-header d-flex justify-content-between align-items-center mb-3">
-                      <h4 class="product-title fs-6 me-5">Sport Shoes For Men</h4>
-                      <a href="" class="remove" aria-label="Remove this item" data-product_id="11913"
-                        data-cart_item_key="abc" data-product_sku="">
-                        <svg class="close">
-                          <use xlink:href="#close"></use>
-                        </svg>
-                      </a>
-                    </div>
-                    <div class="quantity-price d-flex justify-content-between align-items-center">
-                      <div class="input-group product-qty">
-                        <button type="button"
-                          class="quantity-left-minus btn btn-light rounded-0 rounded-start btn-number"
-                          data-type="minus">
-                          <svg width="16" height="16">
-                            <use xlink:href="#minus"></use>
-                          </svg>
-                        </button>
-                        <input type="text" name="quantity" class="form-control input-number quantity" value="1">
-                        <button type="button" class="quantity-right-plus btn btn-light rounded-0 rounded-end btn-number"
-                          data-type="plus">
-                          <svg width="16" height="16">
-                            <use xlink:href="#plus"></use>
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="price-code">
-                        <span class="product-price fs-6">$99</span>
-                      </div>
-                    </div>
-                    <!-- quantity-price -->
-                  </div>
+ <div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5">Cart</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              </div>
-              <div class="mini-cart cart-list p-0 mt-3">
-                <div class="mini-cart-item d-flex border-bottom pb-3">
-                  <div class="col-lg-2 col-md-3 col-sm-2 me-4">
-                    <a href="#" title="product-image">
-                      <img src="{% static "images/single-product-thumb2.jpg" %}" class="img-fluid" alt="single-product-item">
-                    </a>
-                  </div>
-                  <div class="col-lg-9 col-md-8 col-sm-8">
-                    <div class="product-header d-flex justify-content-between align-items-center mb-3">
-                      <h4 class="product-title fs-6 me-5">Brand Shoes For Men</h4>
-                      <a href="" class="remove" aria-label="Remove this item" data-product_id="11913"
-                        data-cart_item_key="abc" data-product_sku="">
-                        <svg class="close">
-                          <use xlink:href="#close"></use>
-                        </svg>
-                      </a>
+                <div class="modal-body">
+                    <div class="shopping-cart" id="modal-cart-content">
+                        <div class="empty-cart-message">
+                            <span class="material-icons empty-cart-icon">shopping_cart</span>
+                            <p>Loading cart...</p>
+                        </div>
                     </div>
-                    <div class="quantity-price d-flex justify-content-between align-items-center">
-                      <div class="input-group product-qty">
-                        <button type="button"
-                          class="quantity-left-minus btn btn-light rounded-0 rounded-start btn-number"
-                          data-type="minus">
-                          <svg width="16" height="16">
-                            <use xlink:href="#minus"></use>
-                          </svg>
-                        </button>
-                        <input type="text" name="quantity" class="form-control input-number quantity" value="1">
-                        <button type="button" class="quantity-right-plus btn btn-light rounded-0 rounded-end btn-number"
-                          data-type="plus">
-                          <svg width="16" height="16">
-                            <use xlink:href="#plus"></use>
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="price-code">
-                        <span class="product-price fs-6">$99</span>
-                      </div>
-                    </div>
-                    <!-- quantity-price -->
-                  </div>
                 </div>
-              </div>
-              <!-- cart-list -->
-              <div class="mini-cart-total d-flex justify-content-between py-4">
-                <span class="fs-6">Subtotal:</span>
-                <span class="special-price-code">
-                  <span class="price-amount amount fs-6" style="opacity: 1;">
-                    <bdi>
-                      <span class="price-currency-symbol">$</span>198.00 </bdi>
-                  </span>
-                </span>
-              </div>
-              <div class="modal-footer my-4 justify-content-center">
-                <button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">View Cart</button>
-                <button type="button"
-                  class="btn btn-outline-gray hvr-sweep-to-right dark-sweep">Checkout</button>
-              </div>
+                <div class="modal-footer my-4 justify-content-center">
+                    <button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">View Cart</button>
+                    <button type="button"
+                      class="btn btn-outline-gray hvr-sweep-to-right dark-sweep">Checkout</button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="modal fade" id="modaltoggle" tabindex="-1" aria-modal="true" role="dialog">
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // تابع برای بارگذاری/refresh کردن محتوای سبد خرید در مُدال
+        function loadCartIntoModal() {
+            $.ajax({
+                url: '{% url "cart" %}', // URL به ویو cart_summary شما
+                type: 'GET',
+                dataType: 'html',
+                success: function(response){
+                    console.log("Full AJAX Response HTML:", response); // برای دیباگ در کنسول
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(response, 'text/html');
+
+                    // مهم: حالا از .cart-container استفاده می‌کنیم چون cart_summary.html شما این IDها را ندارد
+                    const cartContent = doc.querySelector('.cart-container');
+                    
+                    if (cartContent) {
+                        $('#modal-cart-content').html(cartContent.innerHTML); 
+                        
+                        // آیکون close در هدر مُدال شما (که در index.html ثابت است)
+                        $('#modallong .modal-header .btn-close').on('click', function() {
+                            $('#modallong').modal('hide');
+                        });
+
+                        // فعال/غیرفعال کردن دکمه‌های فوتر مُدال
+                        if ($(cartContent).find('.cart-item').length > 0) {
+                            $('#modallong .modal-footer button').attr('disabled', false);
+                        } else {
+                            $('#modallong .modal-footer button').attr('disabled', true);
+                        }
+                    } else {
+                        console.warn("Element with class 'cart-container' not found in AJAX response.");
+                        $('#modal-cart-content').html('<div class="alert alert-warning">Cart content structure not found.</div>');
+                        $('#modallong .modal-footer button').attr('disabled', true);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error loading cart:", status, error);
+                    $('#modal-cart-content').html('<div class="alert alert-danger">Failed to load cart. Please try again.</div>');
+                }
+            });
+        }
+
+        // تابع برای اضافه کردن محصول به سبد و refresh کردن مُدال
+        function addToCartAndRefreshModal(productId, productQty) {
+            $.ajax({
+                url: '{% url "cart_add" %}', // URL به ویو cart_add شما
+                type: 'POST',
+                data: {
+                    product_id: productId,
+                    product_qty: productQty,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                dataType: 'json',
+                success: function(response){
+                    console.log('Add to cart response:', response);
+                    if (response.success) { // چک می‌کنیم که عملیات موفق بوده باشد
+                        loadCartIntoModal(); // محتوای سبد را در مُدال refresh می‌کنیم
+                    } else {
+                        alert(response.message || 'Error adding product to cart.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error:", status, error);
+                    console.log("Response Text:", xhr.responseText);
+                    alert('An error occurred while adding to cart.');
+                }
+            });
+        }
+
+        // تابع برای به‌روزرسانی تعداد آیتم در سبد
+        function updateCartItem(itemId, newQty) {
+            $.ajax({
+                url: '{% url "cart_update" %}', // URL به ویو cart_update شما
+                type: 'POST',
+                data: {
+                    item_id: itemId, // اینجا باید item_id باشد
+                    quantity: newQty, // اینجا باید quantity باشد
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Cart item updated:', response);
+                    if (response.success) {
+                        loadCartIntoModal(); // محتوای سبد را refresh می‌کنیم
+                    } else {
+                        alert(response.message || 'Error updating cart item.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error updating cart item:", status, error);
+                }
+            });
+        }
+
+        // تابع برای حذف آیتم از سبد
+        function removeCartItem(itemId) {
+            $.ajax({
+                url: '{% url "cart_delete" %}', // URL به ویو cart_delete شما
+                type: 'POST',
+                data: {
+                    item_id: itemId, // اینجا باید item_id باشد
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Cart item removed:', response);
+                    if (response.success) {
+                        loadCartIntoModal(); // محتوای سبد را refresh می‌کنیم
+                    } else {
+                        alert(response.message || 'Error removing cart item.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error removing cart item:", status, error);
+                }
+            });
+        }
+
+
+        $(document).ready(function(){
+            // وقتی دکمه "افزودن به سبد خرید" از کارت محصول کلیک می‌شود
+            $('.add-to-cart-modal-btn').click(function(e){
+                const productId = $(this).data('product-id');
+                const productQty = 1; // برای دکمه مستقیم افزودن، تعداد ۱ فرض می‌شود
+                addToCartAndRefreshModal(productId, productQty);
+            });
+
+            // وقتی Quick View Modal باز می‌شود (برای دکمه افزودن به سبد از داخل آن)
+            $('#modaltoggle').on('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const productId = $(button).data('product-id');
+                // ... بقیه اطلاعات محصول برای نمایش در Quick View Modal ...
+                $('#quickViewQuantity').val(1); // مقدار پیش‌فرض ۱
+                $('.add-to-cart-from-quick-view').attr('data-product-id', productId);
+            });
+            
+            // کنترل تعداد در Quick View Modal
+            $(document).on('click', '.quick-view-qty-minus', function() {
+                let qtyInput = $('#quickViewQuantity');
+                let currentVal = parseInt(qtyInput.val());
+                if (currentVal > 1) { qtyInput.val(currentVal - 1); }
+            });
+            $(document).on('click', '.quick-view-qty-plus', function() {
+                let qtyInput = $('#quickViewQuantity');
+                let currentVal = parseInt(qtyInput.val());
+                qtyInput.val(currentVal + 1);
+            });
+
+            // افزودن به سبد از داخل Quick View Modal
+            $(document).on('click', '.add-to-cart-from-quick-view', function(e) {
+                e.preventDefault();
+                const productId = $(this).data('product-id');
+                const productQty = $('#quickViewQuantity').val();
+                addToCartAndRefreshModal(productId, productQty);
+                // $('#modaltoggle').modal('hide'); // می‌توانید پس از اضافه کردن، مُدال Quick View را ببندید
+            });
+
+            // وقتی مُدال اصلی سبد خرید (modallong) باز می‌شود، محتوا را بارگذاری کن
+            $('#modallong').on('show.bs.modal', function () {
+                loadCartIntoModal();
+            });
+
+            // کنترل تعداد آیتم‌ها در خود مُدال سبد خرید (modallong)
+            $(document).on('click', '#modallong .quantity-left-minus', function() {
+                let qtySpan = $(this).siblings('.quantity');
+                let itemId = $(this).parent().parent().parent().data('item-id'); // پیدا کردن data-item-id
+                let currentVal = parseInt(qtySpan.text());
+                if (currentVal > 1) {
+                    qtySpan.text(currentVal - 1);
+                    updateCartItem(itemId, currentVal - 1);
+                }
+            });
+
+            $(document).on('click', '#modallong .quantity-right-plus', function() {
+                let qtySpan = $(this).siblings('.quantity');
+                let itemId = $(this).parent().parent().parent().data('item-id'); // پیدا کردن data-item-id
+                let currentVal = parseInt(qtySpan.text());
+                qtySpan.text(currentVal + 1);
+                updateCartItem(itemId, currentVal + 1);
+            });
+
+            // حذف آیتم از سبد خرید در خود مُدال (modallong)
+            $(document).on('click', '#modallong .remove-item', function(e) {
+                e.preventDefault();
+                let itemId = $(this).parent().data('item-id'); // پیدا کردن data-item-id
+                removeCartItem(itemId);
+            });
+        });
+    </script>
+    {# اینجا تعریف آیکون‌های SVG را اضافه کنید #}
+    <svg style="display: none;">
+        <symbol id="shopping-carriage" viewBox="0 0 24 24">
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.45 1.73-1.11L22.95 5.58C23.23 4.98 22.88 4 22.09 4H5.21L4.27 2H1v2h2l3.6 7.59L3.63 17H19v-2H7l1.1-2z"/>
+        </symbol>
+        <symbol id="quick-view" viewBox="0 0 24 24">
+            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+        </symbol>
+        <symbol id="close" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </symbol>
+        <symbol id="minus" viewBox="0 0 24 24">
+            <path d="M19 13H5v-2h14v2z"/>
+        </symbol>
+        <symbol id="plus" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </symbol>
+    </svg>
   <!-- cart view -->
 
   <div class="modal fade" id="modallogin" tabindex="-1" aria-modal="true" role="dialog">
@@ -364,34 +536,53 @@
       </div>
       <div class="product-content padding-small">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+          {% for item in product %}
           <div class="col mb-4">
             <div class="product-card position-relative">
               <div class="card-img">
-                <img src="{% static "images/card-item1.jpg" %}" alt="product-item" class="product-image img-fluid">
+                <img src="{{ item.image.url }}" alt="product-item" class="product-image img-fluid">
                 <div class="cart-concern position-absolute d-flex justify-content-center">
                   <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modallong">
-                      <svg class="shopping-carriage">
-                        <use xlink:href="#shopping-carriage"></use>
-                      </svg>
-                    </button>
-                    <a href="{% url "products" %}"><button type="button" class="btn btn-light" data-bs-target="#modaltoggle" data-bs-toggle="modal">
-                      <svg class="quick-view">
-                        <use xlink:href="#quick-view"></use>
-                      </svg>
-                    </button></a>
+                    <button type="button"
+                                        class="btn btn-light add-to-cart-modal-btn" {# کلاس برای AJAX #}
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modallong"
+                                        data-product-id="{{ item.pk }}"
+                                        data-product-name="{{ item.name }}"
+                                        data-product-price="{{ item.price }}"
+                                        data-product-image="{{ item.image.url }}">
+                                    <svg class="shopping-carriage">
+                                        <use xlink:href="#shopping-carriage"></use>
+                                    </svg>
+                                </button>
+                   <button type="button" class="btn btn-light quick-view-btn"
+                                data-bs-target="#modaltoggle"
+                                data-bs-toggle="modal"
+                                data-product-id="{{ item.pk }}" {# Use item.pk for the product's primary key #}
+                                data-product-name="{{ item.name }}"
+                                data-product-price="{{ item.price }}"
+                                data-product-image="{{ item.image.url }}"
+                                data-product-description="{{ item.about|safe }}" {# Use |safe if description contains HTML #}
+                                {# Add other product-specific data as needed, e.g., colors, style #}
+                                data-product-colors="{{ item.colour|default_if_none:'' }}" {# Example: item.colors if you have this field #}
+                                data-product-style="{{ item.style|default_if_none:'' }}" {# Example: item.style if you have this field #}>
+                            <svg class="quick-view">
+                                <use xlink:href="#quick-view"></use>
+                            </svg>
+                        </button>
                   </div>
                 </div>
                 <!-- cart-concern -->
               </div>
               <div class="card-detail d-flex justify-content-between align-items-center mt-3">
                 <h3 class="card-title fs-6 fw-normal m-0">
-                  <a href="index.html">Running shoes for men</a>
+                  <a href="{% url "products" item.pk %}">{{ item.name }}</a>
                 </h3>
-                <span class="card-price fw-bold">$99</span>
+                <span class="card-price fw-bold">${{ item.price }}</span>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>

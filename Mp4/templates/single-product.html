@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -198,24 +197,25 @@
 <body>
     <div class="product-container">
         <div class="product-image">
-            <img src="https://via.placeholder.com/400x400/8B0000/FFFFFF?text=Running+Shoes" alt="Running Shoes For Men">
+            <img src="{{ product.image.url }}" alt="Running Shoes For Men">
         </div>
         <div class="product-details">
-            <h1 class="product-title">Running Shoes For Men</h1>
-            <p class="product-price">$99</p>
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="product-price">${{ product.price }}</p>
             <p class="product-description">
-                Buy good shoes and a good mattress, because when you're not in one you're in the other. With four pairs of shoes, I can travel the world.
+                {{ product.about }}
             </p>
             <div class="product-options">
-                <p><strong>Colour Shown:</strong> Red, White, Black</p>
-                <p><strong>Style:</strong> SM3018-100</p>
+                <p><strong>Colour Shown:</strong>{{ product.colour }}</p>
+                <p><strong>Style:</strong>{{ product.style }}</p>
             </div>
             <div class="quantity-selector">
                 <button class="quantity-button minus">-</button>
                 <input type="text" value="1" class="quantity-input" readonly>
                 <button class="quantity-button plus">+</button>
             </div>
-            <button class="add-to-cart-button">Add to cart</button>
+            
+            <button class="add-to-cart-btn  add-to-cart-button" data-product-id="{{ product.id }}">Add to cart</button>
             <div class="product-categories">
                 <p><strong>Categories:</strong> Clothing, Men's Clothes, Tops & T-Shirts</p>
             </div>
@@ -244,3 +244,28 @@
 </body>
 </html>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('.add-to-cart-btn').click(function(){
+        var productId = $(this).data('product-id');
+
+        $.ajax({
+            url: '{% url "ajax_add_to_cart" %}',
+            method: 'POST',
+            data: {
+                product_id: productId,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(response){
+                if(response.success){
+                    $('#cart-message').text(response.message).css('color', 'green');
+                } else {
+                    $('#cart-message').text(response.message).css('color', 'red');
+                }
+            }
+        });
+    });
+});
+</script>

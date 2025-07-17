@@ -951,6 +951,77 @@ a.text-hover:focus:after {
     font-size: 1.2em !important;
   }
 }
+/* Styling for the cart item container */
+.cart-item {
+    display: flex; /* Arranges items horizontally */
+    align-items: center; /* Vertically aligns items in the center */
+    gap: 15px; /* Space between the image, details, price, and remove button */
+    margin-bottom: 15px; /* Space between each cart item */
+    border-bottom: 1px solid #eee; /* A subtle separator line */
+    padding-bottom: 15px; /* Padding for the separator line */
+}
+
+/* Styling for the product image within the cart item */
+.cart-item-image {
+    width: 80px; /* Fixed width for the image */
+    height: 80px; /* Fixed height for the image */
+    object-fit: cover; /* Ensures the image covers the area, cropping if necessary, to avoid distortion */
+    border-radius: 8px; /* Optional: rounds the corners of the image */
+    flex-shrink: 0; /* Prevents the image from shrinking when space is constrained */
+}
+
+/* Styling for the product details (name, quantity controls) */
+.cart-item-details {
+    flex-grow: 1; /* Allows this section to take up available space */
+}
+
+.cart-item-details h3 {
+    font-size: 1rem; /* Font size for the product name */
+    margin-bottom: 5px; /* Space below the product name */
+}
+
+/* Styling for the quantity controls (minus, number, plus buttons) */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: fit-content; /* Limits the width to content size */
+}
+
+.quantity-control button {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.quantity-control span.quantity {
+    padding: 0 5px;
+    min-width: 20px; /* Minimum width to display the number */
+    text-align: center;
+}
+
+/* Styling for the item price */
+.cart-item-price {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: auto; /* Pushes the price to the right */
+}
+
+/* Styling for the remove item button (close icon) */
+.remove-item {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #aaa;
+    transition: color 0.2s ease;
+}
+
+.remove-item:hover {
+    color: #dc3545; /* Red color on hover */
+}
 
 /* - Login
 /*----------------------------------------------*/
@@ -1186,7 +1257,7 @@ a.text-hover:focus:after {
 }
 
 .shopify-grid .product-card img.product-image {
-  width: 730px;
+  width: 73px;
   height: 450px;
   object-fit: cover;
 }
