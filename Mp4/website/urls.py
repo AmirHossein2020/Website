@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('', home, name='home'),
-    path('product/<int:pk>/', single_product, name='products'),
+    path('single/<int:pk>/', single_product, name='products'),
     path('ajax/add-to-cart/', ajax_add_to_cart, name='ajax_add_to_cart'),
     path('cart/', cart_detail, name='cart_detail'),
     path('ajax/remove-from-cart/', ajax_remove_from_cart, name='ajax_remove_from_cart'),

@@ -8,17 +8,15 @@ from cart.models import *
 
 def home(reqset):
     product = Product.objects.all()
-    context = {
-        'product':product
-    }
-    return render(reqset,'index.html',context)
+   
+    return render(reqset,'index.html',{'product':product})
 
 def cart(reqset):
     return render(reqset,'cart.html')
 
 def single_product(reqset,pk):
     single_product = Product.objects.get(id=pk)
-    return render(reqset,'single-product.html',{'product':single_product})
+    return render(reqset,'single-product.html',{'single':single_product})
 
 
 def ajax_add_to_cart(request):
@@ -36,14 +34,46 @@ def ajax_add_to_cart(request):
     else:
         return JsonResponse({'success': False, 'message': 'لطفاً وارد شوید'})
 
+def get_total(self):
+        total = 0
+        for item_id, item_data in self.cart.items():
+            product = Product.objects.get(id=int(item_id))
+            total += float(product.price) * item_data['qty']
+        return total
+def update(self, product, quantity):
+        productid = str(product)
+        productqty = int(quantity)
 
+        ourcart = self.cart
+        ourcart[productid] = productqty
+
+        self.session.modified = True
+
+        alake = self.cart
+        return alake
+def cart_update(request):
+    cart = Cart(request)
+    if request.POST.get('action') == 'post':
+        product_id = (request.POST.get('product_id'))
+        product_qty = int(request.POST.get('product_qty'))
+
+        cart.update(product=product_id,quantity=product_qty)
+
+        response = JsonResponse({'qty': product_qty})
+        return response
 def cart_detail(request):
     if request.user.is_authenticated:
         cart = Cart.objects.filter(user=request.user).first()
+        total = 0
+        total = cart.get_total()
+        quantities = cart.get_quants()
     else:
         cart = None
-
-    context = {'cart': cart}
+    
+    context = {'cart': cart,
+               'total': total,
+               'quantities': quantities
+               }
     return render(request, 'cart/cart_summary.html',context)
 
 @require_POST

@@ -77,76 +77,71 @@ document.addEventListener('DOMContentLoaded', function() {
   <!-- quick view -->
   <div class="modal fade" id="modaltoggle" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="col-lg-12 col-md-12 me-3">
-            <div class="image-holder">
-              <img id="modal-product-image" src="" alt="product-image" class="img-fluid"> {# Placeholder for image #}
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-12">
-            <div class="summary">
-              <div class="summary-content fs-6">
-                <div class="product-header d-flex justify-content-between mt-4">
-                  <h3 class="display-7" id="modal-product-name"></h3> {# Placeholder for name #}
-                  <div class="modal-close-btn">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                </div>
-                <span class="product-price fs-3" id="modal-product-price"></span> {# Placeholder for price #}
-                <div class="product-details">
-                  <p class="fs-7" id="modal-product-description"></p> {# Placeholder for description #}
-                </div>
-                <ul class="select">
-                  <li>
-                    <strong>Colour Shown:</strong> <span id="modal-product-colors"></span> {# Placeholder for colors #}
-                  </li>
-                  <li>
-                    <strong>Style:</strong> <span id="modal-product-style"></span> {# Placeholder for style #}
-                  </li>
-                </ul>
-                <div class="variations-form shopify-cart">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="quantity d-flex pb-4">
-                        <div class="qty-number align-top qty-number-plus d-flex justify-content-center align-items-center text-center">
-                          <span class="increase-qty plus">
-                            <svg class="plus">
-                              <use xlink:href="#plus"></use>
-                            </svg>
-                          </span>
-                        </div>
-                        <input type="number" id="quantity_001" class="input-text text-center" step="1" min="1" name="quantity" value="1" title="Qty">
-                        <div class="qty-number qty-number-minus d-flex justify-content-center align-items-center text-center">
-                          <span class="increase-qty minus">
-                            <svg class="minus">
-                              <use xlink:href="#minus"></use>
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-lg-12 col-md-12 me-3">
+                    <div class="image-holder">
+                        <img id="modal-product-image" src="" alt="product-image" class="img-fluid"> {# Placeholder for image #}
                     </div>
-                    <div class="col-md-6">
-                      {# You might want to pass the product ID to the 'Add to cart' button as well #}
-                      <a rel="nofollow" data-no-instant="" href="" class="out-stock button">Out of stock</a>
-                      <button type="submit" class="btn btn-medium btn-black hvr-sweep-to-right" id="modal-add-to-cart-btn" data-product-id="">Add to cart</button>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="summary">
+                        <div class="summary-content fs-6">
+                            <div class="product-header d-flex justify-content-between mt-4">
+                                <h3 class="display-7" id="modal-product-name"></h3>
+                                <div class="modal-close-btn">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <span class="product-price fs-3" id="modal-product-price"></span>
+                            <div class="product-details">
+                                <p class="fs-7" id="modal-product-description"></p>
+                            </div>
+                            <ul class="select">
+                                <li>
+                                    <strong>Colour Shown:</strong> <span id="modal-product-colors"></span>
+                                </li>
+                                <li>
+                                    <strong>Style:</strong> <span id="modal-product-style"></span>
+                                </li>
+                            </ul>
+                            
+                            <div class="variations-form shopify-cart">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Optional Space for Additional Variations -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a rel="nofollow" data-no-instant="" href="" class="out-stock button">Out of stock</a>
+                                        {# دکمه "More" برای هدایت به صفحه محصول #}
+                                        <a href="" id="modal-product-link">
+                                            <button type="button" class="btn btn-medium btn-black hvr-sweep-to-right" id="modal-product-link">More</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="categories d-flex flex-wrap pt-3">
+                                <strong class="pe-2">Categories:</strong>
+                                <a href="#" title="categories">Clothing,</a>
+                                <a href="#" title="categories">Men's Clothes,</a>
+                                <a href="#" title="categories">Tops & T-Shirts</a>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="categories d-flex flex-wrap pt-3">
-                  <strong class="pe-2">Categories:</strong>
-                  <a href="#" title="categories">Clothing,</a>
-                  <a href="#" title="categories">Men's Clothes,</a>
-                  <a href="#" title="categories">Tops & T-Shirts</a>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 </div>
-  <!-- / quick view -->
+<script>$(document).on('click', '.quick-view-btn', function() {
+    const productLink = $(this).data('product-link'); // لینک صفحه جزئیات محصول
+
+    // نمایش مدال
+    $('#modaltoggle').modal('show');
+
+    // اضافه کردن لینک به دکمه "More"
+    $('#modal-product-link').attr('href', productLink); // لینک صفحه جزئیات
+});</script>
 
  <div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">
         <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
@@ -164,9 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="modal-footer my-4 justify-content-center">
-                    <button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">View Cart</button>
-                    <button type="button"
-                      class="btn btn-outline-gray hvr-sweep-to-right dark-sweep">Checkout</button>
+                   <a href="{% url 'cart' %}" ><button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">View Cart</button></a>
+                    
                 </div>
             </div>
         </div>
@@ -355,21 +349,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
             $(document).on('click', '#modallong .quantity-right-plus', function() {
                 let qtySpan = $(this).siblings('.quantity');
-                let itemId = $(this).parent().parent().parent().data('item-id'); // پیدا کردن data-item-id
+                let itemId = $(this).parent().parent().parent().data('item-id'); 
                 let currentVal = parseInt(qtySpan.text());
                 qtySpan.text(currentVal + 1);
                 updateCartItem(itemId, currentVal + 1);
             });
 
-            // حذف آیتم از سبد خرید در خود مُدال (modallong)
             $(document).on('click', '#modallong .remove-item', function(e) {
                 e.preventDefault();
-                let itemId = $(this).parent().data('item-id'); // پیدا کردن data-item-id
+                let itemId = $(this).parent().data('item-id'); 
                 removeCartItem(itemId);
             });
         });
     </script>
-    {# اینجا تعریف آیکون‌های SVG را اضافه کنید #}
+  
     <svg style="display: none;">
         <symbol id="shopping-carriage" viewBox="0 0 24 24">
             <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.45 1.73-1.11L22.95 5.58C23.23 4.98 22.88 4 22.09 4H5.21L4.27 2H1v2h2l3.6 7.59L3.63 17H19v-2H7l1.1-2z"/>
@@ -558,18 +551,20 @@ document.addEventListener('DOMContentLoaded', function() {
                    <button type="button" class="btn btn-light quick-view-btn"
                                 data-bs-target="#modaltoggle"
                                 data-bs-toggle="modal"
-                                data-product-id="{{ item.pk }}" {# Use item.pk for the product's primary key #}
+                                data-product-id="{{ item.pk }}" 
                                 data-product-name="{{ item.name }}"
                                 data-product-price="{{ item.price }}"
                                 data-product-image="{{ item.image.url }}"
-                                data-product-description="{{ item.about|safe }}" {# Use |safe if description contains HTML #}
-                                {# Add other product-specific data as needed, e.g., colors, style #}
-                                data-product-colors="{{ item.colour|default_if_none:'' }}" {# Example: item.colors if you have this field #}
-                                data-product-style="{{ item.style|default_if_none:'' }}" {# Example: item.style if you have this field #}>
+                                data-product-description="{{ item.about|safe }}" 
+                                data-product-colors="{{ item.colour|default_if_none:'' }}" 
+                                data-product-style="{{ item.style|default_if_none:'' }}"
+                                data-product-link="{% url "products" item.pk %}">
                             <svg class="quick-view">
                                 <use xlink:href="#quick-view"></use>
                             </svg>
+                            
                         </button>
+                        
                   </div>
                 </div>
                 <!-- cart-concern -->
@@ -580,6 +575,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </h3>
                 <span class="card-price fw-bold">${{ item.price }}</span>
               </div>
+              
             </div>
           </div>
           {% endfor %}

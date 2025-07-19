@@ -12,6 +12,7 @@
     <div class="cart-container">
         <div class="cart-header">
             <h2>Cart</h2>
+            
             <span class="material-icons close-icon">close</span>
         </div>
         {% if cart and cart.items.all %}
@@ -20,14 +21,16 @@
             <img src="{{ item.product.image.url }}" alt="Sport Shoes For Men" class="cart-item-image">
             <div class="cart-item-details">
                 <h3>{{ item.product.name }}</h3>
+                
                 <div class="quantity-control">
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
+                    <button class="decrease-quantity">-</button>
+                    <span class="item-quantity">1</span>
+                    <button  class="increase-quantity">+</button>
                 </div>
+                
             </div>
             <span class="cart-item-price">${{ item.product.price }}</span>
-            <span class="material-icons remove-item">close</span>
+            <button class="remove-item-btn material-icons remove-item"  data-item-id="{{ item.id }}">close</button>
         </div>
         {% endfor %}  
         {% else %} 
@@ -39,9 +42,9 @@
         {% endif %}
         <div class="subtotal">
             <span>Subtotal:</span>
-            <span>$198.00</span>
+            <span>${{ total }}</span>
         </div>
-
+        
         <div class="cart-actions">
             <div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
@@ -56,12 +59,14 @@
 </div>
         </div>
     </div>
+    
 </body>
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function(){
+      // Remove item from cart
       $('.remove-item-btn').click(function(){
           let itemId = $(this).data('item-id');
           $.ajax({
@@ -73,12 +78,41 @@
               },
               success: function(response) {
                   if (response.success) {
-                      location.reload();  // یا می‌تونی با JS فقط اون خط رو حذف کنی
+                      location.reload();  // Reloads the page to reflect changes
                   } else {
                       alert(response.message);
                   }
               }
           });
       });
+
+      // Increase quantity
+      $('.increase-quantity').click(function() {
+          let quantitySpan = $(this).siblings('.item-quantity');
+          let currentQuantity = parseInt(quantitySpan.text());
+          quantitySpan.text(currentQuantity + 1);
+          updateSubtotal();  // Update subtotal when quantity changes
+      });
+
+      // Decrease quantity
+      $('.decrease-quantity').click(function() {
+          let quantitySpan = $(this).siblings('.item-quantity');
+          let currentQuantity = parseInt(quantitySpan.text());
+          if (currentQuantity > 1) {
+              quantitySpan.text(currentQuantity - 1);
+              updateSubtotal();  // Update subtotal when quantity changes
+          }
+      });
+
+      // Function to update subtotal (you might need to adjust this)
+      function updateSubtotal() {
+          let subtotal = 0;
+          $('.cart-item').each(function() {
+              let price = parseFloat($(this).find('.cart-item-price').text().replace('$', ''));
+              let quantity = parseInt($(this).find('.item-quantity').text());
+              subtotal += price * quantity;
+          });
+          $('.subtotal span:last').text(`$${subtotal.toFixed(2)}`);  // Update subtotal display
+      }
   });
-</script>  
+</script>

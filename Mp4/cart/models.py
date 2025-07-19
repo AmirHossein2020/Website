@@ -8,6 +8,11 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"Cart {self.id} for {self.user}"
+    def get_total(self):
+        total = sum(item.product.price * item.quantity for item in self.items.all())
+        return total
+    def get_quants(self):
+        return sum(item.quantity for item in self.items.all())
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')

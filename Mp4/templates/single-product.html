@@ -197,17 +197,17 @@
 <body>
     <div class="product-container">
         <div class="product-image">
-            <img src="{{ product.image.url }}" alt="Running Shoes For Men">
+            <img src="{{ single.image.url }}" alt="Running Shoes For Men">
         </div>
         <div class="product-details">
-            <h1 class="product-title">{{ product.name }}</h1>
-            <p class="product-price">${{ product.price }}</p>
+            <h1 class="product-title">{{ single.name }}</h1>
+            <p class="product-price">${{ single.price }}</p>
             <p class="product-description">
-                {{ product.about }}
+                {{ single.about }}
             </p>
             <div class="product-options">
-                <p><strong>Colour Shown:</strong>{{ product.colour }}</p>
-                <p><strong>Style:</strong>{{ product.style }}</p>
+                <p><strong>Colour Shown:</strong>{{ single.colour }}</p>
+                <p><strong>Style:</strong>{{ single.style }}</p>
             </div>
             <div class="quantity-selector">
                 <button class="quantity-button minus">-</button>
