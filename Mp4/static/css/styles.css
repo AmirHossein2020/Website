@@ -1,0 +1,60 @@
+body {
+    background: url('your-background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #e63946;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #d62839;
+}
+
+.text-muted {
+    display: block;
+    margin-top: 10px;
+}
+body {
+    background: url('your-background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #e63946;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #d62839;
+}
+
+.text-muted {
+    display: block;
+    margin-top: 10px;
+}

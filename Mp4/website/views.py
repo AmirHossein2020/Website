@@ -7,18 +7,35 @@ from cart.models import *
 # Create your views here.
 
 def home(reqset):
-    product = Product.objects.all()
-   
-    return render(reqset,'index.html',{'product':product})
+    product = Product.objects.filter(is_new=True).order_by('-created_at')[:5]
+    product_sale = Product.objects.filter(is_sale=True).order_by('-created_at')[:5] if Product.objects.filter(is_sale=True).exists() else None
 
-def cart(reqset):
-    return render(reqset,'cart.html')
+    return render(reqset, 'shop/index.html', {'product': product, 'product_sale': product_sale})
 
 def single_product(reqset,pk):
     single_product = Product.objects.get(id=pk)
-    return render(reqset,'single-product.html',{'single':single_product})
+    return render(reqset,'sohp/single-product.html',{'single':single_product})
 
+def products_page(reqset):
+    products = Product.objects.all()
+    context = {
+        'product':products
+    }
+    return render(reqset,'shop/Products.html',context)
+def products_page_sale(reqset):
+    product = Product.objects.all()
+    context = {
+        'product':product
+    }
+    return render(reqset,'shop/Products_sale.html',context)
+def search_results(request):
+    query = request.GET.get('query')
+    results = []
 
+    if query:
+        results = Product.objects.filter(name__icontains=query)  # جستجو بر اساس نام محصول
+
+    return render(request, 'search_results.html', {'results': results, 'query': query})
 def ajax_add_to_cart(request):
     if request.method == 'POST' and request.user.is_authenticated:
         product_id = request.POST.get('product_id')

@@ -3,6 +3,8 @@ from .cart import Cart # مطمئن شوید که کلاس Cart را از فای
 from website.models import Product # ایمپورت مدل Product
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 
@@ -12,23 +14,16 @@ def cart_summary(request):
     quantities = {}
     total = 0
 
-    # `cart.get_prods()` و `cart.get_quants()` و `cart.get_total()` 
-    # باید از کلاس `cart.py` شما آمده باشند
-    # اگر منطق سبد خرید شما به گونه‌ای دیگر است، آن را اینجا تطبیق دهید
-    
-    # فرض می‌کنیم ساختار داخلی Cart شما به این شکل است که
-    # آیتم‌ها را در سشن نگهداری می‌کند و شامل product_id و quantity است.
-    # برای نمایش، باید جزئیات محصول را از دیتابیس بگیریم.
-    
-    product_ids_in_cart = cart.cart.keys() # فرض می‌کنیم کلیدها product_id هستند
+   
+    product_ids_in_cart = cart.cart.keys() 
     products_in_cart = Product.objects.filter(id__in=product_ids_in_cart)
 
     for p in products_in_cart:
-        qty = cart.cart[str(p.id)]['qty'] # فرض می‌کنیم qty اینجوری ذخیره شده
+        qty = cart.cart[str(p.id)]['qty']
         cart_products.append(p)
         quantities[p.id] = qty
     
-    total = cart.get_total() # این تابع باید در کلاس Cart شما تعریف شده باشد
+    total = cart.get_total() 
 
     context = {
         'cart_products': cart_products,
@@ -37,8 +32,6 @@ def cart_summary(request):
     }
     return render(request, "cart/cart_summary.html", context)
 
-
-# این توابع require_POST هستند و برای AJAX استفاده می‌شوند
 @require_POST
 def cart_add(request):
     cart = Cart(request)

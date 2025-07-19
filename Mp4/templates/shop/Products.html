@@ -1,0 +1,436 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> {# Bootstrap JS #}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modaltoggle = document.getElementById('modaltoggle');
+
+    modaltoggle.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+
+        const productId = button.getAttribute('data-product-id');
+        const productName = button.getAttribute('data-product-name');
+        const productPrice = button.getAttribute('data-product-price');
+        const productImage = button.getAttribute('data-product-image');
+        const productDescription = button.getAttribute('data-product-description');
+        const productColors = button.getAttribute('data-product-colors'); 
+        const productStyle = button.getAttribute('data-product-style');   
+
+        const modalProductName = modaltoggle.querySelector('#modal-product-name');
+        const modalProductPrice = modaltoggle.querySelector('#modal-product-price');
+        const modalProductImage = modaltoggle.querySelector('#modal-product-image');
+        const modalProductDescription = modaltoggle.querySelector('#modal-product-description');
+        const modalProductColors = modaltoggle.querySelector('#modal-product-colors'); 
+        const modalProductStyle = modaltoggle.querySelector('#modal-product-style');  
+        const modalAddToCartBtn = modaltoggle.querySelector('#modal-add-to-cart-btn');
+
+        if (modalProductName) {
+            modalProductName.textContent = productName;
+        }
+        if (modalProductPrice) {
+            modalProductPrice.textContent = `$${productPrice}`; 
+        }
+        if (modalProductImage) {
+            modalProductImage.src = productImage;
+        }
+        if (modalProductDescription) {
+            modalProductDescription.innerHTML = productDescription; 
+        }
+        if (modalProductColors) {
+            modalProductColors.textContent = productColors;
+        }
+        if (modalProductStyle) {
+            modalProductStyle.textContent = productStyle;
+        }
+        if (modalAddToCartBtn) {
+            modalAddToCartBtn.setAttribute('data-product-id', productId);
+    });
+});
+</script>
+ <div class="modal fade" id="modaltoggle" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-lg-12 col-md-12 me-3">
+                    <div class="image-holder">
+                        <img id="modal-product-image" src="" alt="product-image" class="img-fluid"> {# Placeholder for image #}
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="summary">
+                        <div class="summary-content fs-6">
+                            <div class="product-header d-flex justify-content-between mt-4">
+                                <h3 class="display-7" id="modal-product-name"></h3>
+                                <div class="modal-close-btn">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <span class="product-price fs-3" id="modal-product-price"></span>
+                            <div class="product-details">
+                                <p class="fs-7" id="modal-product-description"></p>
+                            </div>
+                            <ul class="select">
+                                <li>
+                                    <strong>Colour Shown:</strong> <span id="modal-product-colors"></span>
+                                </li>
+                                <li>
+                                    <strong>Style:</strong> <span id="modal-product-style"></span>
+                                </li>
+                            </ul>
+                            
+                            <div class="variations-form shopify-cart">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a rel="nofollow" data-no-instant="" href="" class="out-stock button">Out of stock</a>
+                                        <a href="" id="modal-product-link">
+                                            <button type="button" class="btn btn-medium btn-black hvr-sweep-to-right" id="modal-product-link">More</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="categories d-flex flex-wrap pt-3">
+                                <strong class="pe-2">Categories:</strong>
+                                <a href="#" title="categories">Clothing,</a>
+                                <a href="#" title="categories">Men's Clothes,</a>
+                                <a href="#" title="categories">Tops & T-Shirts</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>$(document).on('click', '.quick-view-btn', function() {
+    const productLink = $(this).data('product-link'); 
+
+    $('#modaltoggle').modal('show');
+
+    $('#modal-product-link').attr('href', productLink); 
+});</script>
+<div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5">Cart</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="shopping-cart" id="modal-cart-content">
+                        <div class="empty-cart-message">
+                            <span class="material-icons empty-cart-icon">shopping_cart</span>
+                            <p>Loading cart...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer my-4 justify-content-center">
+                   <a href="{% url 'cart' %}" ><button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">View Cart</button></a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modaltoggle" tabindex="-1" aria-modal="true" role="dialog">
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function loadCartIntoModal() {
+            $.ajax({
+                url: '{% url "cart" %}',
+                type: 'GET',
+                dataType: 'html',
+                success: function(response){
+                    console.log("Full AJAX Response HTML:", response); 
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(response, 'text/html');
+
+                    const cartContent = doc.querySelector('.cart-container');
+                    
+                    if (cartContent) {
+                        $('#modal-cart-content').html(cartContent.innerHTML); 
+                        
+                        $('#modallong .modal-header .btn-close').on('click', function() {
+                            $('#modallong').modal('hide');
+                        });
+
+                        if ($(cartContent).find('.cart-item').length > 0) {
+                            $('#modallong .modal-footer button').attr('disabled', false);
+                        } else {
+                            $('#modallong .modal-footer button').attr('disabled', true);
+                        }
+                    } else {
+                        console.warn("Element with class 'cart-container' not found in AJAX response.");
+                        $('#modal-cart-content').html('<div class="alert alert-warning">Cart content structure not found.</div>');
+                        $('#modallong .modal-footer button').attr('disabled', true);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error loading cart:", status, error);
+                    $('#modal-cart-content').html('<div class="alert alert-danger">Failed to load cart. Please try again.</div>');
+                }
+            });
+        }
+
+        function addToCartAndRefreshModal(productId, productQty) {
+            $.ajax({
+                url: '{% url "cart_add" %}', 
+                type: 'POST',
+                data: {
+                    product_id: productId,
+                    product_qty: productQty,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                dataType: 'json',
+                success: function(response){
+                    console.log('Add to cart response:', response);
+                    if (response.success) { 
+                        loadCartIntoModal(); 
+                    } else {
+                        alert(response.message || 'Error adding product to cart.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error:", status, error);
+                    console.log("Response Text:", xhr.responseText);
+                    alert('An error occurred while adding to cart.');
+                }
+            });
+        }
+
+        // تابع برای به‌روزرسانی تعداد آیتم در سبد
+        function updateCartItem(itemId, newQty) {
+            $.ajax({
+                url: '{% url "cart_update" %}', 
+                type: 'POST',
+                data: {
+                    item_id: itemId, 
+                    quantity: newQty, 
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Cart item updated:', response);
+                    if (response.success) {
+                        loadCartIntoModal(); 
+                    } else {
+                        alert(response.message || 'Error updating cart item.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error updating cart item:", status, error);
+                }
+            });
+        }
+
+        function removeCartItem(itemId) {
+            $.ajax({
+                url: '{% url "cart_delete" %}', 
+                type: 'POST',
+                data: {
+                    item_id: itemId,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Cart item removed:', response);
+                    if (response.success) {
+                        loadCartIntoModal(); 
+                    } else {
+                        alert(response.message || 'Error removing cart item.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error removing cart item:", status, error);
+                }
+            });
+        }
+
+
+        $(document).ready(function(){
+            $('.add-to-cart-modal-btn').click(function(e){
+                const productId = $(this).data('product-id');
+                const productQty = 1; 
+                addToCartAndRefreshModal(productId, productQty);
+            });
+
+            $('#modaltoggle').on('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const productId = $(button).data('product-id');
+                $('#quickViewQuantity').val(1); 
+                $('.add-to-cart-from-quick-view').attr('data-product-id', productId);
+            });
+            
+            $(document).on('click', '.quick-view-qty-minus', function() {
+                let qtyInput = $('#quickViewQuantity');
+                let currentVal = parseInt(qtyInput.val());
+                if (currentVal > 1) { qtyInput.val(currentVal - 1); }
+            });
+            $(document).on('click', '.quick-view-qty-plus', function() {
+                let qtyInput = $('#quickViewQuantity');
+                let currentVal = parseInt(qtyInput.val());
+                qtyInput.val(currentVal + 1);
+            });
+
+            $(document).on('click', '.add-to-cart-from-quick-view', function(e) {
+                e.preventDefault();
+                const productId = $(this).data('product-id');
+                const productQty = $('#quickViewQuantity').val();
+                addToCartAndRefreshModal(productId, productQty);
+            });
+
+            $('#modallong').on('show.bs.modal', function () {
+                loadCartIntoModal();
+            });
+
+            $(document).on('click', '#modallong .quantity-left-minus', function() {
+                let qtySpan = $(this).siblings('.quantity');
+                let itemId = $(this).parent().parent().parent().data('item-id'); // پیدا کردن data-item-id
+                let currentVal = parseInt(qtySpan.text());
+                if (currentVal > 1) {
+                    qtySpan.text(currentVal - 1);
+                    updateCartItem(itemId, currentVal - 1);
+                }
+            });
+
+            $(document).on('click', '#modallong .quantity-right-plus', function() {
+                let qtySpan = $(this).siblings('.quantity');
+                let itemId = $(this).parent().parent().parent().data('item-id'); 
+                let currentVal = parseInt(qtySpan.text());
+                qtySpan.text(currentVal + 1);
+                updateCartItem(itemId, currentVal + 1);
+            });
+
+            $(document).on('click', '#modallong .remove-item', function(e) {
+                e.preventDefault();
+                let itemId = $(this).parent().data('item-id'); 
+                removeCartItem(itemId);
+            });
+        });
+    </script>
+<section id="featured-products" class="product-store">
+    <div class="container-md">
+      <div class="display-header d-flex align-items-center justify-content-between">
+        <h2 class="section-title text-uppercase">Featured Products</h2>
+        
+      </div>
+      <div class="product-content padding-small">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+          {% for item in product %}
+          {% if item.is_sale %}
+          <div class="col mb-4">
+            <div class="product-card position-relative">
+              <div class="card-img">
+                <img src="{{ item.image.url }}" alt="product-item" class="product-image img-fluid">
+                <div class="cart-concern position-absolute d-flex justify-content-center">
+                  <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
+                    <button type="button"
+                                        class="btn btn-light add-to-cart-modal-btn" {# کلاس برای AJAX #}
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modallong"
+                                        data-product-id="{{ item.pk }}"
+                                        data-product-name="{{ item.name }}"
+                                        data-product-price="{{ item.price }}"
+                                        data-product-image="{{ item.image.url }}">
+                                    <svg class="shopping-carriage">
+                                        <use xlink:href="#shopping-carriage"></use>
+                                    </svg>
+                                </button>
+                   <button type="button" class="btn btn-light quick-view-btn"
+                                data-bs-target="#modaltoggle"
+                                data-bs-toggle="modal"
+                                data-product-id="{{ item.pk }}" 
+                                data-product-name="{{ item.name }}"
+                                data-product-price="{{ item.price }}"
+                                data-product-image="{{ item.image.url }}"
+                                data-product-description="{{ item.about|safe }}" 
+                                data-product-colors="{{ item.colour|default_if_none:'' }}" 
+                                data-product-style="{{ item.style|default_if_none:'' }}"
+                                data-product-link="{% url "products" item.pk %}">
+                            <svg class="quick-view">
+                                <use xlink:href="#quick-view"></use>
+                            </svg>
+                            
+                        </button>
+                        
+                  </div>
+                </div>
+                <!-- cart-concern -->
+              </div>
+              <div class="card-detail d-flex justify-content-between align-items-center mt-3">
+                <h3 class="card-title fs-6 fw-normal m-0">
+                  <a href="{% url "products" item.pk %}">{{ item.name }}</a>
+                </h3>
+                    <strike><span class="card-price fw-bold">${{ item.price }}</span></strike><br>
+
+              </div>
+                <span class="card-price fw-bold">${{ item.price }}</span>
+
+            </div>
+          </div>
+          {% else %}
+          <div class="col mb-4">
+            <div class="product-card position-relative">
+              <div class="card-img">
+                <img src="{{ item.image.url }}" alt="product-item" class="product-image img-fluid">
+                <div class="cart-concern position-absolute d-flex justify-content-center">
+                  <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
+                    <button type="button"
+                                        class="btn btn-light add-to-cart-modal-btn" {# کلاس برای AJAX #}
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modallong"
+                                        data-product-id="{{ item.pk }}"
+                                        data-product-name="{{ item.name }}"
+                                        data-product-price="{{ item.price }}"
+                                        data-product-image="{{ item.image.url }}">
+                                    <svg class="shopping-carriage">
+                                        <use xlink:href="#shopping-carriage"></use>
+                                    </svg>
+                                </button>
+                   <button type="button" class="btn btn-light quick-view-btn"
+                                data-bs-target="#modaltoggle"
+                                data-bs-toggle="modal"
+                                data-product-id="{{ item.pk }}" 
+                                data-product-name="{{ item.name }}"
+                                data-product-price="{{ item.price }}"
+                                data-product-image="{{ item.image.url }}"
+                                data-product-description="{{ item.about|safe }}" 
+                                data-product-colors="{{ item.colour|default_if_none:'' }}" 
+                                data-product-style="{{ item.style|default_if_none:'' }}"
+                                data-product-link="{% url "products" item.pk %}">
+                            <svg class="quick-view">
+                                <use xlink:href="#quick-view"></use>
+                            </svg>
+                            
+                        </button>
+                        
+                  </div>
+                </div>
+                <!-- cart-concern -->
+              </div>
+              <div class="card-detail d-flex justify-content-between align-items-center mt-3">
+                <h3 class="card-title fs-6 fw-normal m-0">
+                  <a href="{% url "products" item.pk %}">{{ item.name }}</a>
+                </h3>
+                <span class="card-price fw-bold">${{ item.price }}</span>
+              </div>
+              
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
