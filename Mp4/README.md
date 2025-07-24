@@ -55,4 +55,4 @@ The project is designed for educational purposes to practice backend development
 
 ---
 
-## 📂 Folder Structure
+
