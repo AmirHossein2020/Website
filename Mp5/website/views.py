@@ -1,12 +1,22 @@
 from django.shortcuts import render
 from website.models import *
-from django.views.generic import ListView , DetailView ,View, TemplateView , CreateView
+from django.views.generic import DetailView 
+from website.forms import *
 # Create your views here.
 
 
 def home(request):
-
-    return render(request, 'index.html')
+    price_off = Pricing_off.objects.all()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+    form = ContactForm()
+    context = {
+        'form':form,
+        'off':price_off
+    }
+    return render(request, 'index.html',context)
 
 def about_us(request):
     abus = about.objects.all()
@@ -25,12 +35,17 @@ def branche(request):
 class Branche_singl(DetailView):
     model = Branches
     template_name = 'meno.html'
+    context_object_name = 'branch' 
 
-def menoB(request,pk):
-    B = Branches.objects.get(id=pk)
-    menoDe = Meno_desert.objects.filter(B=B)
-    context = {
-        'branch':B,
-        'deserts':menoDe,
-    }
-    return render(request, 'meno.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        branch = self.get_object()
+        deserts = Meno_desert.objects.filter(branche=branch)
+        dishs = Meno_dish.objects.filter(branche=branch)
+        starters = Meno_starter.objects.filter(branche=branch)
+        dreinks = Meno_dreink.objects.filter(branche=branch)
+        context['deserts'] = deserts
+        context['dishs'] = dishs
+        context['starters'] = starters
+        context['dreinks'] = dreinks
+        return context

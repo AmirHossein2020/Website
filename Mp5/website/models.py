@@ -76,7 +76,14 @@ class Pricing_off(models.Model):
     meno = models.CharField(max_length=50, choices=MENO)
 
     def __str__(self):
-        return self.location
+        return self.meno
     
+class Contact(models.Model):
+    name = models.CharField(max_length=500)
+    email = models.EmailField()
+    message = models.TextField()
 
+    def __str__(self):
+        return self.name
+   
     
