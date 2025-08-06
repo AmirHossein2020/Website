@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from website.models import *
+from django.views.generic import ListView , DetailView ,View, TemplateView , CreateView
 # Create your views here.
 
 
@@ -21,9 +22,15 @@ def branche(request):
     }
     return render(request, 'branches.html', context)
 
+class Branche_singl(DetailView):
+    model = Branches
+    template_name = 'meno.html'
+
 def menoB(request,pk):
-    menoDe = Meno_desert.objects.filter(pk=Branches)
+    B = Branches.objects.get(id=pk)
+    menoDe = Meno_desert.objects.filter(B=B)
     context = {
-        'desert':menoDe,
+        'branch':B,
+        'deserts':menoDe,
     }
     return render(request, 'meno.html', context)
