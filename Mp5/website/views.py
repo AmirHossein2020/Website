@@ -11,12 +11,14 @@ def home(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-    form = ContactForm()
+    else:
+        form = ContactForm()
     context = {
-        'form':form,
-        'off':price_off
+        'form': form,
+        'off': price_off
     }
-    return render(request, 'index.html',context)
+    return render(request, 'index.html', context)
+
 
 def about_us(request):
     abus = about.objects.all()

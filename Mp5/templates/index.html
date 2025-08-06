@@ -277,22 +277,22 @@
                         <h4 class="form-title">BOOKING FORM</h4>
                         <p>PLEASE FILL OUT ALL REQUIRED* FIELDS. THANKS!</p>
 
-                        <form action="" method="post" id="contact-form">
+                        <form method="post">
                             {% csrf_token %}
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
-                                    <input type="text" name="form_name" id="form_name" placeholder="Name" required="required" data-error="Firstname is required.">
+                                    <input type="text" name="name" placeholder="Name">
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
-                                    <input type="email" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
+                                    <input type="email" name="email" placeholder="Email">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
-                                    <input type="text" name="text" id="text" placeholder="text" required="required" data-error="E-mail id is required.">
+                                    <textarea name="message" placeholder="Message" style="width:209%; height:100px;"></textarea>
                                 </div>
                             </div>
                             <!-- end col -->
@@ -310,7 +310,7 @@
                             <!-- end col -->
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="reserve-book-btn text-center">
+                                <div class="reserve-book-btn">
                                     <button type="submit">BOOK MY TABLE </button>
                                 </div>
                             </div>
