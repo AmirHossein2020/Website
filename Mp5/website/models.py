@@ -33,7 +33,7 @@ class Meno_starter(models.Model):
     image = models.ImageField(upload_to='media/photos/meno') 
 
     def __str__(self):
-        return self.branche
+        return self.starter
 
 class Meno_dish(models.Model):
     branche = models.ForeignKey(Branches, on_delete=models.CASCADE)
@@ -42,7 +42,7 @@ class Meno_dish(models.Model):
     image = models.ImageField(upload_to='media/photos/meno/dish') 
 
     def __str__(self):
-        return self.branche
+        return self.dish
     
 class Meno_desert(models.Model):
     branche = models.ForeignKey(Branches, on_delete=models.CASCADE)
@@ -51,7 +51,7 @@ class Meno_desert(models.Model):
     image = models.ImageField(upload_to='media/photos/meno/desert') 
 
     def __str__(self):
-        return self.branche
+        return self.desert
     
 
 class Meno_dreink(models.Model):
@@ -61,7 +61,7 @@ class Meno_dreink(models.Model):
     image = models.ImageField(upload_to='media/photos/meno/dreink') 
 
     def __str__(self):
-        return self.branche
+        return self.dreink
 
 
 MENO = [
