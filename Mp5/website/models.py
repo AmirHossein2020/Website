@@ -29,7 +29,7 @@ class Branches(models.Model):
 class Meno_starter(models.Model):
     branche = models.ForeignKey(Branches, on_delete=models.CASCADE)
     starter = models.CharField(max_length=50)
-    prise = models.IntegerField()
+    price = models.IntegerField()
     image = models.ImageField(upload_to='media/photos/meno') 
 
     def __str__(self):
@@ -38,7 +38,7 @@ class Meno_starter(models.Model):
 class Meno_dish(models.Model):
     branche = models.ForeignKey(Branches, on_delete=models.CASCADE)
     dish = models.CharField(max_length=50)
-    prise = models.IntegerField()
+    price = models.IntegerField()
     image = models.ImageField(upload_to='media/photos/meno/dish') 
 
     def __str__(self):
@@ -47,7 +47,7 @@ class Meno_dish(models.Model):
 class Meno_desert(models.Model):
     branche = models.ForeignKey(Branches, on_delete=models.CASCADE)
     desert = models.CharField(max_length=50)
-    prise = models.IntegerField()
+    price = models.IntegerField()
     image = models.ImageField(upload_to='media/photos/meno/desert') 
 
     def __str__(self):
@@ -57,7 +57,7 @@ class Meno_desert(models.Model):
 class Meno_dreink(models.Model):
     branche = models.ForeignKey(Branches, on_delete=models.CASCADE)
     dreink = models.CharField(max_length=50)
-    prise = models.IntegerField()
+    price = models.IntegerField()
     image = models.ImageField(upload_to='media/photos/meno/dreink') 
 
     def __str__(self):
@@ -71,7 +71,7 @@ MENO = [
     ('dreink','Dreink')
 ]
 class Pricing_off(models.Model):
-    prise_off = models.IntegerField()
+    price_off = models.IntegerField()
     location = models.ForeignKey(Branches, on_delete=models.CASCADE)
     meno = models.CharField(max_length=50, choices=MENO)
 
