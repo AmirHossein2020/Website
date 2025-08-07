@@ -34,7 +34,14 @@
 | **Work** | ✅ Completed |
 
 ---
+## 📂 My Projects
 
+https://github.com/user-attachments/assets/aea05962-39c1-4fcc-a011-6a6afbfb90f9
+
+>My Projects or Mp1,Mp2,...
+>A video summarizing the presentation of five back-end site projects, from a shopping site to a restaurant and cafe menu, to enhance programming and gain skills and experience. More detailed and detailed information is in the README of each project.
+
+---
 ## ⚡ Key Technologies
 
 - Django 4.x
