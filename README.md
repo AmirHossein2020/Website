@@ -1,3 +1,5 @@
+<img width="1536" height="1024" alt="1000015876" src="https://github.com/user-attachments/assets/403aee5a-f789-4ea6-a564-0848f3410471" />
+
 # 🛠️ Django Backend Portfolio
 
 <div align="center">
